@@ -165,7 +165,12 @@ class admin extends CI_Controller
 		$data['pagination'] = $this->pagination->create_links();
 		
 		// Load view
-		$this->load->view('backend/users', $data);
+		//$this->load->view('backend/users', $data);
+			//$data['auth_message'] = 'You are already logged in.';
+			$datos_plantilla['data'] = $data;
+			$datos_plantilla['contenido'] = 'backend/users';
+		//	$this->load->view($this->dx_auth->logged_in_view, $datos_plantilla);
+			$this->load->view('plantilla',$datos_plantilla);
 	}
 	
 	function unactivated_users()

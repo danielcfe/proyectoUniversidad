@@ -11,7 +11,7 @@
 		
 		$this->table->set_heading('', 'Nombre Usuario', 'Correl', 'Rol', 'Bloqueado', 'Last IP', 'Last login', 'Created','Nombre','Sexo','Estado Civil');
 		
-		foreach ($users as $user) 
+		foreach ($data['users'] as $user) 
 		{
 			$banned = ($user->banned == 1) ? 'Yes' : 'No';
 			
@@ -41,7 +41,7 @@
 		
 		echo form_close();
 		
-		echo $pagination;
+		echo $data['pagination'];
 			
 	?>
 	</body>
