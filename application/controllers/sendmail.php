@@ -11,8 +11,6 @@ function index()
   'protocol' => 'smtp',
   'smtp_host' => 'smtp.googlemail.com',
   'smtp_port' => 465,
-  'smtp_user' => 'danielcfe@gmail.com', // change it to yours
-  'smtp_pass' => '18539017', // change it to yours
   'mailtype' => 'html',
   'charset' => 'iso-8859-1',
   'wordwrap' => TRUE,
@@ -21,8 +19,8 @@ function index()
  
   $this->load->library('email', $config);
   $this->email->set_newline("\r\n");
-  $this->email->from('danielcfe@gmail.com'); // change it to yours
-  $this->email->to('danielcfe@gmail.com'); // change it to yours
+  $this->email->from('iuspove@gmail.com'); // change it to yours
+  $this->email->to('iuspove@gmail.com'); // change it to yours
   $this->email->subject('Email using Gmail.');
   $this->email->message('Working fine ! !');
  

@@ -14,4 +14,9 @@
 
 .hero-unit{
 	font-size: 13px;
+	padding: 30px;
+}
+.paginationH{
+	width: 300px;
+	margin: auto;
 }

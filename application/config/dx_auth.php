@@ -16,7 +16,7 @@
 */
 
 $config['DX_website_name'] = 'Iuspo.com.org';
-$config['DX_webmaster_email'] = 'danielcfe@gmail.com';
+$config['DX_webmaster_email'] = 'iuspove@gmail.com';
 
 /*
 |--------------------------------------------------------------------------

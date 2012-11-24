@@ -153,7 +153,7 @@ class admin extends CI_Controller
 		$data['users'] = $this->users->get_all($offset, $row_count)->result();
 		
 		// Pagination config
-		$p_config['base_url'] = '/CodeIgniterDx/admin/users/';
+		$p_config['base_url'] = base_url().'/admin/users/';
 		$p_config['uri_segment'] = 3;
 		$p_config['num_links'] = 2;
 		$p_config['total_rows'] = $this->users->get_all()->num_rows();
