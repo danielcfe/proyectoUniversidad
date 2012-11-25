@@ -5,8 +5,8 @@
 
 <body>
 	<?php
-		if(isset($datos))
-			$datos = $datos[0];
+		/*if( isset($datos) && !empty($datos) )
+			$datos = $datos[0];*/
 	?>
 
 	<h2>Listado de Requisitos - IUSPO</h2>
@@ -35,8 +35,8 @@
 								<td> <?php echo $row['descripcion']; ?> </td>
 								<td> <?php echo $row['requerido_text']; ?> </td>
 								<td> <?php echo $row['oculto_text']; ?> </td>
-								<td> <i class="icon-circle-arrow-up"></i> <?php echo anchor('requisitos/ControllerRequisitos/modificar/' . $row['id'], 'Actualizar'); ?> </td>
-								<td> <i class="icon-remove-sign"></i> <?php echo anchor('requisitos/ControllerRequisitos/eliminar/' . $row['id'], 'Eliminar'); ?> </td>
+								<td> <i class="icon-circle-arrow-up"></i> <?php echo anchor('ControllerRequisitos/modificar/' . $row['id'], 'Actualizar'); ?> </td>
+								<td> <i class="icon-remove-sign"></i> <?php echo anchor('ControllerRequisitos/eliminar/' . $row['id'], 'Eliminar'); ?> </td>
 							</tr>
 					
 			<?php 		}

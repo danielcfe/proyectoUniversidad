@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 //+---------------------------------------------------------------------+
 //|Clase Requisitos				 							 			|
 //+---------------------------------------------------------------------+
@@ -113,38 +113,16 @@ class Requisitos extends CI_Model
 	//+---------------------------------------------------------------------+
 	//|Parametro: Ninguno 		                                    		|
 	//|Retornar:															|
-	//|		* 0: Si se incertor satisfactoriamente 							|
-	//|		* 1: Si hubo problema en la insercion 							|
-	//|		* 2: Si el registro esta duplicado 								|
+	//|		* TRUE: Si se incertor satisfactoriamente 						|
+	//|		* FALSE: Si hubo problema en la insercion 						|
 	//+---------------------------------------------------------------------+
 	//|Funcionamiento: Ejecuta una consulta en la base de dato y devuelve   |
 	//|	valor segun respuesta de la misma e inserta un registro				|
 	//+---------------------------------------------------------------------+
 	public function insertar_requisitos()
 	{
-		$array_return  = array();
 		$array_campos = array( 'descripcion' => $this->get('descripcion'), 'requerido' => $this->get('requerido'), 'oculto' => $this->get('oculto') );
-		$array_query  = $this->get_requisitos_descripcion($this->data['descripcion']);
-
-		if( empty($array_query) )
-		{
-			if( $this->db->insert( 'requisitos', $array_campos ) )
-			{
-				$array_return['val'] = 0;
-				$array_return['msj'] = $this->msj('cons_ok');
-			}
-			else
-			{
-				$array_return['val'] = 1;
-				$array_return['msj'] = $this->msj('error_insertar');
-			}
-		}else
-		{
-			$array_return['val'] = 2;
-			$array_return['msj'] = $this->msj('reg_duplicado');
-		}
-
-		return $array_return;
+		return $this->db->insert( 'requisitos', $array_campos );
 	}
 
 
@@ -153,28 +131,15 @@ class Requisitos extends CI_Model
 	//+---------------------------------------------------------------------+
 	//|Parametro: Ninguno                                    				|
 	//|Retornar:															|
-	//|		* 0: Si se actualizo satisfactoriamente 						|
-	//|		* 1: Si hubo problema en la actualizacion						|
+	//|		* TRUE: Si se actualizo satisfactoriamente 						|
+	//|		* FALSE: Si hubo problema en la actualizacion					|
 	//+---------------------------------------------------------------------+
 	//|Funcionamiento: Actualiza un registro   								|
 	//+---------------------------------------------------------------------+
 	public function modificar_requisitos()
 	{
-		$array_return = array();
 		$array_campos = array( 'descripcion' => $this->get('descripcion'), 'requerido' => $this->get('requerido'), 'oculto' => $this->get('oculto') );
-
-		if( $this->db->update( 'requisitos', $array_campos, array('id' => $this->data['id']) ) )
-		{
-			$array_return['val'] = 0;
-			$arry_return['msj'] = $this->msj('cons_ok');
-		}
-		else
-		{
-			$array_return['val'] = 1;
-			$arry_return['msj'] = $this->msj('error_actualizar');
-		}
-
-		return $array_return;
+		return $this->db->update('requisitos', $array_campos, array('id' => $this->data['id']));
 	}
 
 
@@ -183,28 +148,15 @@ class Requisitos extends CI_Model
 	//+---------------------------------------------------------------------+
 	//|Parametro: Ninguno                                    				|
 	//|Retornar:															|
-	//|		* 0: Si se elimina satisfactoriamente 							|
-	//|		* 1: Si hubo problema en la eliminacion							|
+	//|		* TRUE: Si se elimina satisfactoriamente 							|
+	//|		* FALSE: Si hubo problema en la eliminacion							|
 	//+---------------------------------------------------------------------+
 	//|Funcionamiento: Elimina un registro   								|
 	//+---------------------------------------------------------------------+
 	public function eliminar_requisitos()
 	{
-		$array_return = array();
 		$array_campos = array( 'id' => $this->get('id') );
-
-		if( $this->db->delete( 'requisitos', $array_campos ) )
-		{
-			$array_return['val'] = 0;
-			$array_return['msj'] = $this->msj('cons_ok');
-		}
-		else
-		{
-			$array_return['val'] = 1;
-			$array_return['msj'] = $this->msj('error_eliminar');
-		}
-		
-		return $array_return;
+		return $this->db->delete('requisitos', $array_campos);
 	}
 
 
