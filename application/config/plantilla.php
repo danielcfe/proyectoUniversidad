@@ -53,12 +53,12 @@ $config['subMenu2'] =array(
                )),
        'Departamento'=> array('href'=>'#Departamento','items'=>array(
                'subItem' => array('name'=>'Agregar Departamento','href'=>'departamento/agregar','class' => 'icon-plus'),
-               'subItem2' => array('name'=>'Consultar Departamento','href'=>'departamento','class' => 'icon-tags')
+               'subItem2' => array('name'=>'Consultar Departamento','href'=>'departamento','class' => 'icon-tags'),
                ))
        ,
        'Carreras'=> array('href'=>'#Carreras','items'=>array(
                'subItem' => array('name'=>'Agregar Carreras','href'=>'carrera/agregar','class' => 'icon-plus'),
-               'subItem2' => array('name'=>'Consultar Carreras','href'=>'carrera','class' => 'icon-tags')
+               'subItem2' => array('name'=>'Consultar Carreras','href'=>'carrera','class' => 'icon-tags'),
                ))
 
 	//	'subItem6' => array('name'=>'Listar Materias','href'=>'materia_c/consultar','class' => 'icon-book'),
