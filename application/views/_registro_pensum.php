@@ -2,7 +2,7 @@
 		<?php $this->load->helper('form');?>
 		<?php  echo form_open('pensum/agregar', 'class = "well"'); ?>
 		
-		<h1>Registro de pensum</h1>     
+		<div><h3>Registro de pensum</h3></div>   
 		
 		<h4>Fecha </h4>
 		<input type="text" name="fecha" value="" size="50" />
@@ -12,7 +12,7 @@
 		<input type="text" name="carrera_id" value="" size="50" />
 		<?php echo form_error('carrera_id','<div class="alert alert-error">', '</div>'); ?>
 		
-		<div><input type="submit" value="Enviar"/> 
+		<div><input type="submit" value="Enviar" class = "btn btn-success"/> 
 		</div>
 		</form>
 </div>

@@ -2,7 +2,7 @@
 		<?php $this->load->helper('form');?>
 		<?php  echo form_open('carrera/agregar', 'class = "well"'); ?>
 		
-		<h1>Registro de carreras</h1>     
+		<div><h2>Registro de carreras</h2></div>  
 		
 		<h4>Carrera </h4>
 		<input type="text" name="nombre" value="" size="50" />
@@ -12,7 +12,7 @@
 		<input type="text" name="departamento_id" value="" size="50" />
 		<?php echo form_error('departamento_id','<div class="alert alert-error">', '</div>'); ?>
 		
-		<div><input type="submit" value="Enviar"/> 
+		<div><input type="submit" value="Enviar" class = "btn btn-success"/> 
 		</div>
 		</form>
 </div>

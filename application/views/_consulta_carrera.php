@@ -1,4 +1,4 @@
-<h1><a class = "btn" type = "link" href = "/IUSPO/index.php/carrera/agregar">Insertar una nueva Carrera</a><h1>
+<div><h1><a class = "btn btn-primary" type = "link" href = "<?=base_url()?>/carrera/agregar">Insertar una nueva Carrera</a><h4></div>
 
 <table class="table table-striped table-condensed" >
 <thead>
@@ -23,7 +23,7 @@ foreach ($carreras as $carreras) {
 			<?php echo anchor("carrera/editar/".$carreras['id'], 'Actualizar'); ?>
 		</td>
 		<td>
-			<?php echo anchor("carrera/eliminar/".$carreras['id'], 'Eliminar'); ?>
+			 <?php echo anchor("carrera/eliminar/".$carreras['id'], 'Eliminar');?>
 		</td>
 	</tr>
 

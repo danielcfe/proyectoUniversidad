@@ -1,4 +1,4 @@
-<h1><a class = "btn" type = "link" href = "/IUSPO/index.php/pensum/agregar">Insertar una nuevo Pensum</a><h1>
+<div><h4><a class = "btn btn-primary" type = "link" href = "<?=base_url()?>/pensum/agregar">Insertar una nuevo Pensum</a><h4></div>
 
 <table class="table table-striped table-condensed" >
 <thead>
