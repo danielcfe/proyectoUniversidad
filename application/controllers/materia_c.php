@@ -86,5 +86,25 @@ class Materia_c extends CI_Controller {
 			}
 		}
 
+		function ajax()
+    	{
+
+        if($buscar = $this->input->get('unidad_curricular'))
+        {
+            $this->db->select('id, unidad_curricular as value');
+            $this->db->like('unidad_curricular', $buscar); 
+            $this->db->limit(10);
+            $query=$this->db->get('materia');
+            if($query->num_rows() > 0)
+            {
+                foreach ($query->result_array() as $row)
+                {
+                    $result[]= $row;
+                }
+            }
+            echo json_encode($result);
+        }
+   		}
+
 }
 ?>

@@ -25,6 +25,14 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+    <script type="text/javascript" src="<?=base_url()?>css/js/jquery-ui-1.9.2.custom.js"></script>
+    <script type="text/javascript" src="<?=base_url()?>css/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#autocomplete').autocomplete({source:'<?php echo site_url('materia_c/ajax'); ?>'});
+        });
+    </script>
+
     <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="<?=base_url()?>/css/docs/assets/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?=base_url()?>/css/docs/assets/ico/apple-touch-icon-144-precomposed.png">
@@ -52,12 +60,12 @@
                           <table>
                             <tr>
                               <td rowspan="2">
-<?php 
-$image_properties = array('src' => 'img/user.jpg','alt' => 'Image Profile',
-  'class' => '','width' => '100','height' => '100','title' => ''
-);
-echo img($image_properties); 
-?>
+                                  <?php 
+                                  $image_properties = array('src' => 'img/user.jpg','alt' => 'Image Profile',
+                                    'class' => '','width' => '100','height' => '100','title' => ''
+                                  );
+                                  echo img($image_properties); 
+                                  ?>
                               </td>
                               <td >
                                 <?php echo $this->dx_auth->get_fullname() ?>

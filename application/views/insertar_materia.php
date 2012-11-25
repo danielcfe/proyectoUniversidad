@@ -12,8 +12,8 @@
 		<input type="text" name="codigo" value="<?php echo set_value('codigo'); ?>" size="100" placeholder = "LEC0143"/>
 		<?php echo form_error('codigo','<div class="alert alert-error">', '</div>'); ?>
 
-		<h4>Unidad Curricular </h4>
-		<input type="text" name="unidad_curricular" value="<?php echo set_value('unidad_curricular'); ?>" size="100" placeholder = "Lenguaje y Comunicacion I"/>
+		<h4><label for = "autocomplete">Unidad Curricular</label></h4>
+		<input type="text" autocomplete = "off" id='autocomplete' name="unidad_curricular" value="<?php echo set_value('unidad_curricular'); ?>" size="100" placeholder = "Lenguaje y Comunicacion I"/>
 		<?php echo form_error('unidad_curricular','<div class="alert alert-error">', '</div>'); ?>
 
 		<h4>Horas Teoricas </h4>
