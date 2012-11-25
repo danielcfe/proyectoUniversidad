@@ -29,7 +29,7 @@
     <script type="text/javascript" src="<?=base_url()?>css/js/jquery-ui-1.9.2.custom.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $('#autocomplete').autocomplete({source:'<?php echo site_url('materia_c/ajax'); ?>'});
+            $('#autocomplete').autocomplete({source:'<?php echo site_url("materia_c/ajax"); ?>'});
         });
     </script>
 
