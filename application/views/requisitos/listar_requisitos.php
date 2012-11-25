@@ -1,26 +1,23 @@
-﻿<html>
+<html>
 <head>
 <title>Listar Requisitos</title>
 </head>
 
 <body>
+	<?php
+		if(isset($datos))
+			$datos = $datos[0];
+	?>
 
-
-	<div>
-		<?php
-			$this->load->helper('url'); 
-			echo anchor('ControllerRequisitos/agregar', 'Agregar'); 
-		?>
-	</div>
-
-	<table>
+	<h2>Listado de Requisitos - IUSPO</h2>
+	<table class="table table-striped table-condensed">
 		<thead>
 			<tr>
-				<td> Codigo </td>
-				<td> Descripcion </td>
-				<td> Requerido </td>
-				<td> Visibilidad </td>
-				<td> Opciones </td>
+				<td> <strong>Codigo</strong> </td>
+				<td> <strong>Descripcion</strong> </td>
+				<td> <strong>Requerido</strong> </td>
+				<td> <strong>Visibilidad</strong> </td>
+				<td colspan="2"></td>
 			</tr>
 		</thead>
 	
@@ -34,14 +31,12 @@
 						{
 			?>
 							<tr>
-								<td > <?php echo $row['id']; ?> </td>
-								<td > <?php echo $row['descripcion']; ?> </td>
-								<td > <?php echo $row['requerido_text']; ?> </td>
-								<td > <?php echo $row['oculto_text']; ?> </td>
-								<td > 
-									<?php echo anchor('ControllerRequisitos/modificar/' . $row['id'], 'Actualizar'); ?>
-									<?php echo anchor('ControllerRequisitos/eliminar/' . $row['id'], 'Eliminar'); ?> 
-								</td>
+								<td> <?php echo $row['id']; ?> </td>
+								<td> <?php echo $row['descripcion']; ?> </td>
+								<td> <?php echo $row['requerido_text']; ?> </td>
+								<td> <?php echo $row['oculto_text']; ?> </td>
+								<td> <i class="icon-circle-arrow-up"></i> <?php echo anchor('requisitos/ControllerRequisitos/modificar/' . $row['id'], 'Actualizar'); ?> </td>
+								<td> <i class="icon-remove-sign"></i> <?php echo anchor('requisitos/ControllerRequisitos/eliminar/' . $row['id'], 'Eliminar'); ?> </td>
 							</tr>
 					
 			<?php 		}
@@ -50,7 +45,7 @@
 					default:
 			?>
 						<tr>
-							<td Colspan="5"> <?php echo $msj; ?> </td>
+							<td Colspan="6"> <?php echo $msj; ?> </td>
 						</tr>
 
 			<?php	break;

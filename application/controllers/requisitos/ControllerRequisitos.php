@@ -104,20 +104,16 @@ class ControllerRequisitos extends CI_Controller
 
 	function listar()
 	{
-		$array_datos = array();
-
-		/*********** Modelos *************/
-		$this->load->model('requisitos');
+		$this->load->model('requisitos/requisitos');
 		$class = new Requisitos;
-
-		$array_datos['datos'] = $class->get_requisitos_all();
-
-		if ( empty($array_datos['datos']) )
-			$array_datos['msj']   = $class->msj('sin_reg');
+		$datos_plantilla['datos'] = $class->get_requisitos_all();
+		if ( empty($datos_plantilla['datos']) )
+			$datos_plantilla['msj'] = $class->msj('sin_reg');
 		else
-			$array_datos['msj']   = "";
+			$datos_plantilla['msj'] = "";
 
-		$this->load->view('listar_requisitos', $array_datos);
+		$datos_plantilla['contenido'] = 'requisitos/listar_requisitos';
+		$this->load->view('plantilla', $datos_plantilla);
 	}
 
 }
