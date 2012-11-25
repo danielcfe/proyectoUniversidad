@@ -8,8 +8,14 @@ class Materia_c extends CI_Controller {
 			array('field' => 'uni_credito','label' => 'Unidades de Credito','rules' => 'required|numeric'),
 			array('field' => 'cod_prelacion','label' => 'Codigo Prelacion','rules' => ''));
 
+function __construct()
+	{
+		parent::__construct();
+		$this->load->model('materia');
+	}
+
 		function index()
-		{
+		{	
 			$this->consultar();
 		}
 
@@ -21,16 +27,14 @@ class Materia_c extends CI_Controller {
 				$this->load->view('plantilla',$datos_plantilla);
 			}else{
 				$this->load->model('materia');
-				$obj = new Materia();
-				$obj->cargar($this->input->post());	
-				$obj->insertar_materia();
+				$this->materia->cargar($this->input->post());	
+				$this->materia->insertar_materia();
 				$this->consultar();
 			}		
 		}
 
 		function editar()
 		{
-
 			$this->form_validation->set_rules($this->validateRules);
 			$this->form_validation->set_rules('codigo','Codigo','required');
 			if(!$this->form_validation->run()){
@@ -39,44 +43,35 @@ class Materia_c extends CI_Controller {
 				$datos_plantilla['contenido'] = "editar_materia";
 				$this->load->view('plantilla',$datos_plantilla);
 			}else{
-			$this->load->model('materia');
-			$obj = new Materia();
-			$obj->cargar($this->input->post());	
-			$obj->editar_materia();
+			$this->materia->cargar($this->input->post());	
+			$this->materia->editar_materia();
 			$this->consultar();
 			}
 		}
 
 		function eliminar($codigo)
 		{
-			$this->load->model('materia');
-			$obj = new Materia();
-			$obj->setCodigo($codigo);
-			$obj->eliminar_materia();
+			$this->materia->setCodigo($codigo);
+			$this->materia->eliminar_materia();
 			$this->consultar();
 		}
 
 		function consultar()
 		{
-			$this->load->model('materia');
-			$obj = new Materia();
-			$datos_plantilla['datos_materia'] = $obj->consultar_materia();
+			$datos_plantilla['datos_materia'] = $this->materia->consultar_materia();
 			$datos_plantilla['contenido'] = 'lista_materia';
 			$this->load->view('plantilla',$datos_plantilla);
 		}
 
 		function cargar_datos($codigo)
-		{
-			$this->load->model('materia');
-			$obj = new Materia();
-			$datos_plantilla['datos_materia'] = $obj->consultar_mat($codigo);
+		{	
+			$datos_plantilla['datos_materia'] = $this->materia->consultar_mat($codigo);
 			$this->load->view('editar_materia',$datos_plantilla);
 		}
 
-		function id_exist($codigo){
-			$this->load->model('materia');
-			$obj = new Materia();
-			$respuesta = $obj->verificar($codigo);
+		function id_exist($codigo)
+		{
+			$respuesta = $this->materia->verificar($codigo);
 
 			if ($respuesta != null){
 				$this->form_validation->set_message('id_exist','El %s ya se encuentra resgistrado');
