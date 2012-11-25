@@ -22,8 +22,15 @@ class admin extends CI_Controller
 	
 	function index()
 	{
-		$this->users();
+		$this->home();
 	}
+
+	function home(){
+		urlmenu();
+
+		$this->load->view('plantilla');
+	}
+
 
 
 	//forgot_password($login)
@@ -69,18 +76,26 @@ class admin extends CI_Controller
 			$user['usuario'] = $query->row();
 			$data = null;
 		//	var_dump($user);
-			$this->load->view('backend/editUser', $user);
+					$datos_plantilla['data'] = $user;
+					$datos_plantilla['contenido'] = 'backend/editUser';
+					$this->load->view('plantilla',$datos_plantilla);			
+		//	$this->load->view('backend/editUser', $user);
 	 	}else{
 				$data['auth_message'] = 'You have successfully registered. '.anchor(site_url($this->dx_auth->login_uri), 'Login');
 				// Load registration success page
-				$this->load->view($this->dx_auth->register_success_view, $data);
+					$datos_plantilla['data'] = $data;
+					$datos_plantilla['contenido'] = $this->dx_auth->register_success_view;
+					$this->load->view('plantilla',$datos_plantilla);
+					//$this->load->view($this->dx_auth->register_success_view, $data);
 	 	}
 	}
 
 
 	function email_check($email)
 	{
-		$result = $this->dx_auth->is_email_available($email);
+		$result = true;
+		if($this->dx_auth->userData('email') == $email)
+			$result = $this->dx_auth->is_email_available($email);
 		if ( ! $result)
 		{
 			$this->form_validation->set_message('email_check', 'Este correo ya está siendo usado por otra persona. Por favor introduzca otro correo valido.');
@@ -221,7 +236,11 @@ class admin extends CI_Controller
 		$data['pagination'] = $this->pagination->create_links();
 		
 		// Load view
-		$this->load->view('backend/unactivated_users', $data);
+		//$this->load->view('backend/unactivated_users', $data);
+		$datos_plantilla['data'] = $data;
+		$datos_plantilla['contenido'] = 'backend/unactivated_users';
+	//	$this->load->view($this->dx_auth->logged_in_view, $datos_plantilla);
+		$this->load->view('plantilla',$datos_plantilla);
 	}
 	
 	function roles()
@@ -256,7 +275,11 @@ class admin extends CI_Controller
 		$data['roles'] = $this->roles->get_all()->result();
 		
 		// Load view
-		$this->load->view('backend/roles', $data);
+		$datos_plantilla['data'] = $data;
+		$datos_plantilla['contenido'] = 'backend/roles';
+	//	$this->load->view($this->dx_auth->logged_in_view, $datos_plantilla);
+		$this->load->view('plantilla',$datos_plantilla);		
+		//$this->load->view('backend/roles', $data);
 	}
 	
 	function uri_permissions()
@@ -294,7 +317,10 @@ class admin extends CI_Controller
 		$data['allowed_uris'] = $this->permissions->get_permission_value($role_id, 'uri');
 		
 		// Load view
-		$this->load->view('backend/uri_permissions', $data);
+		$datos_plantilla['data'] = $data;
+		$datos_plantilla['contenido'] = 'backend/uri_permissions';
+		$this->load->view('plantilla',$datos_plantilla);
+		//$this->load->view('backend/uri_permissions', $data);
 	}
 	
 	function custom_permissions()
@@ -342,7 +368,10 @@ class admin extends CI_Controller
 		$data['delete'] = $this->permissions->get_permission_value($role_id, 'delete');
 	
 		// Load view
-		$this->load->view('backend/custom_permissions', $data);
+		$datos_plantilla['data'] = $data;
+		$datos_plantilla['contenido'] = 'backend/custom_permissions';
+		$this->load->view('plantilla',$datos_plantilla);
+		//$this->load->view('backend/custom_permissions', $data);
 	}
 }
 ?>

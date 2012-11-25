@@ -26,28 +26,32 @@ $confirm_new_password = array(
 
 <?php echo $this->dx_auth->get_auth_error(); ?>
 
-<dl>
-	<dt><?php echo form_label('Old Password', $old_password['id']); ?></dt>
-	<dd>
+
+<?php echo form_label('Old Password', $old_password['id']); ?>
+
 		<?php echo form_password($old_password); ?>
 		<?php echo form_error($old_password['name']); ?>
-	</dd>
+	
 
-	<dt><?php echo form_label('New Password', $new_password['id']); ?></dt>
-	<dd>
+<?php echo form_label('New Password', $new_password['id']); ?>
+
 		<?php echo form_password($new_password); ?>
 		<?php echo form_error($new_password['name']); ?>
-	</dd>
+	
 
-	<dt><?php echo form_label('Confirm New Password', $confirm_new_password['id']); ?></dt>
-	<dd>
+<?php echo form_label('Confirm New Password', $confirm_new_password['id']); ?>
+
 		<?php echo form_password($confirm_new_password); ?>
 		<?php echo form_error($confirm_new_password['name']); ?>
-	</dd>
+	
 
-	<dt></dt>
-	<dd><?php echo form_submit('change', 'Change Password'); ?></dd>
-</dl>
+
+<?php
+$attr = array('name' => 'change', 'value' => 'Cambiar Clave', 'class' =>  'btn ' );
+echo '<br>';
+					echo form_submit($attr);
+ //echo form_submit('change', 'Change Password'); ?>
+
 
 <?php echo form_close(); ?>
 </fieldset>

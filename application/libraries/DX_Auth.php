@@ -173,7 +173,7 @@ class DX_Auth
   'smtp_host' => 'smtp.googlemail.com',
   'smtp_port' => 465,
   'smtp_user' => 'iuspove@gmail.com', // change it to yours
-  'smtp_pass' => '*******', // change it to yours
+  'smtp_pass' => 'iuspove2012', // change it to yours
   'mailtype' => 'html',
   'charset' => 'iso-8859-1',
   'wordwrap' => TRUE,

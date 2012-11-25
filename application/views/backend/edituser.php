@@ -1,6 +1,6 @@
 <?php
 
-//var_dump($usuario);
+$usuario = $data['usuario'];
 
 $campos['username'] = array('label' => 'Usuario',  'atr' => 
 array('name' => 'username',	'id'	=> 'username',	'size'	=> 30,	'value' =>  set_value('username',$usuario->username),	'readonly' => 'true')
@@ -42,7 +42,7 @@ $campos['addres'] =array('label' => 'Direccion',  'atr' =>
  );
 
 $campos['observations'] = array('name'=>'observations',	'id'=>'observations',
-	'maxlength'	=> 40,	'size'	=> 15,
+	'maxlength'	=> 40,	'size'	=> 15, 'class' => 'input-block-level',
  	'value'	=> set_value('observations',$usuario->observations)
  );
 
@@ -51,7 +51,10 @@ $campos['observations'] = array('name'=>'observations',	'id'=>'observations',
 <html>
 <body>
 <?php $this->load->helper('bootstrap');  ?>
-<?php echo form_open($this->uri->uri_string())?>
+<div class="contentautoForm">
+<?php 
+$attr = array('class' => 'form-horizontal', );
+echo form_open($this->uri->uri_string(),$attr)?>
 	<h1></h1>
 	<?php inputB($campos['username']); 
 	inputB($campos['name']); 
@@ -97,6 +100,6 @@ $campos['observations'] = array('name'=>'observations',	'id'=>'observations',
 
 
 <?php echo form_close()?>
-
+</div>
 </body>
 </html>

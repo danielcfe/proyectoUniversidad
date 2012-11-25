@@ -17,18 +17,59 @@ $config['administrador']=array(
 		))
 );
 
+
+$config['menu_nav'] =array(
+	'Materia'=> array('href'=>'#materia','items'=>array(
+		'subItem' => array('name'=>'Agregar Materia','href'=>'materia_c/insertar','class' => 'icon-plus'),
+		'subItem2' => array('name'=>'Listar Materias','href'=>'materia_c/consultar','class' => 'icon-book'),
+		))/*,
+	'Pemsum'=> array('href'=>'#menu2href','items'=>array(
+		'subItem' => array('name'=>'item1','href'=>'menu4.php','class' => 'icon-user'),
+		'subItem2' => array('name'=>'item2','href'=>'menu5.php','class' => 'icon-user')
+		))
+	,
+	'Usuario'=> array('href'=>'#menu3href','items'=>array(
+		'subItem' => array('name'=>'item1','href'=>'menu6.php','class' => 'icon-user'),
+		'subItem2' => array('name'=>'item2','href'=>'menu7.php','class' => 'icon-user')
+		))*/
+);
+
 $config['menu_nav']=array(
 		'subItem' => array('name'=>'Materias','href'=>'materia_c/insertar'),
 		'subItem2' => array('name'=>'Usuarios','href'=>'materia_c/consultar'),
 		'subItem3' => array('name'=>'Contactos','href'=>'materia_c/consultar'),	
 );
 
+$config['subMenu2'] =array(
+	'Sistema'=> array('href'=>'#sistema','items'=>array(
+		'subItem1' => array('name'=>'Administracion General','href'=>'admin/users','class' => 'icon-plus'),
+		'subItem2' => array('name'=>'Usuarios Inactivos','href'=>'admin/unactivated_users','class' => 'icon-book'),
+		'subItem3' => array('name'=>'Permisos de direcciones','href'=>'admin/uri_permissions','class' => 'icon-plus'),
+		'subItem4' => array('name'=>'Roles','href'=>'admin/roles','class' => 'icon-book'),
+		'subItem5' => array('name'=>'Personalizar Permisos','href'=>'admin/custom_permissions','class' => 'icon-plus'),
+	//	'subItem6' => array('name'=>'Listar Materias','href'=>'materia_c/consultar','class' => 'icon-book'),
+	//	'subItem7' => array('name'=>'Agregar Materia','href'=>'materia_c/insertar','class' => 'icon-plus'),
+	//	'subItem8' => array('name'=>'Listar Materias','href'=>'materia_c/consultar','class' => 'icon-book'),
+		))/*,
+	'Pemsum'=> array('href'=>'#menu2href','items'=>array(
+		'subItem' => array('name'=>'item1','href'=>'menu4.php','class' => 'icon-user'),
+		'subItem2' => array('name'=>'item2','href'=>'menu5.php','class' => 'icon-user')
+		))
+	,
+	'Usuario'=> array('href'=>'#menu3href','items'=>array(
+		'subItem' => array('name'=>'item1','href'=>'menu6.php','class' => 'icon-user'),
+		'subItem2' => array('name'=>'item2','href'=>'menu7.php','class' => 'icon-user')
+		))*/
+);
+
+$config['subMenu2admin'] = $config['subMenu2'];
+$config['subMenu2auth'] = $config['subMenu2'];
 
 $config['menu_nav2']=array(
-		'subItem' => array('name'=>'Administracion General','href'=>'admin')/*,
+		'subItem' => array('name'=>'Administracion General','href'=>'admin'),
 		'subItem2' => array('name'=>'Usuarios','href'=>'materia_c/consultar'),
 		'subItem3' => array('name'=>'Contactos','href'=>'materia_c/consultar'),	
-		*/
+		
 );
 
 

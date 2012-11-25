@@ -47,7 +47,7 @@
           <div class="nav-collapse collapse ">
             <ul class="navbar nav pull-right visible-desktop"> 
                   <li class="dropdown">  
-                <button class="btn dropdown-toggle btn-info" data-toggle="dropdown">Usuario <span class="caret"></span></button>
+                <button class="btn dropdown-toggle btn-info" data-toggle="dropdown"><?=$this->dx_auth->get_fullname()?><span class="caret"></span></button>
                 <ul class="dropdown-menu user-option" role="menu" aria-labelledby="drop1" style="min-height: 100px;min-width: 270px;padding: 10px;">
                           <table>
                             <tr>
@@ -99,6 +99,7 @@ echo img($image_properties);
               <?php 
               $url = $this->uri->segment(1).'/'.$this->uri->segment(2);
               $this->config->load('plantilla');$id = ""; 
+
               echo navegacionMenu($this->config->item('menu_nav'.$this->dx_auth->get_role_id()),$url,base_url());?>
             </ul>
           </div><!--/.nav-collapse -->
@@ -109,12 +110,14 @@ echo img($image_properties);
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span2">
-          <div class="well">
+          <div id="submenu" class="well">
             <ul class="nav nav-list">
               <?php 
               $url = $this->uri->segment(1).'/'.$this->uri->segment(2);
               $this->config->load('plantilla');$id = ""; 
-              echo acordionMenu($id,$this->config->item('administrador'),$url,base_url());?>
+              //var_dump('subMenu'.$this->dx_auth->get_role_id().$this->uri->segment(1));
+              $menuName = 'subMenu'.$this->dx_auth->get_role_id().$this->uri->segment(1);
+              echo acordionMenu($id,$this->config->item($menuName),$url,base_url());?>
             </ul>
           </div><!--/.well -->
          </div><!--/span-->

@@ -11,7 +11,7 @@ class Auth extends CI_Controller
 	{
 		parent::__construct();
 				if($this->uri->segment(1)=='auth'){
-			echo 'activetop';
+		//	echo 'activetop';
 		}
 		if($this->uri->segment(2,'')=='login'){
 			echo 'activeInner';
@@ -283,7 +283,9 @@ class Auth extends CI_Controller
 			}
 			else
 			{
-				$this->load->view($this->dx_auth->change_password_view);
+				$datos_plantilla['contenido'] = $this->dx_auth->change_password_view;
+				$this->load->view('plantilla',$datos_plantilla);
+				//$this->load->view();
 			}
 		}
 		else
@@ -397,11 +399,18 @@ class Auth extends CI_Controller
 			$user['usuario'] = $query->row();
 			$data = null;
 		//	var_dump($user);
-			$this->load->view('backend/editUser', $user);
+			//$this->load->view('backend/editUser', $user);
+			$datos_plantilla['data'] = $user;
+			$datos_plantilla['contenido'] = 'backend/editUser';
+			$this->load->view('plantilla',$datos_plantilla);
 	 	}else{
 				$data['auth_message'] = 'You have successfully registered. '.anchor(site_url($this->dx_auth->login_uri), 'Login');
 				// Load registration success page
-				$this->load->view($this->dx_auth->register_success_view, $data);
+				//$this->load->view($this->dx_auth->register_success_view, $data);
+								// Load registration success page
+				$datos_plantilla['data'] = $data;
+				$datos_plantilla['contenido'] = $this->dx_auth->register_success_view;
+				$this->load->view('plantilla',$datos_plantilla);
 	 	}
 	}
 

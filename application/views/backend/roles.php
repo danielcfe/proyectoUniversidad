@@ -1,7 +1,8 @@
 <html>
 	<head><title>Manage roles</title></head>
 	<body>
-	<?php  				
+	<?php  		
+	$roles = $data['roles'];
 		// Show error
 		echo validation_errors();
 		
@@ -13,6 +14,8 @@
 		}
 	
 		// Build table
+		$tmpl = array ( 'table_open'  => '<table class="table table-hover">' );
+		$this->table->set_template($tmpl);
 		$this->table->set_heading('', 'ID', 'Name', 'Parent ID');
 		
 		foreach ($roles as $role)
@@ -21,17 +24,20 @@
 		}
 		
 		// Build form
-		echo form_open($this->uri->uri_string());
+		$attr = array('class' =>'form-inline' , );
+		echo form_open($this->uri->uri_string(),$attr);
 		
-		echo form_label('Role parent', 'role_parent_label');
+		echo form_label('Rol Padre', 'role_parent');
 		echo form_dropdown('role_parent', $options); 
-				
-		echo form_label('Role name', 'role_name_label');
+		echo '<br>';		
+		echo form_label('Nombre de Rol', 'role_name');
 		echo form_input('role_name', ''); 
-		
-		echo form_submit('add', 'Add role'); 
-		echo form_submit('delete', 'Delete selected role');
-				
+		$attr = array('name' => 'add', 'value' => 'Agregar Rol', 'class' =>  'btn ' );
+		echo form_submit($attr);
+		$attr = array('name' => 'delete', 'value' => 'Borrar Seleccion', 'class' =>  'btn ' );
+		echo form_submit($attr);
+//		echo form_submit('add', 'Add role');
+//		echo form_submit('delete', 'Delete selected role');
 		echo '<hr/>';
 		
 		// Show table

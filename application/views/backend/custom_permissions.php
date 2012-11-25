@@ -4,6 +4,9 @@
 	<?php
 		echo '<b>Here is an example how to use custom permissions</b><br/><br/>';
 		
+		$roles = $data['roles'];
+		$edit = $data['edit'];
+		$delete = $data['delete'];
 		// Build drop down menu
 		foreach ($roles as $role)
 		{
@@ -33,17 +36,29 @@
 		echo form_dropdown('role', $options); 
 		echo form_submit('show', 'Show permissions'); 
 		
-		echo form_label('', 'uri_label');
+		//echo form_label('', 'uri_label');
 				
-		echo '<hr/>';
+		//echo '<hr/>';
+				?>
+		<label class="checkbox"><?php 
+			echo form_checkbox('edit', '1', $edit);?>
+                  Permitir Editar
+           </label>
+           <?php 
 		
-		echo form_checkbox('edit', '1', $edit);
-		echo form_label('Allow edit', 'edit_label');
-		echo '<br/>';
+		//echo form_checkbox('edit', '1', $edit);
+		//echo form_label('Allow edit', 'edit_label');
 		
-		echo form_checkbox('delete', '1', $delete);
-		echo form_label('Allow delete', 'delete_label');
-		echo '<br/>';
+
+		?>
+		<label class="checkbox"><?php 
+			echo form_checkbox('delete', '1', $delete);?>
+                  Permitir Eliminar
+           </label>
+           <?php 
+		
+		//echo form_label('Allow delete', 'delete_label');
+		//echo '<br/>';
 					
 		echo '<br/>';
 		echo form_submit('save', 'Save Permissions');

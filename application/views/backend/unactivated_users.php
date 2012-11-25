@@ -3,8 +3,12 @@
 	<body>
 	<?php  				
 		// Show error
+	$users = $data['users'];
+	$pagination = $data['pagination'];
+	
 		echo validation_errors();
-		
+	
+	if(count($users)>0){
 		$this->table->set_heading('', 'Username', 'Email', 'Register IP', 'Activation Key', 'Created');
 		
 		foreach ($users as $user) 
@@ -29,7 +33,9 @@
 		echo form_close();
 		
 		echo $pagination;
-			
+	}else{
+		echo '<h2> No existen usuarios Inactivos</h2>';
+	}
 	?>
 	</body>
 </html>

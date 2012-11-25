@@ -17,22 +17,33 @@
 	 	
 	 <?php endforeach ;
  }*/
- function textareaB($label='',$attr = array()){?>
- <div><label for="<?php echo $attr['name'] ?>"><?php echo $label ?> </label>
-<?php echo form_textarea($attr); ?></div>
- <?php  
- }
 
-   function inputB($campo){
+	function urlmenu($uri=''){
+		$CI =& get_instance();
+		//var_dump($CI);
+		//$CI->config->base_url($uri).
+		return $CI->dx_auth->get_role_id().$CI->uri->segment(2); 
+	}
+
+function textareaB($label='',$attr = array()){?>
+	<div><label for="<?php echo $attr['name'] ?>"><?php echo $label ?> </label>
+	<?php echo form_textarea($attr); ?></div>
+	<?php  
+}
+
+  function inputB($campo){
 	 //foreach ($campo as $key => $value): 
 	//echo $campo['atr']['name'].'<br>';
 	 ?>
 
 	   <div class="control-group">
-	    <div class="controls">
-	      <label class="checkbox">
-	         <?php echo form_label($campo['label'], $campo['atr']['id']);?>
+	      <label class="control-label" for="<?=$campo['atr']['id']?>">
+
+	         <?php
+	         echo $campo['label'];
+	          //echo form_label($campo['label'], $campo['atr']['id']);?>
 	      </label>
+	    <div class="controls">
 			<?php echo form_input($campo['atr']); ?>
 			<?php echo form_error($campo['atr']['name']); ?>
 	    </div>
@@ -44,12 +55,15 @@
 
 	function selectB($label = '',$name = '', $options = array(), $selected = array(), $extra = ''){
  		?>
- 		<label for="<?php echo $label ?>">
- 			<?php echo $label;
- 		echo form_dropdown($name, $options, $selected, $extra);
-?>
- 		</label>
- 	
+ 		<div class="control-group">
+	 		<label class="control-label" for="<?php echo $label ?>">
+	 			<?php echo $label;
+	 			?>
+	 		</label>
+	 		<div class="controls">
+	 			<?php  echo form_dropdown($name, $options, $selected, $extra);?>
+	 		</div>
+ 		</div>
  	<?php 
  	}
 
@@ -94,7 +108,10 @@ function validarHref($href){
 
 	 	echo $atributoAccordion;
 		foreach ($menu['items'] as $items):
-			$atributosItem = ($href == $items['href'])? 'class="accordion activo"': 'class="accordion"';?>
+			$atributosItem = ($href == $items['href'])? 'class=" activo"': 'class=""';
+			//$atributosItem = ($href == $items['href'])? 'class="accordion activo"': 'class="accordion"';
+		?>
+
 				<a <?php echo $atributosItem ?> href="<?php echo $url.$items['href']; ?>">
 					<i class = "<?php echo $items['class'];?>"></i>
 				<?php echo $items['name']; ?>
