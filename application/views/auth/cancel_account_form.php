@@ -1,8 +1,7 @@
 <?php
 $password = array(
 	'name'	=> 'password',
-	'id'		=> 'password',
-	'size' 	=> 30
+	'id'		=> 'password'
 );
 
 ?>
@@ -20,7 +19,10 @@ $password = array(
 		<?php echo form_error($password['name']); ?>
 	</dd>
 	<dt></dt>
-	<dd><?php echo form_submit('cancel', 'Cancel Account'); ?></dd>
+	<dd><?php 
+	$attr = array('name' => '','value'=> 'Cancelar Cuenta', 'class' => 'btn');
+	echo form_submit($attr);
+	 ?></dd>
 </dl>
 
 <?php echo form_close(); ?>

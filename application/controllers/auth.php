@@ -313,7 +313,9 @@ class Auth extends CI_Controller
 			}
 			else
 			{
-				$this->load->view($this->dx_auth->cancel_account_view);
+				$datos_plantilla['contenido'] = $this->dx_auth->cancel_account_view;
+				$this->load->view('plantilla',$datos_plantilla);
+				//$this->load->view($this->dx_auth->cancel_account_view);
 			}
 		}
 		else

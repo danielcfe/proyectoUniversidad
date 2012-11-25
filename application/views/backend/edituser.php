@@ -55,7 +55,7 @@ $campos['observations'] = array('name'=>'observations',	'id'=>'observations',
 <?php 
 $attr = array('class' => 'form-horizontal', );
 echo form_open($this->uri->uri_string(),$attr)?>
-	<h1></h1>
+	<h2>Editar Usuario</h2>
 	<?php inputB($campos['username']); 
 	inputB($campos['name']); 
 	inputB($campos['last_name']); 

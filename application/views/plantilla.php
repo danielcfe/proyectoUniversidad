@@ -105,9 +105,9 @@
               </ul>
             <ul class="nav">
               <?php 
-              $url = $this->uri->segment(1).'/'.$this->uri->segment(2);
+              $url = $this->uri->segment(1);//.'/'.$this->uri->segment(2);
               $this->config->load('plantilla');$id = ""; 
-
+//var_dump($this->config->item('menu_nav'.$this->dx_auth->get_role_id()),$url);
               echo navegacionMenu($this->config->item('menu_nav'.$this->dx_auth->get_role_id()),$url,base_url());?>
             </ul>
           </div><!--/.nav-collapse -->
