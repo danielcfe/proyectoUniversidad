@@ -17,7 +17,7 @@ class Materia_c extends CI_Controller {
 		{
 			$this->form_validation->set_rules($this->validateRules);
 			if(!$this->form_validation->run()){
-				$datos_plantilla['contenido'] = "insertar_materia";
+				$datos_plantilla['contenido'] = "materia/insertar_materia";
 				$this->load->view('plantilla',$datos_plantilla);
 			}else{
 				$this->load->model('materia');
@@ -34,9 +34,8 @@ class Materia_c extends CI_Controller {
 			$this->form_validation->set_rules($this->validateRules);
 			$this->form_validation->set_rules('codigo','Codigo','required');
 			if(!$this->form_validation->run()){
-				$this->load->model('materia');
 				$datos_plantilla['datos_materia'] = $this->materia->consultar_mat($this->uri->segment(3));
-				$datos_plantilla['contenido'] = "editar_materia";
+				$datos_plantilla['contenido'] = "materia/editar_materia";
 				$this->load->view('plantilla',$datos_plantilla);
 			}else{
 			$this->load->model('materia');
@@ -61,7 +60,7 @@ class Materia_c extends CI_Controller {
 			$this->load->model('materia');
 			$obj = new Materia();
 			$datos_plantilla['datos_materia'] = $obj->consultar_materia();
-			$datos_plantilla['contenido'] = 'lista_materia';
+			$datos_plantilla['contenido'] = 'materia/lista_materia';
 			$this->load->view('plantilla',$datos_plantilla);
 		}
 
@@ -70,7 +69,7 @@ class Materia_c extends CI_Controller {
 			$this->load->model('materia');
 			$obj = new Materia();
 			$datos_plantilla['datos_materia'] = $obj->consultar_mat($codigo);
-			$this->load->view('editar_materia',$datos_plantilla);
+			$this->load->view('materia/editar_materia',$datos_plantilla);
 		}
 
 		function id_exist($codigo){
@@ -86,24 +85,22 @@ class Materia_c extends CI_Controller {
 			}
 		}
 
-		function ajax()
-    	{
-
-        if($buscar = $this->input->get('unidad_curricular'))
-        {
-            $this->db->select('id, unidad_curricular as value');
-            $this->db->like('unidad_curricular', $buscar); 
-            $this->db->limit(10);
-            $query=$this->db->get('materia');
-            if($query->num_rows() > 0)
-            {
-                foreach ($query->result_array() as $row)
-                {
-                    $result[]= $row;
-                }
-            }
-            echo json_encode($result);
-        }
+		function ajax(){
+	        if($buscar = $this->input->get('unidad_curricular'))
+	        {
+	            $this->db->select('id, unidad_curricular as value');
+	            $this->db->like('unidad_curricular', $buscar); 
+	            $this->db->limit(10);
+	            $query=$this->db->get('materia');
+	            if($query->num_rows() > 0)
+	            {
+	                foreach ($query->result_array() as $row)
+	                {
+	                    $result[]= $row;
+	                }
+	            }
+	            echo json_encode($result);
+	        }
    		}
 
 }

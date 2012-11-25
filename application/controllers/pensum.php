@@ -12,7 +12,7 @@
 			$this->form_validation->set_rules('carrera_id', 'Carrera_id', 'required');
 
 			if ($this->form_validation->run() == FALSE){
-					$datos_plantilla["contenido"] = "_registro_pensum";
+					$datos_plantilla["contenido"] = "pensum/_registro_pensum";
 					$this->load->view('plantilla', $datos_plantilla);
 				}else{
 				$this->load->model('pensums');
@@ -35,7 +35,7 @@
 				$this->form_validation->set_rules('carrera_id', 'Carrera_id', 'required');
 
 				if ($this->form_validation->run() == FALSE){
-					$datos_plantilla["contenido"] = "_editar_pensum";
+					$datos_plantilla["contenido"] = "pensum/_editar_pensum";
 					$this->load->view('plantilla', $datos_plantilla);
 				}else{
 					$obj->setId($this->input->post('id'));
@@ -46,7 +46,7 @@
 				}							
 			}else{
 				$datos_plantilla["pensum"] = $obj->cargar($id);
-				$datos_plantilla["contenido"] = "_editar_pensum";						
+				$datos_plantilla["contenido"] = "pensum/_editar_pensum";						
 			}
 			$this->load->view('plantilla', $datos_plantilla);
 		}
@@ -67,7 +67,7 @@
 			$this->load->model('pensums');
 			$obj = new Pensums();			
 			$datos_plantilla["pensum"] = $obj->consulta_general();
-			$datos_plantilla["contenido"] = "_consulta_pensum";
+			$datos_plantilla["contenido"] = "pensum/_consulta_pensum";
 			$this->load->view('plantilla', $datos_plantilla);			 
 
 		}
@@ -76,7 +76,7 @@
 			$this->load->model('pensums');
 			$obj = new Pensums();
 			$datos_plantilla["pensum"] = $obj->cargar($id);
-			$datos_plantilla["contenido"] = "_editar_pensum";
+			$datos_plantilla["contenido"] = "pensum/_editar_pensum";
 			$this->load->view('plantilla', $datos_plantilla);
 		}
 

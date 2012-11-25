@@ -11,7 +11,7 @@
 			$this->form_validation->set_rules('nombre', 'nombre', 'required');	
 		
 			if ($this->form_validation->run() == FALSE){
-					$datos_plantilla["contenido"] = "_registro_departamento";
+					$datos_plantilla["contenido"] = "departamento/_registro_departamento";
 					$this->load->view('plantilla', $datos_plantilla);
 				}else{
 				$this->load->model('departamentos');
@@ -32,7 +32,7 @@
 				$this->form_validation->set_rules('nombre', 'Nombre', 'required');
 
 				if ($this->form_validation->run() == FALSE){
-					$datos_plantilla["contenido"] = "_editar_departamento";
+					$datos_plantilla["contenido"] = "departamento/_editar_departamento";
 					$this->load->view('plantilla', $datos_plantilla);
 				}else{
 					$obj->setId($this->input->post('id'));
@@ -42,7 +42,7 @@
 				}							
 			}else{
 				$datos_plantilla["departamento"] = $obj->cargar($id);
-				$datos_plantilla["contenido"] = "_editar_departamento";						
+				$datos_plantilla["contenido"] = "departamento/_editar_departamento";						
 			}
 			$this->load->view('plantilla', $datos_plantilla);
 		}
@@ -63,7 +63,7 @@
 			$this->load->model('departamentos');
 			$obj = new Departamentos();			
 			$datos_plantilla['departamento'] = $obj->consulta_general();			
-			$datos_plantilla["contenido"] = "_consulta_departamento";
+			$datos_plantilla["contenido"] = "departamento/_consulta_departamento";
 			$this->load->view('plantilla', $datos_plantilla);			 
 		}
 
@@ -71,7 +71,7 @@
 			$this->load->model('departamentos');
 			$obj = new Departamentos();
 			$datos_plantilla["departamento"] = $obj->cargar($id);
-			$datos_plantilla["contenido"] = "_editar_departamento";
+			$datos_plantilla["contenido"] = "departamento/_editar_departamento";
 			$this->load->view('plantilla', $datos_plantilla);
 		}
 

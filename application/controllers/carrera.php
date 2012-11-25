@@ -12,7 +12,7 @@
 			$this->form_validation->set_rules('departamento_id', 'departamento_id', 'required');
 
 			if ($this->form_validation->run() == FALSE){
-					$datos_plantilla["contenido"] = "_registro_carrera";
+					$datos_plantilla["contenido"] = "carrera/_registro_carrera";
 					$this->load->view('plantilla', $datos_plantilla);
 				}else{
 				$this->load->model('carreras');
@@ -35,7 +35,7 @@
 				$this->form_validation->set_rules('departamento_id', 'departamento_id', 'required');
 
 				if ($this->form_validation->run() == FALSE){
-					$datos_plantilla["contenido"] = "_editar_carrera";
+					$datos_plantilla["contenido"] = "carrera/_editar_carrera";
 					$this->load->view('plantilla', $datos_plantilla);
 				}else{
 					$obj->setId($this->input->post('id'));
@@ -46,7 +46,7 @@
 				}							
 			}else{
 				$datos_plantilla["carrera"] = $obj->cargar($id);
-				$datos_plantilla["contenido"] = "_editar_carrera";						
+				$datos_plantilla["contenido"] = "carrera/_editar_carrera";						
 			}
 			$this->load->view('plantilla', $datos_plantilla);
 		}
@@ -67,7 +67,7 @@
 			$this->load->model('carreras');
 			$obj = new Carreras();			
 			$datos_plantilla['carreras'] = $obj->consulta_general();
-			$datos_plantilla["contenido"] = "_consulta_carrera";
+			$datos_plantilla["contenido"] = "carrera/_consulta_carrera";
 			$this->load->view('plantilla', $datos_plantilla);			 
 
 		}
@@ -76,7 +76,7 @@
 			$this->load->model('carreras');
 			$obj = new Carreras();
 			$datos_plantilla["carrera"] = $obj->cargar($id);
-			$datos_plantilla["contenido"] = "_editar_carrera";
+			$datos_plantilla["contenido"] = "carrera/_editar_carrera";
 			$this->load->view('plantilla', $datos_plantilla);
 		}
 
