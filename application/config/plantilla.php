@@ -45,12 +45,27 @@ $config['subMenu2'] =array(
 		'subItem1' => array('name'=>'Administracion General','href'=>'admin/users','class' => 'icon-plus'),
 		'subItem2' => array('name'=>'Usuarios Inactivos','href'=>'admin/unactivated_users','class' => 'icon-book'),
 		'subItem3' => array('name'=>'Permisos de direcciones','href'=>'admin/uri_permissions','class' => 'icon-plus'),
-		'subItem4' => array('name'=>'Roles','href'=>'admin/roles','class' => 'icon-book'),
-		'subItem5' => array('name'=>'Personalizar Permisos','href'=>'admin/custom_permissions','class' => 'icon-plus'),
+		'subItem4' => array('name'=>'Roles','href'=>'admin/roles','class' => 'icon-book')),
+		'subItem5' => array('name'=>'Personalizar Permisos','href'=>'admin/custom_permissions','class' => 'icon-plus')),
+		//array(
+       'Materia'=> array('href'=>'#materia','items'=>array(
+               'subItem' => array('name'=>'Agregar Materia','href'=>'materia_c/insertar','class' => 'icon-plus'),
+               'subItem2' => array('name'=>'Listar Materias','href'=>'materia_c','class' => 'icon-tags'),
+               )),
+       'Departamento'=> array('href'=>'#Departamento','items'=>array(
+               'subItem' => array('name'=>'Agregar Departamento','href'=>'departamento/agregar','class' => 'icon-plus'),
+               'subItem2' => array('name'=>'Consultar Departamento','href'=>'departamento','class' => 'icon-tags')
+               ))
+       ,
+       'Carreras'=> array('href'=>'#Carreras','items'=>array(
+               'subItem' => array('name'=>'Agregar Carreras','href'=>'carrera/agregar','class' => 'icon-plus'),
+               'subItem2' => array('name'=>'Consultar Carreras','href'=>'carrera','class' => 'icon-tags')
+               ))
+
 	//	'subItem6' => array('name'=>'Listar Materias','href'=>'materia_c/consultar','class' => 'icon-book'),
 	//	'subItem7' => array('name'=>'Agregar Materia','href'=>'materia_c/insertar','class' => 'icon-plus'),
 	//	'subItem8' => array('name'=>'Listar Materias','href'=>'materia_c/consultar','class' => 'icon-book'),
-		))/*,
+		/*)),
 	'Pemsum'=> array('href'=>'#menu2href','items'=>array(
 		'subItem' => array('name'=>'item1','href'=>'menu4.php','class' => 'icon-user'),
 		'subItem2' => array('name'=>'item2','href'=>'menu5.php','class' => 'icon-user')
@@ -64,6 +79,8 @@ $config['subMenu2'] =array(
 
 $config['subMenu2admin'] = $config['subMenu2'];
 $config['subMenu2auth'] = $config['subMenu2'];
+$config['subMenu2materia_c'] = $config['subMenu2'];
+$config['subMenu2carrera'] = $config['subMenu2'];
 
 $config['menu_nav2']=array(
 		'subItem' => array('name'=>'Administracion General','href'=>'admin'),
