@@ -4,16 +4,15 @@
 $config['administrador']=array(
 	'Materia'=> array('href'=>'#materia','items'=>array(
 		'subItem' => array('name'=>'Agregar Materia','href'=>'materia_c/insertar','class' => 'icon-plus'),
-		'subItem2' => array('name'=>'Listar Materias','href'=>'materia_c/consultar','class' => 'icon-book'),
+		'subItem2' => array('name'=>'Listar Materias','href'=>'materia_c','class' => 'icon-tags'),
 		)),
-	'Pemsum'=> array('href'=>'#menu2href','items'=>array(
-		'subItem' => array('name'=>'item1','href'=>'menu4.php','class' => 'icon-user'),
-		'subItem2' => array('name'=>'item2','href'=>'menu5.php','class' => 'icon-user')
-		))
-	,
-	'Usuario'=> array('href'=>'#menu3href','items'=>array(
-		'subItem' => array('name'=>'item1','href'=>'menu6.php','class' => 'icon-user'),
-		'subItem2' => array('name'=>'item2','href'=>'menu7.php','class' => 'icon-user')
+	'Departamento'=> array('href'=>'#Departamento','items'=>array(
+		'subItem' => array('name'=>'Agregar Departamento','href'=>'departamento/agregar','class' => 'icon-plus'),
+		'subItem2' => array('name'=>'Consultar Departamento','href'=>'departamento','class' => 'icon-tags')
+		)),
+	'Carreras'=> array('href'=>'#Carreras','items'=>array(
+		'subItem' => array('name'=>'Agregar Carreras','href'=>'carrera/agregar','class' => 'icon-plus'),
+		'subItem2' => array('name'=>'Consultar Carreras','href'=>'carrera','class' => 'icon-tags')
 		))
 );
 
@@ -36,8 +35,8 @@ $config['menu_nav'] =array(
 
 $config['menu_nav']=array(
 		'subItem' => array('name'=>'Materias','href'=>'materia_c/insertar'),
-		'subItem2' => array('name'=>'Usuarios','href'=>'materia_c/consultar'),
-		'subItem3' => array('name'=>'Contactos','href'=>'materia_c/consultar'),	
+		'subItem2' => array('name'=>'Usuarios','href'=>'materia_c'),
+		'subItem3' => array('name'=>'Contactos','href'=>'materia_c'),	
 );
 
 $config['subMenu2'] =array(
