@@ -14,8 +14,8 @@ class admin extends CI_Controller
 		$this->load->library('Pagination');
 		$this->load->library('DX_Auth');
 		
-		$this->load->helper('form');
-		$this->load->helper('url');
+	//	$this->load->helper('form');
+	//	$this->load->helper('url');
 		
 		// Protect entire controller so only admin, 
 		// and users that have granted role in permissions table can access it.
@@ -33,7 +33,21 @@ class admin extends CI_Controller
 		$this->load->view('plantilla');
 	}
 
-
+	function ajax(){
+		$val = $this->form_validation;
+			$val->set_rules('username', 'Username', 'trim|required|xss_clean|min_length['.$this->min_username.']|max_length['.$this->max_username.']|callback_username_check|alpha_dash');
+			$val->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email|callback_email_check');
+			$val->set_rules('password', 'Password', 'trim|required|xss_clean|min_length['.$this->min_password.']|max_length['.$this->max_password.']|matches[confirm_password]');
+			$val->set_rules('confirm_password', 'Confirm Password', 'trim|required|xss_clean');
+ 			$val->run();
+		if($this->input->post('ajax')){
+				$datos = array('algo' => 2 );
+				echo json_encode($this->form_validation->error_array());
+		}else{
+				$datos = array('success' => 1 );
+				echo json_encode($datos);
+		}
+	}
 
 	function newuser()
 	{

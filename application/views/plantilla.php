@@ -46,7 +46,9 @@ if(isset($css)){
   }
 }
  ?>
-
+<script type="text/javascript" charset="utf-8" async defer>
+  var base_url= '<?=base_url()?>';
+</script>
   </head>
 
   <body>

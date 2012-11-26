@@ -33,7 +33,7 @@ $campos['email'] =array('label' => 'Correo',  'atr' =>
 
 $campos['birth_date'] =array('label' => 'Fecha Nacimiento',  'atr' => 
  array(	'name'	=> 'birth_date',	'id'	=> 'birth_date',	'maxlength'	=> 80,	
- 	'readonly' => true,	'placeholder' => '200-10-10','value'	=> set_value('birth_date'))
+ 	'readonly' => true,	'placeholder' => '2000-10-10','value'	=> set_value('birth_date'))
  );
 
 $campos['addres'] =array('label' => 'Direccion',  'atr' => 
@@ -42,7 +42,7 @@ $campos['addres'] =array('label' => 'Direccion',  'atr' =>
  );
 
 $campos['observations'] = array('name'=>'observations',	'id'=>'observations',
-	'maxlength'	=> 40,	 'class' => 'input-block-level',
+	'maxlength'	=> 40,	 'class' => 'input-block-level', 'cols' => '100', 'rows' => '3',
  	'value'	=> set_value('observations')
  );
 
@@ -74,8 +74,7 @@ echo form_open($this->uri->uri_string(),$attr)?>
 	selectB('Tipo de Sangre','blood_type',$options);
 
 	 textareaB('Observaciones',$campos['observations']);
-	 echo '<br>'.anchor('auth/change_password', 'change_password', array('class' => 'btn btn-primary' ));
-	  echo '<br>'.anchor($this->router->fetch_class(), 'Volver', array('class' => 'btn btn-primary'));
+
 	?>
 
 <?/* if ($this->dx_auth->captcha_registration): ?>  
@@ -92,27 +91,22 @@ echo form_open($this->uri->uri_string(),$attr)?>
 <?php  
 	//inputB($campos['observations']);
 	?>
+	<div class="textarea">
+	<?php
+	// echo '<br>'.anchor('auth/change_password', 'change_password', array('class' => 'btn btn-primary' ));
+	  echo ''.anchor($this->router->fetch_class(), 'Volver', 
+	  	array('class' => 'btn btn-primary', 'style' => 'float:left; margin:25px;'));
 
-	<fieldset>
-	<?php  
-	
+	?>
+	<div>
+		<button name="submit" class="btn btn-primary" style=" float:right; margin:25px; " type="submit" value="Enviar">
+			<i class="icon-user icon-white"></i>Crear Usuario
+		</button>
+	</div>
+	</div>
 
-	?>		
 
-	</fieldset>
-
-  <div class="control-group">
-    <div class="controls">
-      <label class="checkbox">
-
-      </label>
-      <? //php
-      //$attr = array('name' => 'submit','value' = > 'Actualizar Registro' 'class' => 'btn'  );
-       //echo form_submit($attr);?>
-       <input type="submit" name="submit" class="btn" value ="crear">
-    </div>
-  </div>
-
+<div class="clearfix">	</div>
 
 
 <?php echo form_close()?>
