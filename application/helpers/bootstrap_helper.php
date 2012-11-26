@@ -18,40 +18,61 @@
 	 <?php endforeach ;
  }*/
 
-	function urlmenu($uri=''){
-		$CI =& get_instance();
-		//var_dump($CI);
-		//$CI->config->base_url($uri).
-		return $CI->dx_auth->get_role_id().$CI->uri->segment(2); 
-	}
+function urlmenu($uri=''){
+	$CI =& get_instance();
+	//var_dump($CI);
+	//$CI->config->base_url($uri).
+	return $CI->dx_auth->get_role_id().$CI->uri->segment(2); 
+}
 
 function textareaB($label='',$attr = array()){?>
-	<div><label for="<?php echo $attr['name'] ?>"><?php echo $label ?> </label>
-	<?php echo form_textarea($attr); ?></div>
+	<div class="textarea" ><label for="<?php echo $attr['name'] ?>"><?php echo $label ?> </label>
+	<?php echo form_textarea($attr); ?>
+		</div>
 	<?php  
 }
 
-  function inputB($campo){
-	 //foreach ($campo as $key => $value): 
-	//echo $campo['atr']['name'].'<br>';
-	 ?>
+function passwordB($campo){
+ ?>
 
-	   <div class="control-group">
-	      <label class="control-label" for="<?=$campo['atr']['id']?>">
+   <div class="control-group">
+      <label class="control-label" for="<?=$campo['atr']['id']?>">
+         <?php
+         echo $campo['label'];?>
+      </label>
+    <div class="controls">
+		<?php echo form_password($campo['atr']); ?>
+		<?php echo form_error($campo['atr']['name']); ?>
+    </div>
+  </div>
+ 	
+ <?php
+ // endforeach ;
+}
 
-	         <?php
-	         echo $campo['label'];
-	          //echo form_label($campo['label'], $campo['atr']['id']);?>
-	      </label>
-	    <div class="controls">
-			<?php echo form_input($campo['atr']); ?>
-			<?php echo form_error($campo['atr']['name']); ?>
-	    </div>
-	  </div>
-	 	
-	 <?php
-	 // endforeach ;
- }
+
+
+function inputB($campo){
+ //foreach ($campo as $key => $value): 
+//echo $campo['atr']['name'].'<br>';
+ ?>
+
+   <div class="control-group">
+      <label class="control-label" for="<?=$campo['atr']['id']?>">
+
+         <?php
+         echo $campo['label'];
+          //echo form_label($campo['label'], $campo['atr']['id']);?>
+      </label>
+    <div class="controls">
+		<?php echo form_input($campo['atr']); ?>
+		<?php echo form_error($campo['atr']['name']); ?>
+    </div>
+  </div>
+ 	
+ <?php
+ // endforeach ;
+}
 
 	function selectB($label = '',$name = '', $options = array(), $selected = array(), $extra = ''){
  		?>

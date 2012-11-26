@@ -14,7 +14,7 @@
 		}
 	
 		// Build table
-		$tmpl = array ( 'table_open'  => '<table class="table table-hover">' );
+		$tmpl = array ( 'table_open'  => '<table class="table table-striped table-condensed ">' );
 		$this->table->set_template($tmpl);
 		$this->table->set_heading('', 'ID', 'Name', 'Parent ID');
 		

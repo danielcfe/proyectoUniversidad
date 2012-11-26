@@ -107,7 +107,7 @@ $attributes = array('class' => 'form-signin', 'id' => 'form-signin');
 			<?php echo anchor($this->dx_auth->forgot_password_uri, 'Forgot password');?> 
 			<?php
 				if ($this->dx_auth->allow_registration) {
-					//echo anchor($this->dx_auth->register_uri, 'Register');
+					echo anchor($this->dx_auth->register_uri, 'Register');
 				};
 			?>
 		

@@ -41,7 +41,7 @@ $config['menu_nav']=array(
 
 $config['subMenu2'] =array(
 	'Sistema'=> array('href'=>'#sistema','items'=>array(
-		'subItem1' => array('name'=>'Administracion General','href'=>'admin/users','class' => 'icon-plus'),
+		'subItem1' => array('name'=>'Usuarios','href'=>'admin/users','class' => 'icon-plus'),
 		'subItem2' => array('name'=>'Usuarios Inactivos','href'=>'admin/unactivated_users','class' => 'icon-book'),
 		'subItem3' => array('name'=>'Permisos de direcciones','href'=>'admin/uri_permissions','class' => 'icon-plus'),
 		'subItem4' => array('name'=>'Roles','href'=>'admin/roles','class' => 'icon-book')),

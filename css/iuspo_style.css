@@ -40,11 +40,18 @@ text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
 background-color: #08C;
 }
 
-.contentautoForm{
-	margin:auto;
-	max-width: 600px;
 
+
+.contentautoForm .textarea{
+	width:100%;
+	float: left;
 }
-input{
-	width: 350px;
+/*
+Formulario de Ingreso de usuarios
+
+*/
+.contentautoForm .form-horizontal .control-group {
+	width: 380px;
+	float: left;
 }
+

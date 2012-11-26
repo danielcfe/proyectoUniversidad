@@ -10,6 +10,7 @@
     <!-- Le styles -->
     <link href="<?=base_url()?>/css/docs/assets/css/bootstrap.css" rel="stylesheet">
     <link  href="<?=base_url()?>/css/iuspo_style.css" rel="stylesheet" >
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -19,19 +20,16 @@
         padding: 9px 0;
       }
     </style>
+
+
+
     <link href="<?=base_url()?>/css/docs/assets/css/bootstrap-responsive.css" rel="stylesheet">
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <script type="text/javascript" src="<?=base_url()?>css/js/jquery-ui-1.9.2.custom.js"></script>
-    <script type="text/javascript" src="<?=base_url()?>css/js/jquery-ui-1.9.2.custom.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('#autocomplete').autocomplete({source:'<?php echo site_url("materia_c/ajax"); ?>'});
-        });
-    </script>
+  
 
     <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="<?=base_url()?>/css/docs/assets/ico/favicon.ico">
@@ -39,6 +37,16 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?=base_url()?>/css/docs/assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?=base_url()?>/css/docs/assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="<?=base_url()?>/css/docs/assets/ico/apple-touch-icon-57-precomposed.png">
+
+<?php 
+if(isset($css)){
+  $css =(is_array($css))?$css:array($css);
+  foreach ($css as $cssInclude) {
+    ?><link  href="<?=base_url()?>/css/<?=$cssInclude?>.css" rel="stylesheet" ><?php
+  }
+}
+ ?>
+
   </head>
 
   <body>
@@ -170,5 +178,24 @@
     <script src="<?=base_url()?>/css/docs/assets/js/bootstrap-carousel.js"></script>
     <script src="<?=base_url()?>/css/docs/assets/js/bootstrap-typeahead.js"></script>
 
+
+
+     
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#autocomplete').autocomplete({source:'<?php echo site_url("materia_c/ajax"); ?>'});
+        });
+    </script>
+<?php 
+
+//var_dump($js);
+if(isset($js)){
+  $js =(is_array($js))?$js:array($js);
+  foreach ($js as $jsInclude) {
+    ?> <script type="text/javascript" src="<?=base_url()?>/js/<?=$jsInclude?>"></script> <?php  
+  }
+}
+ ?>
   </body>
 </html>

@@ -3,6 +3,8 @@ class admin extends CI_Controller
 {
 	var $min_password = 4;
 	var $max_password = 20;
+	var $min_username = 4;
+	var $max_username = 20;
 
 	function __construct()
 	{
@@ -30,6 +32,75 @@ class admin extends CI_Controller
 
 		$this->load->view('plantilla');
 	}
+
+
+
+	function newuser()
+	{
+		if (  $this->dx_auth->is_admin() AND $this->dx_auth->allow_registration)
+		{	
+			$val = $this->form_validation;
+			
+				//var_dump('MOSTRAR');
+			// Set form validation rules
+			$val->set_rules('username', 'Username', 'trim|required|xss_clean|min_length['.$this->min_username.']|max_length['.$this->max_username.']|callback_username_check|alpha_dash');
+			$val->set_rules('password', 'Password', 'trim|required|xss_clean|min_length['.$this->min_password.']|max_length['.$this->max_password.']|matches[confirm_password]');
+			$val->set_rules('confirm_password', 'Confirm Password', 'trim|required|xss_clean');
+			$val->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email|callback_email_check');
+			
+			// Is registration using captcha
+			if ($this->dx_auth->captcha_registration)
+			{
+				// Set recaptcha rules.
+				// IMPORTANT: Do not change 'recaptcha_response_field' because it's used by reCAPTCHA API,
+				// This is because the limitation of reCAPTCHA, not DX Auth library
+				$val->set_rules('recaptcha_response_field', 'Confirmation Code', 'trim|xss_clean|required|callback_recaptcha_check');
+			}
+
+			// Run form validation and register user if it's pass the validation
+			if ($val->run() AND $this->dx_auth->register($val->set_value('username'), $val->set_value('password'), $val->set_value('email')))
+			{	
+				// Set success message accordingly
+				//var_dump($this->dx_auth->email_activation);
+				if ($this->dx_auth->email_activation)
+				{
+					$data['auth_message'] = 'You have successfully registered. Check your email address to activate your account.';
+				}
+				else
+				{					
+					$data['auth_message'] = 'You have successfully registered. '.anchor(site_url($this->dx_auth->login_uri), 'Login');
+				}
+				
+				// Load registration success page
+				$this->load->view($this->dx_auth->register_success_view, $data);
+			}
+			else
+			{
+
+				//var_dump('MOSTRAR');
+				// Load registration page
+					//$datos_plantilla['data'] = $data;
+				
+					$datos_plantilla['css']= 'jquery-ui-1.9.2.custom.min';
+					$datos_plantilla['js']= 'admin/users.js';
+					$datos_plantilla['contenido'] = 'backend/user_form';
+					$this->load->view('plantilla',$datos_plantilla);
+				//$this->load->view('backend/user_form');
+			}
+		}
+		elseif ( ! $this->dx_auth->allow_registration)
+		{
+			$data['auth_message'] = 'Registration has been disabled.';
+			$this->load->view($this->dx_auth->register_disabled_view, $data);
+		}
+		else
+		{
+			$data['auth_message'] = 'You have to logout first, before registering.';
+			$this->load->view($this->dx_auth->logged_in_view, $data);
+		}
+	}
+
+
 
 
 
@@ -182,6 +253,7 @@ class admin extends CI_Controller
 		// Load view
 		//$this->load->view('backend/users', $data);
 			//$data['auth_message'] = 'You are already logged in.';
+			$datos_plantilla['js'] = 'admin.js';
 			$datos_plantilla['data'] = $data;
 			$datos_plantilla['contenido'] = 'backend/users';
 		//	$this->load->view($this->dx_auth->logged_in_view, $datos_plantilla);
