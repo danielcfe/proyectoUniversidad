@@ -14,11 +14,14 @@ $campos['semestre'] = array('label' => 'Semestre',  'atr' =>
 	'placeholder' => '5',	'value' => set_value('semestre'))
 	);
 
-
+$campos['pensum'] = array('label' => 'Pensum',  'atr' => 
+	array('name'	=> 'pensum_id',	'id'=> 'pensum_id',	
+	'placeholder' => '5',	'value' => set_value('pensum_id'))
+	);
 
 $campos['materia'] = array('label' => 'Materias',  'atr' => 
-	array('name'	=> 'materia',	'id'	=> 'materia',	
-	'placeholder' => 'Lenguaje y Comunicacion',	'value' => set_value('materia'))
+	array('name'	=> 'materia_codigo',	'id'	=> 'materia_codigo',	
+	'placeholder' => 'Lenguaje y Comunicacion',	'value' => set_value('materia_codigo'))
 	);
 
 ?>
@@ -29,13 +32,14 @@ $campos['materia'] = array('label' => 'Materias',  'atr' =>
 <div class="contentautoForm">
 <?php 
 $attr = array('class' => 'form-horizontal', 'id' => 'formusers' );
-echo form_open('pensum/agregar',$attr)?>
+echo form_open('semestre/agregar',$attr)?>
 
 
 	<h2>Crear Pensum</h2>
 	<?php 
 	inputB($campos['carrera']); 
 	inputB($campos['departamento']); 
+	inputb($campos['pensum']);
 	inputB($campos['semestre']); 
 	inputB($campos['materia']); 
 	?>

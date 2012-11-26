@@ -25,7 +25,11 @@
 	    }
 
 	    public function consultar_semestre(){
-
+			$this->db->select('k.semestre, m.codigo, m.unidad_curricular, m.horas_teoricas, m.horas_practicas, m.total_horas, m.uni_credito,m.cod_prelacion');
+			$this->db->from('materia m, pensum_has_materia k');
+			$this->db->where('m.codigo = k.materia_codigo');
+			$query = $this->db->get();
+			return $query->result_array();
 	    }
 
 	    public function consultar_mat($codigo){
@@ -33,7 +37,11 @@
 		}
 
 	    public function cargar($data){
-
+	    	foreach ($data as $key => $value) {
+	    		if (isset($this->$key)){
+	    			$this->$key = $value;
+	    		}
+	    	}	
 	    }
 
 	    public function verificar($codigo){

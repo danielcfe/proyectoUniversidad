@@ -15,7 +15,6 @@ $campos['confirmpassword'] =array('label' => 'Confirmacion de Contraseña',  'at
  	 'placeholder' => '******', 'value'	=> set_value('confirmpassword'))
  );
 
-
 $campos['last_name'] = array('label' => 'Apellido',  'atr' => 
 	array('name'	=> 'last_name',	'id'	=> 'last_name',	
 	'placeholder' => 'Apellido',	'value' => set_value('last_name'))
