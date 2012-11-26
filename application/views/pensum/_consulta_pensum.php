@@ -18,12 +18,15 @@ foreach ($pensum as $pensum) {
 	<tr>
 		<td><?php echo $pensum['id']; ?></td>
 		<td><?php echo $pensum['fecha']; ?></td>
-		<td><?php echo $pensum['carrera_id']; ?></td>
+		<td><?php echo $pensum['nombre']; ?></td>
 		<td>		
 			<?php echo anchor("pensum/editar/".$pensum['id'], 'Actualizar'); ?>
 		</td>
 		<td>
 			<?php echo anchor("pensum/eliminar/".$pensum['id'], 'Eliminar'); ?>
+		</td>
+		<td>
+			<?php echo anchor("semestre/agregar/".$pensum['id'], 'Agregar Semestre'); ?>
 		</td>
 	</tr>
 

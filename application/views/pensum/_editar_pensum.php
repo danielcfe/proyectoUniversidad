@@ -13,10 +13,6 @@
 		<input type="text" name="id" readonly="readonly" value="<?php echo $pensum['id'] ?>" size="50" />
 		<?php echo form_error('id'); ?>
 
-		<h4>Fecha </h4>
-		<input type="text" name="fecha" value="<?php echo $pensum['fecha'] ?>" size="50" />
-		<?php echo form_error('fecha','<div class="alert alert-error">', '</div>'); ?>
-
 		<h4>Carrera </h4>
 		<input type="text" name="carrera_id" value="<?php echo $pensum['carrera_id'] ?>" size="50" />
 		<?php echo form_error('carrera_id','<div class="alert alert-error">', '</div>'); ?>

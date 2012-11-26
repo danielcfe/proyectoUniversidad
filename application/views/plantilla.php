@@ -179,14 +179,11 @@ if(isset($css)){
     <script src="<?=base_url()?>/css/docs/assets/js/bootstrap-collapse.js"></script>
     <script src="<?=base_url()?>/css/docs/assets/js/bootstrap-carousel.js"></script>
     <script src="<?=base_url()?>/css/docs/assets/js/bootstrap-typeahead.js"></script>
-
-
-
      
     <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $('#autocomplete').autocomplete({source:'<?php echo site_url("materia_c/ajax"); ?>'});
+            $('#unidad_curricular').autocomplete({source:'<?php echo site_url("materia_c/ajax"); ?>'});
         });
     </script>
 <?php 
@@ -198,6 +195,8 @@ if(isset($js)){
     ?> <script type="text/javascript" src="<?=base_url()?>/js/<?=$jsInclude?>"></script> <?php  
   }
 }
+
+
  ?>
   </body>
 </html>

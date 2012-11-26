@@ -1,23 +1,5 @@
 <?php 
 
-/*  function inputB($campos){
-	 foreach ($campos as $key => $value): 
-	//echo $campos[$key]['atr']['name'].'<br>';
-	 ?>
-
-	   <div class="control-group">
-	    <div class="controls">
-	      <label class="checkbox">
-	         <?php echo form_label($campos[$key]['label'], $campos[$key]['atr']['id']);?>
-	      </label>
-			<?php echo form_input($campos[$key]['atr']); ?>
-			<?php echo form_error($campos[$key]['atr']['name']); ?>
-	    </div>
-	  </div>
-	 	
-	 <?php endforeach ;
- }*/
-
 function urlmenu($uri=''){
 	$CI =& get_instance();
 	//var_dump($CI);
@@ -47,7 +29,7 @@ function passwordB($campo){
   </div>
  	
  <?php
- // endforeach ;
+
 }
 
 
@@ -73,6 +55,7 @@ function inputB($campo){
  <?php
  // endforeach ;
 }
+
 
 	function selectB($label = '',$name = '', $options = array(), $selected = array(), $extra = ''){
  		?>

@@ -7,8 +7,6 @@
 		}
 
 		function agregar(){
-
-			$this->form_validation->set_rules('fecha', 'Fecha', 'required');	
 			$this->form_validation->set_rules('carrera_id', 'Carrera_id', 'required');
 
 			if ($this->form_validation->run() == FALSE){
@@ -17,7 +15,7 @@
 				}else{
 				$this->load->model('pensums');
 				$obj = new Pensums();			
-				$obj->setFecha($this->input->post('fecha'));
+				$obj->setFecha(date('Y-m-d'));
 				$obj->setCarrera_id($this->input->post('carrera_id'));				
 				$obj->agregar();
 
@@ -31,7 +29,6 @@
 			$obj = new Pensums();
 			
 			if(is_null($id)){								
-				$this->form_validation->set_rules('fecha', 'Fecha', 'required');
 				$this->form_validation->set_rules('carrera_id', 'Carrera_id', 'required');
 
 				if ($this->form_validation->run() == FALSE){
@@ -39,7 +36,6 @@
 					$this->load->view('plantilla', $datos_plantilla);
 				}else{
 					$obj->setId($this->input->post('id'));
-					$obj->setFecha($this->input->post('fecha'));
 					$obj->setCarrera_id($this->input->post('carrera_id'));		
 					$obj->editar();
 					$datos_plantilla["contenido"] = "mensaje";			

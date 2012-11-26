@@ -23,7 +23,7 @@
 
 	    public function editar()
 	    {
-	    	$data = array('fecha' => $this->fecha, 'carrera_id' => $this->carrera_id);
+	    	$data = array('carrera_id' => $this->carrera_id);
 
 	    	$this->db->where('id',$this->id);
 	    	return $this->db->update('pensum',$data);
@@ -44,7 +44,10 @@
 		}
 
 		public function consulta_general(){
-			$query = $this->db->get('pensum');
+			$this->db->select('p.id, p.fecha, c.nombre');		
+			$this->db->from('pensum p, carrera c');
+			$this->db->where('p.carrera_id = c.id');
+			$query = $this->db->get();
 			return $query->result_array();
 		}
 	}
