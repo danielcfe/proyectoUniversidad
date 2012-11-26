@@ -17,6 +17,12 @@ class ControllerRequisitos extends CI_Controller
 									array( 'field' => 'visibilidad', 'label' => 'Visibilidad', 'rules' => 'required' )
 								);
 
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->model('requisitos/requisitos');	
+	}
+
 	function index()
 	{
 		$this->listar();
@@ -24,7 +30,6 @@ class ControllerRequisitos extends CI_Controller
 
 	public function verif_requesito($cadena)
 	{
-		$this->load->model('requisitos/requisitos');
 		$class = new Requisitos;
 		$result = $class->get_requisitos_descripcion($cadena);
 		if ( $result != NULL )
@@ -38,16 +43,12 @@ class ControllerRequisitos extends CI_Controller
 	private function set_datos($obj)
 	{
 		$array_valor  = array( 'id' => $this->input->post('id'), 'descripcion' => $this->input->post('descripcion'), 'requerido' => $this->input->post('requerido'), 'oculto' => $this->input->post('visibilidad') );
-
 		foreach ($array_valor as $key => $value) 
-		{
-			$obj->set($key, $value);
-		}
+		{ $obj->set($key, $value); }
 	}
 
 	function agregar()
 	{
-		$this->load->model('requisitos/requisitos');
 		$class = new Requisitos;
 		$this->set_datos($class);
 		$datos_plantilla['contenido'] = 'requisitos/form_insertar_requisitos';
@@ -64,7 +65,6 @@ class ControllerRequisitos extends CI_Controller
 
 	function modificar($id)
 	{
-		$this->load->model('requisitos/requisitos');
 		$class = new Requisitos;
 		$this->set_datos($class);
 		$datos_plantilla['datos'] = $class->get_requisitos_one($id);
@@ -83,7 +83,6 @@ class ControllerRequisitos extends CI_Controller
 
 	function eliminar($id)
 	{
-		$this->load->model('requisitos/requisitos');
 		$class = new Requisitos;
 		$class->set('id', $id);
 		$result = $class->eliminar_requisitos();
@@ -93,14 +92,24 @@ class ControllerRequisitos extends CI_Controller
 
 	function listar()
 	{
-		$this->load->model('requisitos/requisitos');
 		$class = new Requisitos;
-		$datos_plantilla['datos'] = $class->get_requisitos_all();
-		if ( empty($datos_plantilla['datos']) )
-			$datos_plantilla['msj'] = $class->msj('sin_reg');
+		
+		if(!$this->input->post('buscar'))
+		{
+			$datos_plantilla['datos'] = $class->get_requisitos_all();
+			if ( empty($datos_plantilla['datos']) )
+				$datos_plantilla['msj'] = $class->msj('sin_reg');
+			else
+				$datos_plantilla['msj'] = "";
+		}
 		else
-			$datos_plantilla['msj'] = "";
-
+		{
+			$datos_plantilla['datos'] = $class->get_requisitos_buscar($this->input->post('buscar'));
+			if ( empty($datos_plantilla['datos']) )
+				$datos_plantilla['msj'] = $class->msj('sin_reg');
+			else
+				$datos_plantilla['msj'] = "";
+		}	
 		$datos_plantilla['contenido'] = 'requisitos/listar_requisitos';
 		$this->load->view('plantilla', $datos_plantilla);
 	}

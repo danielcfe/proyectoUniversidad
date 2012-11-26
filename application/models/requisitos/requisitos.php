@@ -73,6 +73,15 @@ class Requisitos extends CI_Model
     	return $query->result_array();
     }
 
+    public function get_requisitos_buscar($descripcion)
+    {
+    	$this->select = '*, ' . $this->select;
+    	$this->db->select($this->select, FALSE);
+    	$this->db->where( "MATCH (descripcion) AGAINST ('". $descripcion ."*' IN BOOLEAN MODE)", NULL, FALSE );
+    	$query = $this->db->get('requisitos');
+    	return $query->result_array();
+    }
+
     public function get_requisitos_RequeridoOculto($requerido = TRUE, $oculto = TRUE)
     {
     	$this->select = '*, ' . $this->select;
