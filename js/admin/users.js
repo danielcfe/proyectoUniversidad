@@ -6,6 +6,20 @@ $(document).ready(function() {
           "Scheme"
     ];
 
+
+ var materia = [
+        "Matematica",
+        "Castellano",
+          "Scheme"
+    ];
+
+   var info = 2;
+  $.post(base_url+'materia_c/all',function(data){
+       console.dir(data);
+    }, "json");
+
+
+
     function ajaxform(){
         return '&ajax=1';
     }
@@ -60,9 +74,9 @@ $(document).ready(function() {
         .error(function() { //alert("error"); 
         })
         .complete(function() { //alert("complete");
-        });         ;            
+        });                    
     });
 
-
+    
 
  }); 

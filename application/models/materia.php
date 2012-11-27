@@ -69,6 +69,22 @@
 
 	    }
 
+	    public function consultar_mat_a(){
+
+	    	$this->db->select('unidad_curricular');
+			$this->db->from('materia');
+			$query = $this->db->get();
+			if($query->num_rows() > 0)
+	            {
+	                foreach ($query->result_array() as $row)
+	                {
+	                    $result[]= $row;
+	                }
+	            }
+			return $result;
+
+	    }
+
 	    public function consultar_mat($codigo){
 			
 			$this->db->select('codigo, unidad_curricular, horas_teoricas, horas_practicas, total_horas, uni_credito,cod_prelacion');

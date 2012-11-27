@@ -10,7 +10,7 @@
 
 	<div class = "control-group"> 
 		 <label class="control-label" for="codigo">Codigo</label>
-		<div class = "controls"><input autocomplete = "off" id = "codigo" type="text" name="codigo" value="<?php echo set_value('codigo'); ?>" size="30" placeholder = "LEC0143"/></div>
+		<div class = "controls"><input  id = "codigo" type="text" name="codigo" value="<?php echo set_value('codigo'); ?>" size="30" placeholder = "LEC0143"/></div>
 		<?php echo form_error('codigo','<div class="alert alert-error">', '</div>'); ?>
 	</div>
 

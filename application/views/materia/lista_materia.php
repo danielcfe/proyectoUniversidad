@@ -1,5 +1,5 @@
 
-<table class="table table-striped table-condensed" >
+<table class="table table-striped table-condensed" id="tablamateria">
 <thead>
 	<tr>
 		<th>Codigo</th>

@@ -6,11 +6,11 @@ $config['administrador']=array(
 		'subItem' => array('name'=>'Agregar Materia','href'=>'materia_c/insertar','class' => 'icon-plus'),
 		'subItem2' => array('name'=>'Listar Materias','href'=>'materia_c','class' => 'icon-tags'),
 		)),
-	'Departamento'=> array('href'=>'#Departamento','items'=>array(
+	'Departamento'=> array('href'=>'#departamento','items'=>array(
 		'subItem' => array('name'=>'Agregar Departamento','href'=>'departamento/agregar','class' => 'icon-plus'),
 		'subItem2' => array('name'=>'Consultar Departamento','href'=>'departamento','class' => 'icon-tags')
 		)),
-	'Carreras'=> array('href'=>'#Carreras','items'=>array(
+	'Carreras'=> array('href'=>'#carreras','items'=>array(
 		'subItem' => array('name'=>'Agregar Carreras','href'=>'carrera/agregar','class' => 'icon-plus'),
 		'subItem2' => array('name'=>'Consultar Carreras','href'=>'carrera','class' => 'icon-tags')
 		))
@@ -83,6 +83,7 @@ $config['subMenu2admin'] = $config['subMenu2'];
 $config['subMenu2auth'] = $config['subMenu2'];
 $config['subMenu2materia_c'] = $config['subMenu2'];
 $config['subMenu2carrera'] = $config['subMenu2'];
+$config['subMenu2departamento'] = $config['subMenu2'];
 $config['subMenu2ControllerRequisitos'] = $config['subMenu2'];
 
 $config['menu_nav2']=array(

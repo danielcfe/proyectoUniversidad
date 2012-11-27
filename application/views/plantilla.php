@@ -8,11 +8,15 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
+    <link href="<?=base_url()?>js/datatable/css/demo_table.css" rel="stylesheet">
+    <link href="<?=base_url()?>js/datatable/css/demo_page.css" rel="stylesheet">
+    <link href="<?=base_url()?>js/datatable/css/demo_table_jui.css" rel="stylesheet">
+
     <link href="<?=base_url()?>/css/docs/assets/css/bootstrap.css" rel="stylesheet">
     <link  href="<?=base_url()?>/css/iuspo_style.css" rel="stylesheet" >
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?=base_url()?>/js/jquery-ui.css" rel="stylesheet">
     <style type="text/css">
-      body {
+      body { 
         padding-top: 60px;
         padding-bottom: 40px;
       }
@@ -56,6 +60,7 @@ if(isset($css)){
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
+
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -179,13 +184,15 @@ if(isset($css)){
     <script src="<?=base_url()?>/css/docs/assets/js/bootstrap-collapse.js"></script>
     <script src="<?=base_url()?>/css/docs/assets/js/bootstrap-carousel.js"></script>
     <script src="<?=base_url()?>/css/docs/assets/js/bootstrap-typeahead.js"></script>
-     
-    <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('#unidad_curricular').autocomplete({source:'<?php echo site_url("materia_c/ajax"); ?>'});
-        });
-    </script>
+
+    <script src="<?=base_url()?>js/datatable/js/jquery.js"></script>
+    <script src="<?=base_url()?>js/datatable/js/jquery.dataTables.js"></script>
+    <script src="<?=base_url()?>js/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="<?=base_url()?>/js/datatable.js"></script>
+
+    <script src="<?=base_url()?>/js/jquery-ui.js"></script>
+    <!-- <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script> -->
+    
 <?php 
 
 //var_dump($js);

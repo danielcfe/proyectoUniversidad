@@ -23,6 +23,8 @@ class Materia_c extends CI_Controller {
 		{
 			$this->form_validation->set_rules($this->validateRules);
 			if(!$this->form_validation->run()){
+				$datos_plantilla['css']= 'jquery-ui-1.9.2.custom.min';
+				$datos_plantilla['js']= 'materia.js';
 				$datos_plantilla['contenido'] = "materia/insertar_materia";
 				$this->load->view('plantilla',$datos_plantilla);
 			}else{
@@ -62,6 +64,10 @@ class Materia_c extends CI_Controller {
 			$this->load->view('plantilla',$datos_plantilla);
 		}
 
+		function all()
+		{
+			echo json_encode($this->materia->consultar_mat_a());
+		}
 		function cargar_datos($codigo)
 		{
 			$datos_plantilla['datos_materia'] = $this->materia->consultar_mat($codigo);
@@ -80,9 +86,9 @@ class Materia_c extends CI_Controller {
 		}
 
 		function ajax(){
-	        if($buscar = $this->input->get('unidad_curricular'))
+	        if($buscar = $this->input->post('unidad_curricular'))
 	        {
-	            $this->db->select('id, unidad_curricular as value');
+	            $this->db->select('codigo, unidad_curricular');
 	            $this->db->like('unidad_curricular', $buscar); 
 	            $this->db->limit(10);
 	            $query=$this->db->get('materia');
