@@ -71,7 +71,7 @@
 
 	    public function consultar_mat_a(){
 
-	    	$this->db->select('unidad_curricular');
+	    	$this->db->select('codigo,unidad_curricular');
 			$this->db->from('materia');
 			$query = $this->db->get();
 			if($query->num_rows() > 0)

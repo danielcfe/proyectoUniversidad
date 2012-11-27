@@ -1,6 +1,8 @@
 $(document).ready(function(){
     $('#tablamateria').dataTable({
-    	
+    	 "bJQueryUI": true,
+    	"sPaginationType": "full_numbers",
+		"sDom": 'l<Tfr>t<ip>',
     	"oLanguage": 
 		        {
     "sProcessing":     "Procesando...",

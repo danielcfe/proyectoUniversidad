@@ -11,6 +11,9 @@
     <link href="<?=base_url()?>js/datatable/css/demo_table.css" rel="stylesheet">
     <link href="<?=base_url()?>js/datatable/css/demo_page.css" rel="stylesheet">
     <link href="<?=base_url()?>js/datatable/css/demo_table_jui.css" rel="stylesheet">
+    <link href="<?=base_url()?>js/datatable/css/jquery.dataTables.css" rel="stylesheet">
+    <link href="<?=base_url()?>js/datatable/css/jquery.dataTables_themeroller.css" rel="stylesheet">
+
 
     <link href="<?=base_url()?>/css/docs/assets/css/bootstrap.css" rel="stylesheet">
     <link  href="<?=base_url()?>/css/iuspo_style.css" rel="stylesheet" >
