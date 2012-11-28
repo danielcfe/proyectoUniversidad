@@ -9,14 +9,14 @@
 		<div class="span9">
 			<h2>Listado de Requisitos - IUSPO</h2>
 		</div>
-		<div class="span3">
+		<!--<div class="span3">
 			
 			<form action="<?=base_url()?>ControllerRequisitos/listar" method="post" accept-charset="utf-8">
 				<input type="text" class="input-medium search-query" name="buscar" value="" placeholder="Buscar..."/>
 				<button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i></button>
 			</form>
 
-		</div>
+		</div> -->
 	</div>
 
 	<div class="row-fluid">
