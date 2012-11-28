@@ -33,7 +33,7 @@ foreach ($datos_materia as $datos_materia) {
 			<i class="icon-circle-arrow-up"></i><?php echo anchor("materia_c/editar/".$datos_materia['codigo'], 'Actualizar'); ?>
 		</td>
 		<td>
-			<i class="icon-remove-sign"></i><?php echo anchor('materia_c#', 'Eliminar',"onclick='confirmation(".$datos_materia["codigo"].")'"); ?>
+			<i class="icon-remove-sign"></i><?php echo anchor('materia_c#', 'Eliminar'," class='delete' data-uc='".$datos_materia['unidad_curricular']."' data-id='".$datos_materia["codigo"]."'"); ?>
 		</td>
 	</tr>
 
