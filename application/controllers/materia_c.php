@@ -11,7 +11,7 @@ class Materia_c extends CI_Controller {
 		function __construct()
 			{
 				parent::__construct();
-				$this->load->model('materia');				
+				$this->load->model('materia');			
 			} 
 
 		function index()

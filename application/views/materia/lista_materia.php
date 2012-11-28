@@ -30,10 +30,10 @@ foreach ($datos_materia as $datos_materia) {
 		<td><?php echo $datos_materia['cod_prelacion']; ?></td>
 
 		<td>		
-			<?php echo anchor("materia_c/editar/".$datos_materia['codigo'], 'Actualizar'); ?>
+			<i class="icon-circle-arrow-up"></i><?php echo anchor("materia_c/editar/".$datos_materia['codigo'], 'Actualizar'); ?>
 		</td>
 		<td>
-			<?php echo anchor("materia_c/eliminar/".$datos_materia['codigo'], 'Eliminar'); ?>
+			<i class="icon-remove-sign"></i><?php echo anchor('materia_c#', 'Eliminar',"onclick='confirmation(".$datos_materia["codigo"].")'"); ?>
 		</td>
 	</tr>
 

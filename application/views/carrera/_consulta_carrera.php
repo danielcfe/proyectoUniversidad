@@ -1,11 +1,13 @@
 <div><h1><a class = "btn btn-primary" type = "link" href = "<?=base_url()?>/carrera/agregar">Insertar una nueva Carrera</a><h4></div>
 
-<table class="table table-striped table-condensed" >
+<table class="table table-striped table-condensed" id = "tablacarrera">
 <thead>
 	<tr>
 		<th>Id </th>
 		<th>Carrera</th>
-		<th>Departamento</th>		
+		<th>Departamento</th>
+		<td></td>
+		<td></td>		
 	</tr>
 </thead>
 
@@ -20,10 +22,10 @@ foreach ($carreras as $carreras) {
 		<td><?php echo $carreras['nombre']; ?></td>
 		<td><?php echo $carreras['departamento_id']; ?></td>
 		<td>		
-			<?php echo anchor("carrera/editar/".$carreras['id'], 'Actualizar'); ?>
+			<i class="icon-circle-arrow-up"></i><?php echo anchor("carrera/editar/".$carreras['id'], 'Actualizar'); ?>
 		</td>
 		<td>
-			 <?php echo anchor("carrera/eliminar/".$carreras['id'], 'Eliminar');?>
+			 <i class="icon-remove-sign"></i><?php echo anchor("carrera/eliminar/".$carreras['id'], 'Eliminar');?>
 		</td>
 	</tr>
 

@@ -37,8 +37,6 @@
 
 	    	return $this->db->insert('materia',$data);
 	    }
-
-	    
 	    
 	    public function editar_materia(){
 
@@ -71,20 +69,21 @@
 
 	    public function consultar_mat_a(){
 
-	    	$this->db->select('codigo,unidad_curricular');
+			$this->db->select('codigo as id,unidad_curricular as label, unidad_curricular as value');
 			$this->db->from('materia');
 			$query = $this->db->get();
+			$result = array();
 			if($query->num_rows() > 0)
-	            {
-	                foreach ($query->result_array() as $row)
-	                {
-	                    $result[]= $row;
-	                }
-	            }
+			{
+			foreach ($query->result() as $row)
+			{
+			$result[]= $row;
+			}
+			}
 			return $result;
 
-	    }
-
+		}
+		
 	    public function consultar_mat($codigo){
 			
 			$this->db->select('codigo, unidad_curricular, horas_teoricas, horas_practicas, total_horas, uni_credito,cod_prelacion');

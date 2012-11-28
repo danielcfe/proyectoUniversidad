@@ -44,5 +44,22 @@
 			$query = $this->db->get('departamento');
 			return $query->result_array();
 		}
+
+		 public function consultar_dep_a(){
+
+			$this->db->select('id as id,nombre as label, nombre as value');
+			$this->db->from('departamento');
+			$query = $this->db->get();
+			$result = array();
+			if($query->num_rows() > 0)
+			{
+			foreach ($query->result() as $row)
+			{
+			$result[]= $row;
+			}
+			}
+			return $result;
+
+		}
 	}
 ?>	

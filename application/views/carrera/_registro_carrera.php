@@ -9,7 +9,7 @@
 		<?php echo form_error('nombre','<div class="alert alert-error">', '</div>'); ?>
 
 		<h4>Departamento </h4>
-		<input type="text" name="departamento_id" value="" size="50" />
+		<input type="text" name="departamento_id" id = "departamento_id" value="" size="50" />
 		<?php echo form_error('departamento_id','<div class="alert alert-error">', '</div>'); ?>
 		
 		<div><input type="submit" value="Enviar" class = "btn btn-success"/> 

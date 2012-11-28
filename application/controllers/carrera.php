@@ -13,6 +13,8 @@
 
 			if ($this->form_validation->run() == FALSE){
 					$datos_plantilla["contenido"] = "carrera/_registro_carrera";
+					$datos_plantilla['css']= 'jquery-ui-1.9.2.custom.min';
+					$datos_plantilla['js']= 'departamento.js';
 					$this->load->view('plantilla', $datos_plantilla);
 				}else{
 				$this->load->model('carreras');

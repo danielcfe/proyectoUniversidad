@@ -1,6 +1,13 @@
 <?php
 	class departamento extends CI_Controller
 	{
+
+		function __construct()
+			{
+				parent::__construct();
+				$this->load->model('departamentos');			
+			} 
+
 		function index()
 		{
 			$this->consulta();
@@ -13,11 +20,9 @@
 			if ($this->form_validation->run() == FALSE){
 					$datos_plantilla["contenido"] = "departamento/_registro_departamento";
 					$this->load->view('plantilla', $datos_plantilla);
-				}else{
-				$this->load->model('departamentos');
-				$obj = new Departamentos();			
-				$obj->setNombre($this->input->post('nombre'));				
-				$obj->agregar();
+				}else{		
+				$this->departamentos->setNombre($this->input->post('nombre'));				
+				$this->departamentos->agregar();
 
 				$datos_plantilla["contenido"] = "mensaje";
 				$this->load->view('plantilla', $datos_plantilla);	
@@ -25,8 +30,6 @@
 		}
 
 		function editar($id=null){
-			$this->load->model('departamentos');
-			$obj = new Departamentos();
 			
 			if(is_null($id)){								
 				$this->form_validation->set_rules('nombre', 'Nombre', 'required');
@@ -35,44 +38,40 @@
 					$datos_plantilla["contenido"] = "departamento/_editar_departamento";
 					$this->load->view('plantilla', $datos_plantilla);
 				}else{
-					$obj->setId($this->input->post('id'));
-					$obj->setNombre($this->input->post('nombre'));		
-					$obj->editar();
+					$this->departamentos->setId($this->input->post('id'));
+					$this->departamentos->setNombre($this->input->post('nombre'));		
+					$this->departamentos->editar();
 					$datos_plantilla["contenido"] = "mensaje";			
 				}							
 			}else{
-				$datos_plantilla["departamento"] = $obj->cargar($id);
+				$datos_plantilla["departamento"] = $this->departamentos->cargar($id);
 				$datos_plantilla["contenido"] = "departamento/_editar_departamento";						
 			}
 			$this->load->view('plantilla', $datos_plantilla);
 		}
 
 		function eliminar($id){
-			$this->load->model('departamentos');
-			$obj = new Departamentos();
-
-			$obj->setId($id);			
-			$obj->eliminar();
+			$this->departamentos->setId($id);			
+			$this->departamentos->eliminar();
 
 			$datos_plantilla["contenido"] = "mensaje";
 			$this->load->view('plantilla', $datos_plantilla);
-
 		}
 
-		function consulta($id = null){
-			$this->load->model('departamentos');
-			$obj = new Departamentos();			
-			$datos_plantilla['departamento'] = $obj->consulta_general();			
+		function consulta($id = null){	
+			$datos_plantilla['departamento'] = $this->departamentos->consulta_general();			
 			$datos_plantilla["contenido"] = "departamento/_consulta_departamento";
 			$this->load->view('plantilla', $datos_plantilla);			 
 		}
 
 		function get($id){
-			$this->load->model('departamentos');
-			$obj = new Departamentos();
-			$datos_plantilla["departamento"] = $obj->cargar($id);
+			$datos_plantilla["departamento"] = $this->departamentos->cargar($id);
 			$datos_plantilla["contenido"] = "departamento/_editar_departamento";
 			$this->load->view('plantilla', $datos_plantilla);
+		}
+
+		function all(){
+			echo json_encode($this->departamentos->consultar_dep_a());
 		}
 
 	}

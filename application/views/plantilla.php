@@ -14,10 +14,10 @@
     <link href="<?=base_url()?>js/datatable/css/jquery.dataTables.css" rel="stylesheet">
     <link href="<?=base_url()?>js/datatable/css/jquery.dataTables_themeroller.css" rel="stylesheet">
 
-
     <link href="<?=base_url()?>/css/docs/assets/css/bootstrap.css" rel="stylesheet">
     <link  href="<?=base_url()?>/css/iuspo_style.css" rel="stylesheet" >
     <link rel="stylesheet" href="<?=base_url()?>/js/jquery-ui.css" rel="stylesheet">
+
     <style type="text/css">
       body { 
         padding-top: 60px;
@@ -34,9 +34,7 @@
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-  
+    <![endif]-->  
 
     <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="<?=base_url()?>/css/docs/assets/ico/favicon.ico">
@@ -69,7 +67,7 @@ if(isset($css)){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">IUSPO</a>
+          <a class="brand" href="#" id="iuspo" rel="tooltip" title="Instituto Universitario Saleciano Padre Ojeda">IUSPO</a>
           <div class="nav-collapse collapse ">
             <ul class="navbar nav pull-right visible-desktop"> 
                   <li class="dropdown">  
@@ -192,10 +190,12 @@ if(isset($css)){
     <script src="<?=base_url()?>js/datatable/js/jquery.dataTables.js"></script>
     <script src="<?=base_url()?>js/datatable/js/jquery.dataTables.min.js"></script>
     <script src="<?=base_url()?>/js/datatable.js"></script>
+    <script src="<?=base_url()?>/js/tooltip.js"></script>
+    <script src="<?=base_url()?>/js/funciones.js"></script>
 
     <script src="<?=base_url()?>/js/jquery-ui.js"></script>
     <!-- <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script> -->
-    
+  
 <?php 
 
 //var_dump($js);

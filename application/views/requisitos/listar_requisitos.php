@@ -22,13 +22,15 @@
 	<div class="row-fluid">
 		<div class="12">
 			<!-- ********* Table ********* -->
-			<table class="table table-striped table-condensed">
+			<table class="table table-striped table-condensed" id ="tablarequisitos">
 				<thead>
 					<tr>
 						<td> <strong>Codigo</strong> </td>
 						<td> <strong>Descripcion</strong> </td>
 						<td> <strong>Requerido</strong> </td>
 						<td> <strong>Visibilidad</strong> </td>
+						<td></td>
+						<td></td>
 						<td colspan="2"></td>
 					</tr>
 				</thead>
