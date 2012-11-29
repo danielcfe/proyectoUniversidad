@@ -37,11 +37,8 @@ echo form_open('semestre/agregar',$attr)?>
 
 	<h2>Crear Pensum</h2>
 	<?php 
-	inputB($campos['carrera']); 
 	inputB($campos['departamento']); 
-	inputb($campos['pensum']);
-	inputB($campos['semestre']); 
-	inputB($campos['materia']); 
+	inputB($campos['carrera']); 
 	?>
 
 	<div class = "textarea">

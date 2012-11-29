@@ -1,4 +1,4 @@
-
+<h3>Listado de Materias - IUSPO</h3>
 <table class="table table-striped table-condensed" id="tablamateria">
 <thead>
 	<tr>
@@ -30,10 +30,10 @@ foreach ($datos_materia as $datos_materia) {
 		<td><?php echo $datos_materia['cod_prelacion']; ?></td>
 
 		<td>		
-			<i class="icon-circle-arrow-up"></i><?php echo anchor("materia_c/editar/".$datos_materia['codigo'], 'Actualizar'); ?>
+			<?php echo anchor("materia_c/editar/".$datos_materia['codigo'], '<i class="icon-circle-arrow-up"></i> Actualizar', 'class = "btn btn-small btn-warning"'); ?>
 		</td>
 		<td>
-			<i class="icon-remove-sign"></i><?php echo anchor('materia_c#', 'Eliminar'," class='delete' data-uc='".$datos_materia['unidad_curricular']."' data-id='".$datos_materia["codigo"]."'"); ?>
+			<?php echo anchor('materia_c#', '<i class="icon-remove-sign"></i> Eliminar'," class='delete btn btn-small btn-danger' data-uc='".$datos_materia['unidad_curricular']."' data-id='".$datos_materia["codigo"]."' data-url ='".base_url()."materia_c/eliminar/'"); ?>
 		</td>
 	</tr>
 

@@ -44,9 +44,9 @@
 		}
 
 		public function consulta_general(){
-			$this->db->select('p.id, p.fecha, c.nombre');		
-			$this->db->from('pensum p, carrera c');
-			$this->db->where('p.carrera_id = c.id');
+			$this->db->select('p.id, p.fecha, c.nombre, d.nombre as departamento');		
+			$this->db->from('pensum p, carrera c, departamento d');
+			$this->db->where('p.carrera_id = c.id and c.departamento_id = d.id');
 			$query = $this->db->get();
 			return $query->result_array();
 		}

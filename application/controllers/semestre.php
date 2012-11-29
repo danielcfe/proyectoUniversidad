@@ -24,6 +24,8 @@
 				$this->form_validation->set_rules($this->validateRules);
 			if(!$this->form_validation->run()){
 				$datos_plantilla['contenido'] = "semestre/insertar_semestre";
+				$datos_plantilla['css']= 'jquery-ui-1.9.2.custom.min';
+				$datos_plantilla['js']= 'semestre.js';
 				$this->load->view('plantilla',$datos_plantilla);
 			}else{
 				$this->semestres->cargar($this->input->post());	
@@ -32,6 +34,7 @@
 			}
 
 		}
+		
 		function consultar(){
 			$datos_plantilla['datos_semestre'] = $this->semestres->consultar_semestre();
 			$datos_plantilla['contenido'] = 'semestre/lista_semestre';

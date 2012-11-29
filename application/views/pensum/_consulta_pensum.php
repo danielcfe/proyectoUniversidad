@@ -1,11 +1,18 @@
-<div><h4><a class = "btn btn-primary" type = "link" href = "<?=base_url()?>/pensum/agregar">Insertar una nuevo Pensum</a><h4></div>
+<div>
+	<h3>Listado de Pensum - IUSPO</h3>
+	<!-- <h4><a style = "float:left" class = "btn" type = "link" href = "<?=base_url()?>/pensum/agregar">Insertar una nuevo Pensum</a><h4> -->
+	</div>
 
-<table class="table table-striped table-condensed" >
+<table class="table table-striped table-condensed" id="tablapensum">
 <thead>
 	<tr>
 		<th>Id </th>
 		<th>Fecha</th>
-		<th>Carrera</th>		
+		<th>Carrera</th>
+		<th>Departamento</th>
+		<th></th>
+		<th></th>		
+		<th></th>	
 	</tr>
 </thead>
 
@@ -19,6 +26,7 @@ foreach ($pensum as $pensum) {
 		<td><?php echo $pensum['id']; ?></td>
 		<td><?php echo $pensum['fecha']; ?></td>
 		<td><?php echo $pensum['nombre']; ?></td>
+		<td><?php echo $pensum['departamento']; ?></td>
 		<td>		
 			<?php echo anchor("pensum/editar/".$pensum['id'], 'Actualizar'); ?>
 		</td>

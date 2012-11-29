@@ -50,7 +50,7 @@
 										<td> <?php echo $row['requerido_text']; ?> </td>
 										<td> <?php echo $row['oculto_text']; ?> </td>
 										<td> <i class="icon-circle-arrow-up"></i> <?php echo anchor('ControllerRequisitos/modificar/' . $row['id'], 'Actualizar'); ?> </td>
-										<td> <i class="icon-remove-sign"></i> <?php echo anchor('ControllerRequisitos/eliminar/' . $row['id'], 'Eliminar'); ?> </td>
+										<td> <i class="icon-remove-sign"></i> <?php echo anchor('ControllerRequisitos#' . $row['id'], 'Eliminar'," class='delete' data-uc='".$row['descripcion']."' data-id='".$row["id"]."' data-url ='".base_url()."ControllerRequisitos/eliminar/'"); ?> </td>
 									</tr>
 							
 					<?php 		}

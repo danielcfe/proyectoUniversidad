@@ -63,9 +63,15 @@ $config['subMenu2'] =array(
                'subItem' => array('name'=>'Agregar','href'=>'ControllerRequisitos/agregar','class' => 'icon-plus'),
                'subItem2' => array('name'=>'Consultar','href'=>'ControllerRequisitos/listar','class' => 'icon-tags'),
                )),
+<<<<<<< HEAD
        'BaseDato'=> array('href'=>'#Basedato','items'=>array(
                'subItem' => array('name'=>'Backup','href'=>'ControllerBD/backup','class' => 'icon-plus'),
                'subItem2' => array('name'=>'Restore','href'=>'ControllerBD','class' => 'icon-tags'),
+=======
+       'Pensum'=> array('href'=>'#pensum','items'=>array(
+               'subItem' => array('name'=>'Agregar Pensum','href'=>'pensum/agregar','class' => 'icon-plus'),
+               'subItem2' => array('name'=>'Consultar Pensum','href'=>'pensum','class' => 'icon-tags'),
+>>>>>>> Muchos cambios XD
                ))
 
 	//	'subItem6' => array('name'=>'Listar Materias','href'=>'materia_c/consultar','class' => 'icon-book'),
@@ -89,7 +95,11 @@ $config['subMenu2materia_c'] = $config['subMenu2'];
 $config['subMenu2carrera'] = $config['subMenu2'];
 $config['subMenu2departamento'] = $config['subMenu2'];
 $config['subMenu2ControllerRequisitos'] = $config['subMenu2'];
+<<<<<<< HEAD
 $config['subMenu2BaseDato'] = $config['subMenu2'];
+=======
+$config['subMenu2pensum'] = $config['subMenu2'];
+>>>>>>> Muchos cambios XD
 
 $config['menu_nav2']=array(
 		'subItem' => array('name'=>'Administracion General','href'=>'admin'),

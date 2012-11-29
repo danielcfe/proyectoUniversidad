@@ -8,7 +8,7 @@
 		<input type="text" name="nombre" value="" size="50" placeholder = "Informatica" />
 		<?php echo form_error('nombre','<div class="alert alert-error">', '</div>'); ?>
 		
-		<div><input type="submit" value="Enviar" class = "btn btn-success"/> 
+		<div><input type="submit" value="Enviar Informacion" class = "btn btn-primary"/> 
 		</div>
 		</form>
 </div>

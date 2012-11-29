@@ -25,9 +25,9 @@
 	    }
 
 	    public function consultar_semestre(){
-			$this->db->select('k.semestre, m.codigo, m.unidad_curricular, m.horas_teoricas, m.horas_practicas, m.total_horas, m.uni_credito,m.cod_prelacion');
-			$this->db->from('materia m, pensum_has_materia k');
-			$this->db->where('m.codigo = k.materia_codigo');
+			$this->db->select('d.nombre as departamento, c.nombre as carrera, k.semestre, m.codigo, m.unidad_curricular, m.horas_teoricas, m.horas_practicas, m.total_horas, m.uni_credito,m.cod_prelacion');
+			$this->db->from('materia m, pensum_has_materia k, carrera c, departamento d, pensum p');
+			$this->db->where('m.codigo = k.materia_codigo and p.carrera_id = c.id and c.departamento_id = d.id and p.id = k.pensum_id');
 			$query = $this->db->get();
 			return $query->result_array();
 	    }

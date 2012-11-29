@@ -2,6 +2,8 @@
 <table class="table table-striped table-condensed" >
 <thead>
 	<tr>
+		<th>Departamento</th>
+		<th>Carrera</th>
 		<th>Semestre</th>
 		<th>Codigo</th>
 		<th>Unidad Curricular</th>
@@ -22,6 +24,8 @@ foreach ($datos_semestre as $datos_semestre) {
 ?>
 
 	<tr>
+		<td><?php echo $datos_semestre['departamento']; ?></td>
+		<td><?php echo $datos_semestre['carrera']; ?></td>
 		<td><?php echo $datos_semestre['semestre']; ?></td>
 		<td><?php echo $datos_semestre['codigo']; ?></td>
 		<td><?php echo $datos_semestre['unidad_curricular']; ?></td>

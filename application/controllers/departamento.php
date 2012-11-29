@@ -23,9 +23,7 @@
 				}else{		
 				$this->departamentos->setNombre($this->input->post('nombre'));				
 				$this->departamentos->agregar();
-
-				$datos_plantilla["contenido"] = "mensaje";
-				$this->load->view('plantilla', $datos_plantilla);	
+				$this->consulta();	
 				}		
 		}
 
@@ -41,21 +39,19 @@
 					$this->departamentos->setId($this->input->post('id'));
 					$this->departamentos->setNombre($this->input->post('nombre'));		
 					$this->departamentos->editar();
-					$datos_plantilla["contenido"] = "mensaje";			
+					$this->consulta();		
 				}							
 			}else{
 				$datos_plantilla["departamento"] = $this->departamentos->cargar($id);
-				$datos_plantilla["contenido"] = "departamento/_editar_departamento";						
-			}
-			$this->load->view('plantilla', $datos_plantilla);
+				$datos_plantilla["contenido"] = "departamento/_editar_departamento";
+				$this->load->view('plantilla', $datos_plantilla);						
+			}		
 		}
 
 		function eliminar($id){
 			$this->departamentos->setId($id);			
 			$this->departamentos->eliminar();
-
-			$datos_plantilla["contenido"] = "mensaje";
-			$this->load->view('plantilla', $datos_plantilla);
+			$this->consulta();
 		}
 
 		function consulta($id = null){	
