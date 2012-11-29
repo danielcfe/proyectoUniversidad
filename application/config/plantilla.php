@@ -66,6 +66,7 @@ $config['subMenu2'] =array(
        'BaseDato'=> array('href'=>'#Basedato','items'=>array(
                'subItem' => array('name'=>'Backup','href'=>'ControllerBD/backup','class' => 'icon-plus'),
                'subItem2' => array('name'=>'Restore','href'=>'ControllerBD','class' => 'icon-tags'),
+               )),
        'Pensum'=> array('href'=>'#pensum','items'=>array(
                'subItem' => array('name'=>'Agregar Pensum','href'=>'pensum/agregar','class' => 'icon-plus'),
                'subItem2' => array('name'=>'Consultar Pensum','href'=>'pensum','class' => 'icon-tags'),
