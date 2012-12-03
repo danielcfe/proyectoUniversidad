@@ -39,8 +39,11 @@ echo form_open('pensum/agregar',$attr)?>
 	<?php 
 	inputB($campos['departamento']); 
 	inputB($campos['carrera']); 
+	inputB($campos['materia']); 
 	inputb($campos['carrera_id']);
 	?>
+
+
 
 	<div class = "textarea">
 	<?php
@@ -54,7 +57,25 @@ echo form_open('pensum/agregar',$attr)?>
 			<i class="icon-user icon-white"></i>Crear Pensum
 		</button>
 	</div>
+		<div id="pensumMateria" >
 
+			<div class="materias alert">
+				<form >
+					<div></div>
+					<span class="codigo">AFWFR123</span>
+					<span class="materia">Matematica</span>
+					<span class"ht">8</span>
+					<span class"hp">2</span>
+					<span class"th">10</span>
+					<span class"up">5</span>
+					<span class="prelacion">EQRW5253</span>
+					<div class="delMateria"><a href="#delete">x</a></div>
+				</form>
+			</div>
+
+
+
+		</div>
 
 <div class="clearfix">	</div>
 <?php echo form_close()?>

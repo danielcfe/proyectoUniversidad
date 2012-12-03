@@ -69,7 +69,7 @@
 
 	    public function consultar_mat_a(){
 
-			$this->db->select('codigo as id,unidad_curricular as label, unidad_curricular as value');
+			$this->db->select('*,cod_prelacion as value, unidad_curricular as label');
 			$this->db->from('materia');
 			$query = $this->db->get();
 			$result = array();

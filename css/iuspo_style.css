@@ -57,3 +57,55 @@ Formulario de Ingreso de usuarios
 	width: 480px;
 	float:left;
 }
+
+
+.materias{
+	float: left;
+	width: 90%;
+	background-color: #FEFEFE;
+	padding:0 10px;
+}
+
+.materias span{
+ float:left;
+ padding: 5px 10px;
+}
+.materias .delMateria{
+	float:right;	
+}
+.materias .delMateria a{
+	width:100%;
+}
+
+.materias .codigo{
+	width:15%;
+}
+
+.materias .materia{
+	width:25%;
+}
+
+.materias .ht{
+	width:10%;
+}
+
+.materias .hp{
+	width:10%;
+}
+
+.materias .th{
+	width:10%;
+}
+
+.materias .up{
+	width:10%;
+}
+
+
+.materias .prelacion{
+	width:15%;
+}
+
+.materias .delMateria {
+	width:5%;
+}
