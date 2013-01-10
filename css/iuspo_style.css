@@ -49,7 +49,7 @@ Formulario de Ingreso de usuarios
 
 */
 .contentautoForm .form-horizontal .control-group {
-	width: 400px;
+	width: 380px;
 	float: left;
 }
 
@@ -108,9 +108,4 @@ Formulario de Ingreso de usuarios
 
 .materias .delMateria {
 	width:5%;
-}
-
-
-ul.nav-list li.accordion-heading{
-	border-bottom: 1px solid #DDD;
 }
