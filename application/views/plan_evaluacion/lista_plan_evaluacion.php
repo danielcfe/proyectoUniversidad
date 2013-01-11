@@ -19,7 +19,7 @@ foreach ($datos_plan_evaluacion as $datos_plan_evaluacion) {
 
 	<tr>
 		<td><?php echo $datos_plan_evaluacion['id']; ?></td>
-		<td><?php echo $datos_plan_evaluacion['Descripcion']; ?></td>
+		<td><?php echo $datos_plan_evaluacion['descripcion']; ?></td>
 		<td><?php echo $datos_plan_evaluacion['profesor_datos_usuarios_id']; ?></td>
 		<td><?php echo $datos_plan_evaluacion['materia_codigo']; ?></td>
 		<td>		

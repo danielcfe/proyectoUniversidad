@@ -3,7 +3,7 @@ class Plan_evaluacion extends CI_Controller {
 	public  $validateRules = array(
 			array('field' => 'descripcion','label' => 'Descripcion','rules' => 'required|callback_id_exist'),
 			array('field' => 'profesor_datos_usuarios_id','label' => 'Profesor_datos_usuarios_id','rules' => 'required|numeric'),
-			array('field' => 'materia_codigo','label' => 'Codigo Materia','rules' => 'required|alpha_spaces'),
+			array('field' => 'materia_codigo','label' => 'Codigo Materia','rules' => 'required|alpha_spaces'));
 			
 			function __construct(){
 				parent::__construct();
@@ -19,11 +19,11 @@ class Plan_evaluacion extends CI_Controller {
 		{
 			$this->form_validation->set_rules($this->validateRules);
 			if(!$this->form_validation->run()){
-				$datos_plantilla['contenido'] = "insertar_plan_evaluacion";
+				$datos_plantilla['contenido'] = "plan_evaluacion\insertar_plan_evaluacion";
 				$this->load->view('plantilla',$datos_plantilla);
 			}else{	
 				$this->plan_evaluacions->cargar($this->input->post());	
-				$this->plan_evaluacions->insertar_plan_evaluacion();
+				$this->plan_evaluacions->agregar();
 				$this->consultar();
 			}		
 		}
@@ -34,28 +34,26 @@ class Plan_evaluacion extends CI_Controller {
 			$this->form_validation->set_rules($this->validateRules);
 			$this->form_validation->set_rules('id','id','required');
 			if(!$this->form_validation->run()){
-				$datos_plantilla['datos_plan_evaluacion'] = $this->plan_evaluacion->consultar_mat($this->uri->segment(3));
-				$datos_plantilla['contenido'] = "editar_plan_evaluacion";
+				$datos_plantilla['datos_plan_evaluacion'] = $this->plan_evaluacions->carga($this->uri->segment(3));
+				$datos_plantilla['contenido'] = 'plan_evaluacion\editar_plan_evaluacion';
 				$this->load->view('plantilla',$datos_plantilla);
 			}else{
 			$this->plan_evaluacions->cargar($this->input->post());	
-			$this->plan_evaluacions->editar_plan_evaluacion();
+			$this->plan_evaluacions->editar();
 			$this->consultar();
 			}
 		}
 
 		function eliminar($id)
 		{
-			$this->load->model('plan_evaluacion');
-			$this->plan_evaluacions = new plan_evaluacion();
 			$this->plan_evaluacions->setId($id);
-			$this->plan_evaluacions->eliminar_plan_evaluacion();
+			$this->plan_evaluacions->eliminar();
 			$this->consultar();
 		}
 
 		function consultar()
 		{
-			$datos_plantilla['datos_plan_evaluacion'] = $this->plan_evaluacions->consultar_plan_evaluacion();
+			$datos_plantilla['datos_plan_evaluacion'] = $this->plan_evaluacions->consulta_general();
 			$datos_plantilla['contenido'] = 'plan_evaluacion\lista_plan_evaluacion';
 			$this->load->view('plantilla',$datos_plantilla);
 		}

@@ -20,7 +20,7 @@
 
 		public function agregar()
 	    {
-	    	$data = array('id' => null, 'descripcion' => $this->fecha, 'valor' => $this->valor, 'plan_evaluacion_id' => $this->plan_evaluacion_id);
+	    	$data = array('id' => null, 'descripcion' => $this->descripcion, 'valor' => $this->valor, 'plan_evaluacion_id' => $this->plan_evaluacion_id);
 	    	return $this->db->insert('evaluacion',$data);
 	    }	    
 
