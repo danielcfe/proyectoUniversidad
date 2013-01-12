@@ -70,5 +70,13 @@
 			echo json_encode($this->departamentos->consultar_dep_a());
 		}
 
+		function consulta_dep_carrera($id)
+		{
+			$this->load->model('carreras');
+			$datos_plantilla['carreras'] = $this->carreras->consulta_general($id);
+			$datos_plantilla['contenido'] = "carrera/_consulta_carrera";
+			$this->load->view("plantilla", $datos_plantilla);
+		}
+
 	}
 ?>

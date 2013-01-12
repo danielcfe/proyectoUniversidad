@@ -20,7 +20,7 @@ foreach ($departamento as $departamento) {
 
 	<tr>
 		<td><?php echo $departamento['id']; ?></td>
-		<td><?php echo $departamento['nombre']; ?></td>
+		<td><?php echo anchor("departamento/consulta_dep_carrera/".$departamento['id'], $departamento['nombre']); ?></td>
 		<td>		
 			<i class="icon-circle-arrow-up"></i><?php echo anchor("departamento/editar/".$departamento['id'], 'Actualizar'); ?>
 		</td>

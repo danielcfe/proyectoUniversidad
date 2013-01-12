@@ -1,7 +1,10 @@
 
 <div>
-	<h3>Listado de Carreras - IUSPO</h3>
+	<h3 style = "pisition:relative">Listado de Carreras - IUSPO</h3>
 	<!-- <a style = "float:right" class = "btn" type = "link" href = "<?=base_url()?>/carrera/agregar">Insertar una nueva Carrera</a> -->
+
+	<?php echo anchor("carrera/agregar", "Agregar Carrera", "class= 'btn btn-primary'; style= 'float:right; margin-bottom:15px'") ?>
+
 	</div>
 
 <table class="table table-striped table-condensed" id = "tablacarrera">
