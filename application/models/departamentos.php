@@ -45,6 +45,16 @@
 			return $query->result_array();
 		}
 
+		public function consulta_dep(){	
+			$query = $this->db->get('departamento');
+			$departamento[0]= '';
+			foreach ($query->result() as $row) {
+				$departamento[$row->id] = $row->nombre;
+			}
+			//die(var_dump($departamento));
+			return $departamento;
+		}
+
 		 public function consultar_dep_a(){
 
 			$this->db->select('id as id,nombre as label, nombre as value');
@@ -61,5 +71,6 @@
 			return $result;
 
 		}
+
 	}
 ?>	

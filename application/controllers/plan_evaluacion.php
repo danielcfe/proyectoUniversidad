@@ -19,7 +19,11 @@ class Plan_evaluacion extends CI_Controller {
 		{
 			$this->form_validation->set_rules($this->validateRules);
 			if(!$this->form_validation->run()){
-				$datos_plantilla['contenido'] = "plan_evaluacion\insertar_plan_evaluacion";
+				$this->load->model('departamentos');
+				$this->load->model('carreras');
+				$datos_plantilla["id_departamento"] = $this->departamentos->consulta_dep();
+				$datos_plantilla["id_carrera"] = $this->carreras->consulta_car();
+				$datos_plantilla['contenido'] = "plan_evaluacion/insertar_plan_evaluacion";
 				$this->load->view('plantilla',$datos_plantilla);
 			}else{	
 				$this->plan_evaluacions->cargar($this->input->post());	
@@ -74,6 +78,8 @@ class Plan_evaluacion extends CI_Controller {
 				return TRUE;
 			}
 		}
+
+
 
 }
 ?>

@@ -16,7 +16,6 @@
 
 foreach ($datos_evaluacion as $datos_evaluacion) {
 ?>
-
 	<tr>
 		<td><?php echo $datos_evaluacion['id']; ?></td>
 		<td><?php echo $datos_evaluacion['descripcion']; ?></td>
@@ -32,8 +31,7 @@ foreach ($datos_evaluacion as $datos_evaluacion) {
 	</tr>
 
 <?php 
-		
-
+	
 }
 
  ?>

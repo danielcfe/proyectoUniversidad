@@ -66,7 +66,13 @@
 			$datos_plantilla['carreras'] = $this->carreras->consulta_general();
 			$datos_plantilla["contenido"] = "carrera/_consulta_carrera";
 			$this->load->view('plantilla', $datos_plantilla);			 
+		}
 
+		function cargar_carrera()
+		{
+			$datos_plantilla["id_carrera"] = $this->carreras->consulta_car();
+			$datos_plantilla["contenido"] = "plan_evaluacion/insertar_plan_evaluacion";	
+			$this->load->view('plantilla', $datos_plantilla);
 		}
 
 		function get($id){

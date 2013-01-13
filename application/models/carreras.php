@@ -51,6 +51,16 @@
 			return $query->result_array();
 		}
 
+		public function consulta_car(){	
+			$query = $this->db->get('carrera');
+			$carrera[0]= '';
+			foreach ($query->result() as $row) {
+				$carrera[$row->id] = $row->nombre;
+			}
+			//die(var_dump($departamento));
+			return $carrera;
+		}
+
 		public function consultar_ca_a($id){
 
 			$this->db->select('id as id,nombre as label, nombre as value');

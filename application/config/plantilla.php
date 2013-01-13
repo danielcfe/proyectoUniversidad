@@ -55,10 +55,6 @@ $config['subMenu2'] =array(
                'subItem' => array('name'=>'Agregar Departamento','href'=>'departamento/agregar','class' => 'icon-plus'),
                'subItem2' => array('name'=>'Consultar Departamento','href'=>'departamento','class' => 'icon-tags'),
                )),
-       'Carreras'=> array('href'=>'#Carreras','items'=>array(
-               'subItem' => array('name'=>'Agregar Carreras','href'=>'carrera/agregar','class' => 'icon-plus'),
-               'subItem2' => array('name'=>'Consultar Carreras','href'=>'carrera','class' => 'icon-tags'),
-               )),
        'Requisito'=> array('href'=>'#requesito','items'=>array(
                'subItem' => array('name'=>'Agregar','href'=>'ControllerRequisitos/agregar','class' => 'icon-plus'),
                'subItem2' => array('name'=>'Consultar','href'=>'ControllerRequisitos/listar','class' => 'icon-tags'),
@@ -70,7 +66,11 @@ $config['subMenu2'] =array(
        'Pensum'=> array('href'=>'#pensum','items'=>array(
                'subItem' => array('name'=>'Agregar Pensum','href'=>'pensum/agregar','class' => 'icon-plus'),
                'subItem2' => array('name'=>'Consultar Pensum','href'=>'pensum','class' => 'icon-tags'),
-               ))
+               )),
+       'Plan de evaluaciones' => array('href'=>'#plan_evaluaciones','items'=>array(
+       		'subItem' => array('name'=>'Agregar Plan de Evaluacion','href' =>'plan_evaluacion/insertar','class' => 'icon-plus'),
+       		'subItem2' => array('name'=>'Consultar Plan de Evaluacion','href' =>'plan_evaluacion/consultar','class' => 'icon-plus'),
+       	))
 
 	//	'subItem6' => array('name'=>'Listar Materias','href'=>'materia_c/consultar','class' => 'icon-book'),
 	//	'subItem7' => array('name'=>'Agregar Materia','href'=>'materia_c/insertar','class' => 'icon-plus'),
@@ -95,6 +95,7 @@ $config['subMenu2departamento'] = $config['subMenu2'];
 $config['subMenu2ControllerRequisitos'] = $config['subMenu2'];
 $config['subMenu2BaseDato'] = $config['subMenu2'];
 $config['subMenu2pensum'] = $config['subMenu2'];
+$config['subMenu2plan_evaluacion'] = $config['subMenu2'];
 
 
 $config['menu_nav2']=array(

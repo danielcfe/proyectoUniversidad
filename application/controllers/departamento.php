@@ -48,6 +48,13 @@
 			}		
 		}
 
+		function cargar_departamento()
+		{
+			$datos_plantilla["id_departamento"] = $this->departamentos->consulta_dep();
+			$datos_plantilla["contenido"] = "plan_evaluacion/insertar_plan_evaluacion";	
+			$this->load->view('plantilla', $datos_plantilla);
+		}
+
 		function eliminar($id){
 			$this->departamentos->setId($id);			
 			$this->departamentos->eliminar();
