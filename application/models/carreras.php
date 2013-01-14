@@ -78,5 +78,23 @@
 			return $result;
 
 		}
+
+		public function all($id){
+
+			$this->db->select('id as id,nombre as nombre');
+			$this->db->from('carrera');
+			$this->db->where('departamento_id',$id);
+			$query = $this->db->get();
+			$result = array();
+			if($query->num_rows() > 0)
+			{
+				foreach ($query->result() as $row)
+				{
+					$result[]= $row;
+				}
+			}
+			return $result;
+
+		}
 	}
 ?>	

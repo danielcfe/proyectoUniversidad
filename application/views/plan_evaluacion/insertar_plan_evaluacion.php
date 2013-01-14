@@ -10,12 +10,11 @@
 
 		<h4>Seleccione el departamento</h4>
 
-		<?php echo form_dropdown('Depar',$id_departamento);
-		?>
+		<?php echo form_dropdown('Depar',$id_departamento,"", "id = 'depar' onchange = 'seleccion()'");?>
 		<br>
 		<h4>Seleccione la carrera</h4>
 		<?php	 
-			  echo form_dropdown('carre',$id_carrera); 
+			  echo form_dropdown('carre',$id_carrera, "","id = 'carre'"); 
 		?>
 		<br>			 
 		<h4>Nombre del plan de evaluacion</h4>

@@ -21,6 +21,7 @@ class Plan_evaluacion extends CI_Controller {
 			if(!$this->form_validation->run()){
 				$this->load->model('departamentos');
 				$this->load->model('carreras');
+				$datos_plantilla['js']= 'departamento.js';
 				$datos_plantilla["id_departamento"] = $this->departamentos->consulta_dep();
 				$datos_plantilla["id_carrera"] = $this->carreras->consulta_car();
 				$datos_plantilla['contenido'] = "plan_evaluacion/insertar_plan_evaluacion";
