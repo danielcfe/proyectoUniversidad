@@ -48,6 +48,13 @@
 			}		
 		}
 
+		function cargar_departamento()
+		{
+			$datos_plantilla["id_departamento"] = $this->departamentos->consulta_dep();
+			$datos_plantilla["contenido"] = "plan_evaluacion/insertar_plan_evaluacion";	
+			$this->load->view('plantilla', $datos_plantilla);
+		}
+
 		function eliminar($id){
 			$this->departamentos->setId($id);			
 			$this->departamentos->eliminar();
@@ -68,6 +75,14 @@
 
 		function all(){
 			echo json_encode($this->departamentos->consultar_dep_a());
+		}
+
+		function consulta_dep_carrera($id)
+		{
+			$this->load->model('carreras');
+			$datos_plantilla['carreras'] = $this->carreras->consulta_general($id);
+			$datos_plantilla['contenido'] = "carrera/_consulta_carrera";
+			$this->load->view("plantilla", $datos_plantilla);
 		}
 
 	}

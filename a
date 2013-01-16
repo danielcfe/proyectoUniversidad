@@ -1,0 +1,56 @@
+[1mdiff --git a/application/config/plantilla.php b/application/config/plantilla.php[m
+[1mindex 2e6b394..95f9d71 100644[m
+[1m--- a/application/config/plantilla.php[m
+[1m+++ b/application/config/plantilla.php[m
+[36m@@ -17,6 +17,7 @@[m [m$config['administrador']=array([m
+ );[m
+ [m
+ [m
+[32m+[m[41m[m
+ $config['menu_nav'] =array([m
+ 	'Materia'=> array('href'=>'#materia','items'=>array([m
+ 		'subItem' => array('name'=>'Agregar Materia','href'=>'materia_c/insertar','class' => 'icon-plus'),[m
+[36m@@ -42,6 +43,7 @@[m [m$config['menu_nav']=array([m
+ $config['subMenu2'] =array([m
+ 	'Sistema'=> array('href'=>'#sistema','items'=>array([m
+ 		'subItem1' => array('name'=>'Usuarios','href'=>'admin/users','class' => 'icon-plus'),[m
+[32m+[m		[32m'subItem6' => array('name'=>'Alumnos Pre-Inscritos','href'=>'admin/pre_inscritos','class' => 'icon-plus'),[m[41m[m
+ 		'subItem2' => array('name'=>'Usuarios Inactivos','href'=>'admin/unactivated_users','class' => 'icon-book'),[m
+ 		'subItem3' => array('name'=>'Permisos de direcciones','href'=>'admin/uri_permissions','class' => 'icon-plus'),[m
+ 		'subItem4' => array('name'=>'Roles','href'=>'admin/roles','class' => 'icon-book')),[m
+[36m@@ -87,6 +89,23 @@[m [m$config['subMenu2'] =array([m
+ 		))*/[m
+ );[m
+ [m
+[32m+[m[32m$config['subMenu1'] =array([m[41m[m
+[32m+[m	[32m'Sistema'=> array('href'=>'#sistema','items'=>array([m[41m[m
+[32m+[m		[32m'subItem1' => array('name'=>'Usuarios','href'=>'admin/users','class' => 'icon-plus'),[m[41m[m
+[32m+[m		[32m'subItem2' => array('name'=>'Usuarios Inactivos','href'=>'admin/unactivated_users','class' => 'icon-book'),[m[41m[m
+[32m+[m		[32m'subItem3' => array('name'=>'Permisos de direcciones','href'=>'admin/uri_permissions','class' => 'icon-plus'),[m[41m[m
+[32m+[m		[32m'subItem4' => array('name'=>'Roles','href'=>'admin/roles','class' => 'icon-book')),[m[41m[m
+[32m+[m		[32m'subItem5' => array('name'=>'Personalizar Permisos','href'=>'admin/custom_permissions','class' => 'icon-plus')),[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m       'Pensum'=> array('href'=>'#pensum','items'=>array([m[41m[m
+[32m+[m[32m               'subItem2' => array('name'=>'Consultar Pensum','href'=>'pensum','class' => 'icon-tags'),[m[41m[m
+[32m+[m[32m               ))[m[41m[m
+[32m+[m[32m);[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m//$config['subMenu1'] = $config['subMenu2'];[m[41m[m
+[32m+[m[32m//$config['subMenu3'] = $config['subMenu2'];[m[41m[m
+[32m+[m[32m//$config['subMenu4'] = $config['subMenu2'];[m[41m[m
+[32m+[m[41m[m
+ $config['subMenu2admin'] = $config['subMenu2'];[m
+ $config['subMenu2auth'] = $config['subMenu2'];[m
+ $config['subMenu2materia_c'] = $config['subMenu2'];[m
+[36m@@ -105,6 +124,11 @@[m [m$config['menu_nav2']=array([m
+ 		[m
+ );[m
+ [m
+[32m+[m[32m$config['menu_nav1']=array([m[41m[m
+[32m+[m		[32m'subItem2' => array('name'=>'Usuarios','href'=>'materia_c/consultar'),[m[41m[m
+[32m+[m		[32m'subItem3' => array('name'=>'Contactos','href'=>'materia_c/consultar'),[m[41m	[m
+[32m+[m[41m		[m
+[32m+[m[32m);[m[41m[m
+ [m
+ /*[m
+ $_Menu[2]=array([m

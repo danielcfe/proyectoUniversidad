@@ -43,14 +43,15 @@
 			return $query->result_array();
 		}
 
-		public function consulta_general(){
+		public function consulta_general($id){
 			$this->db->select('c.id, c.nombre, d.nombre as nombre_d');
 			$this->db->from('carrera c, departamento d');
-			$this->db->where('c.departamento_id = d.id');
+			$this->db->where('c.departamento_id = d.id and c.departamento_id = '. $id);
 			$query = $this->db->get();
 			return $query->result_array();
 		}
 
+<<<<<<< HEAD
 		public function all(){
 			$this->db->select('nombre,id');
 			$this->db->from('carrera c');
@@ -68,10 +69,39 @@
 			//return $query->result_array();
 		}
 		
+=======
+		public function consulta_car(){	
+			$query = $this->db->get('carrera');
+			$carrera[0]= '';
+			foreach ($query->result() as $row) {
+				$carrera[$row->id] = $row->nombre;
+			}
+			//die(var_dump($departamento));
+			return $carrera;
+		}
+>>>>>>> d41e419dbd87f1e614f7da9e5f3b75024a50da34
 
 		public function consultar_ca_a($id){
 
 			$this->db->select('id as id,nombre as label, nombre as value');
+			$this->db->from('carrera');
+			$this->db->where('departamento_id',$id);
+			$query = $this->db->get();
+			$result = array();
+			if($query->num_rows() > 0)
+			{
+				foreach ($query->result() as $row)
+				{
+					$result[]= $row;
+				}
+			}
+			return $result;
+
+		}
+
+		public function all($id){
+
+			$this->db->select('id as id,nombre as nombre');
 			$this->db->from('carrera');
 			$this->db->where('departamento_id',$id);
 			$query = $this->db->get();

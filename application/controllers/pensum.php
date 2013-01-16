@@ -20,6 +20,7 @@
 					$datos_plantilla["contenido"] = "pensum/_registro_pensum";
 					$datos_plantilla['css']= 'jquery-ui-1.9.2.custom.min';
 					$datos_plantilla['js']= 'semestre.js';
+					$datos_plantilla['js']= 'departamento.js';
 					$this->load->view('plantilla', $datos_plantilla);
 				}else{			
 				$this->pensums->setFecha(date('Y-m-d'));

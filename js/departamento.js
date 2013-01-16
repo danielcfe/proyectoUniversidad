@@ -15,4 +15,20 @@ $(document).ready(function()
     });
   });
 
+  
+
 });
+
+function seleccion(){
+    var valor = $("#depar").val();
+    var x
+    $.getJSON(base_url+'carrera/all/'+valor, function(data){carrera = data;
+      console.dir(carrera);
+    }).success(function(){
+
+      $("#carre").html('');
+    for (x in carrera)
+      $("<option value='"+carrera[x].id+"'>"+carrera[x].value+"</option>").appendTo("#carre");
+    
+  });
+}

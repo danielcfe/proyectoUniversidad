@@ -12,7 +12,7 @@
 		<input type="text" name="descripcion" value="<?php echo set_value('descripcion'); ?>" size="100" placeholder = "Actividad Practica"/>
 		<?php echo form_error('Descripcion','<div class="alert alert-error">', '</div>'); ?>
 
-		<h4><label for = "autocomplete">Valor</label></h4>
+		<h4>Valor</h4>
 		<input type="text" autocomplete = "off" id='autocomplete' name="valor" value="<?php echo set_value('valor'); ?>" size="100" placeholder = "20"/>
 		<?php echo form_error('valor','<div class="alert alert-error">', '</div>'); ?>
 
