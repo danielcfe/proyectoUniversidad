@@ -17,6 +17,7 @@ $config['administrador']=array(
 );
 
 
+
 $config['menu_nav'] =array(
 	'Materia'=> array('href'=>'#materia','items'=>array(
 		'subItem' => array('name'=>'Agregar Materia','href'=>'materia_c/insertar','class' => 'icon-plus'),
@@ -42,6 +43,7 @@ $config['menu_nav']=array(
 $config['subMenu2'] =array(
 	'Sistema'=> array('href'=>'#sistema','items'=>array(
 		'subItem1' => array('name'=>'Usuarios','href'=>'admin/users','class' => 'icon-plus'),
+		'subItem6' => array('name'=>'Alumnos Pre-Inscritos','href'=>'admin/pre_inscritos','class' => 'icon-plus'),
 		'subItem2' => array('name'=>'Usuarios Inactivos','href'=>'admin/unactivated_users','class' => 'icon-book'),
 		'subItem3' => array('name'=>'Permisos de direcciones','href'=>'admin/uri_permissions','class' => 'icon-plus'),
 		'subItem4' => array('name'=>'Roles','href'=>'admin/roles','class' => 'icon-book')),
@@ -87,6 +89,23 @@ $config['subMenu2'] =array(
 		))*/
 );
 
+$config['subMenu1'] =array(
+	'Sistema'=> array('href'=>'#sistema','items'=>array(
+		'subItem1' => array('name'=>'Usuarios','href'=>'admin/users','class' => 'icon-plus'),
+		'subItem2' => array('name'=>'Usuarios Inactivos','href'=>'admin/unactivated_users','class' => 'icon-book'),
+		'subItem3' => array('name'=>'Permisos de direcciones','href'=>'admin/uri_permissions','class' => 'icon-plus'),
+		'subItem4' => array('name'=>'Roles','href'=>'admin/roles','class' => 'icon-book')),
+		'subItem5' => array('name'=>'Personalizar Permisos','href'=>'admin/custom_permissions','class' => 'icon-plus')),
+
+       'Pensum'=> array('href'=>'#pensum','items'=>array(
+               'subItem2' => array('name'=>'Consultar Pensum','href'=>'pensum','class' => 'icon-tags'),
+               ))
+);
+
+//$config['subMenu1'] = $config['subMenu2'];
+//$config['subMenu3'] = $config['subMenu2'];
+//$config['subMenu4'] = $config['subMenu2'];
+
 $config['subMenu2admin'] = $config['subMenu2'];
 $config['subMenu2auth'] = $config['subMenu2'];
 $config['subMenu2materia_c'] = $config['subMenu2'];
@@ -104,6 +123,11 @@ $config['menu_nav2']=array(
 		
 );
 
+$config['menu_nav1']=array(
+		'subItem2' => array('name'=>'Usuarios','href'=>'materia_c/consultar'),
+		'subItem3' => array('name'=>'Contactos','href'=>'materia_c/consultar'),	
+		
+);
 
 /*
 $_Menu[2]=array(

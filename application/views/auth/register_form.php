@@ -1,32 +1,32 @@
 <?php
-$username = array(
-	'name'	=> 'username',
-	'id'	=> 'username',
-	'size'	=> 30,
-	'value' =>  set_value('username')
-);
 
-$password = array(
-	'name'	=> 'password',
-	'id'	=> 'password',
-	'size'	=> 30,
-	'value' => set_value('password')
-);
 
-$confirm_password = array(
-	'name'	=> 'confirm_password',
-	'id'	=> 'confirm_password',
-	'size'	=> 30,
-	'value' => set_value('confirm_password')
-);
 
-$email = array(
-	'name'	=> 'email',
-	'id'	=> 'email',
-	'maxlength'	=> 80,
-	'size'	=> 30,
-	'value'	=> set_value('email')
-);
+
+
+
+
+$campos['username'] = array('label' => 'Usuario',  'atr' => 
+array('name' => 'username',	'id' => 'username',	'size'	=> 30,	'value' => '',	'readonly' => 'true')
+); 
+
+$campos['password'] =array('label' => 'Clave',  'atr' => 
+ array(	'name'	=> 'password',	'id'	=> 'password',	'maxlength'	=> 80,	'size'	=> 30,
+ 	'value'	=> '')
+ );
+
+$campos['confirmpassword'] =array('label' => 'Confirmacion de Contraseña',  'atr' => 
+ array(	'name'	=> 'confirmpassword',	'id'	=> 'confirmpassword',	'maxlength'	=> 80,	'size'	=> 30,
+ 	'value'	=> set_value('confirmpassword'))
+ );
+
+$campos['name'] = array('label' => 'Nombre',  'atr' => 
+ array(	'name'	=> 'name',	'id'	=> 'name',	'size'	=> 30,	'value' => ''));
+
+$campos['email'] =array('label' => 'Correo',  'atr' => 
+ array(	'name'	=> 'email',	'id'	=> 'email',	'maxlength'	=> 80,	'size'	=> 30,
+ 	'value'	=> '')
+ );
 ?>
 
 <html>
@@ -34,42 +34,14 @@ $email = array(
 
 <?php echo form_open($this->uri->uri_string())?>
 	<h1></h1>
-  <div class="control-group">
-    <label class="control-label" for="inputEmail">
-    	<?php echo form_label('Nombre de Usuario', $username['id']);?>
-    </label>
-    <div class="controls">
-      <?php echo form_input($username)?>
-      <?php echo form_error($username['name']); ?>
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="inputPassword">
-    	<?php echo form_label('Clave', $password['id']);?>
-    </label>
-    <div class="controls">
-		<?php echo form_password($password)?>
-		<?php echo form_error($password['name']); ?>      
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="controls">
-      <label class="checkbox">
-        <?php echo form_label('Confirmar Clave', $confirm_password['id']);?>
-      </label>
-		<?php echo form_password($confirm_password);?>
-		<?php echo form_error($confirm_password['name']); ?>      
-    </div>
-  </div> 
-  <div class="control-group">
-    <div class="controls">
-      <label class="checkbox">
-         <?php echo form_label('Correo Electronico', $email['id']);?>
-      </label>
-		<?php echo form_input($email);?>
-		<?php echo form_error($email['name']); ?>
-    </div>
-  </div>   
+<?php 
+	inputB($campos['username']); 
+	passwordB($campos['password']); 
+	passwordB($campos['confirmpassword']); 
+	inputB($campos['email']); 
+ ?>
+
+
 <?php if ($this->dx_auth->captcha_registration): ?>  
   <div class="control-group">
     <div class="controls">

@@ -15,7 +15,7 @@ $(document).ready(function() {
 
    var info = 2;
   $.post(base_url+'materia_c/all',function(data){
-       console.dir(data);
+    //   console.dir(data);
     }, "json");
 
 
@@ -23,6 +23,9 @@ $(document).ready(function() {
     function ajaxform(){
         return '&ajax=1';
     }
+
+
+
     function showError(data){
         var first = false;
         $boton = $('[name="submit"]');
@@ -45,16 +48,18 @@ $(document).ready(function() {
         });
     }
 
+
     $( "#username" ).autocomplete({
         source: availableTags
     });
+
 
     $( "#birth_date" ).datepicker({
         changeMonth: true,
         changeYear: true,
         dateFormat: 'yy-mm-dd',
         minDate: "-90Y",
-        maxDate: "+1M +10D",
+        maxDate: "-15Y+1M +10D",
         yearRange: '1900:' + new Date().getFullYear()
     });
 
@@ -63,15 +68,28 @@ $(document).ready(function() {
         e.preventDefault();           
         var data = $('#formusers').serialize()+ajaxform();
         var target = base_url+"admin/ajax";
-        console.dir(data);
-        $.post(target,data,
-         function(data){
-          showError(data);
+//        console.dir(data);
+
+        $.post(target,data, function(data,b,s){
+            console.dir(b);
+            if(!data.success){
+                showError(data);
+            }else{
+                alert('ha sido registrado exitosamente');
+             //   window.location = base_url+'admin';
+             //   window.location.replace = base_url+'admin';
+                window.location.href = base_url+'admin/users';
+            }
 
          }, "json")
         .success(function() { //alert("second success");
         })
-        .error(function() { //alert("error"); 
+        .error(function(a,s) { 
+            console.dir(a,s);
+            alert('ha ocurrido en error en la petición, por favor intente más tarde.');
+            //window.location = base_url+'admin';
+           ///     window.location.href = base_url+'admin';            
+           // window.location.replace = base_url+'admin';
         })
         .complete(function() { //alert("complete");
         });                    

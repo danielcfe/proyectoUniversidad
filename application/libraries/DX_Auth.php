@@ -180,7 +180,7 @@ class DX_Auth
   'smtp_crypto' => 'ssl'
 );		
 		$this->ci->load->library('Email',$config);
-		var_dump($from,$to,$subject,$message);
+	//	var_dump($from,$to,$subject,$message);
 
 
  
@@ -978,6 +978,115 @@ class DX_Auth
 		$this->ci->session->sess_destroy();		
 	}
 
+
+	function register_Estudiante($user)
+	{		
+		$username = $user['username'];
+		$password =  $user['password'];
+		$email = $user['email'];
+		// Load Models
+		$this->ci->load->model('dx_auth/users', 'users');
+		$this->ci->load->model('dx_auth/user_temp', 'user_temp');
+
+		$this->ci->load->helper('url');
+		
+		// Default return value
+		$result = FALSE;
+
+		// New user array
+		$new_user = array(			
+			'username'				=> $username,			
+			'password'				=> crypt($this->_encode($password)),
+			'email'						=> $email,
+			'last_ip'					=> $this->ci->input->ip_address(),
+			'birth_date'				=> $user['birth_date'],
+			'blood_type'				=> $user['blood_type'],
+			'gender'					=> $user['gender'],
+			'addres'					=> $user['addres'],
+			'civil_status'				=> $user['civil_status'],
+			'instruction_level'			=> 1,//$user['instruction_level'],
+			'observations'				=> $user['observations'],
+			'name'						=> $user['name'],
+			'last_name'					=> $user['last_name']
+		);
+
+		// Do we need to send email to activate user
+		if ($this->ci->config->item('DX_email_activation'))
+		{
+			// Add activation key to user array
+			$new_user['activation_key'] = md5(rand().microtime());
+			
+			// Create temporary user in database which means the user still unactivated.
+			$insert = $this->ci->user_temp->create_temp($new_user);
+		}
+		else
+		{				
+			// Create user 
+			$insert = $this->ci->users->create_user($new_user);
+			// Trigger event
+			$last_insert_id = $this->ci->db->insert_id();
+			$this->user_activated($last_insert_id);		
+
+			$this->ci->load->model('estudiante');
+			$data = array('datos_usuarios_id' => $last_insert_id , 'carrera_id' => $user['Carrera']);
+		//	$this->ci->estudiante->setId($data['id']);
+		//	$this->ci->estudiante->setCarrera_id($data['carrera_id']);
+			$this->ci->estudiante->agregar($data); 
+		
+		}
+		
+		if ($insert)
+		{
+			
+
+
+
+			// Replace password with plain for email
+			$new_user['password'] = $password;
+			
+			$result = $new_user;
+			
+			// Send email based on config
+		
+			// Check if user need to activate it's account using email
+			if ($this->ci->config->item('DX_email_activation'))
+			{
+				// Create email
+				$from = $this->ci->config->item('DX_webmaster_email');
+				$subject = sprintf($this->ci->lang->line('auth_activate_subject'), $this->ci->config->item('DX_website_name'));
+
+				// Activation Link
+				$new_user['activate_url'] = site_url($this->ci->config->item('DX_activate_uri')."{$new_user['username']}/{$new_user['activation_key']}");
+				
+				// Trigger event and get email content
+				$this->sending_activation_email($new_user, $message);
+
+				// Send email with activation link
+				$this->_email($email, $from, $subject, $message);
+		
+			}
+			else
+			{
+				// Check if need to email account details						
+				if ($this->ci->config->item('DX_email_account_details')) 
+				{
+					// Create email
+					$from = $this->ci->config->item('DX_webmaster_email');
+					$subject = sprintf($this->ci->lang->line('auth_account_subject'), $this->ci->config->item('DX_website_name')); 
+					
+					// Trigger event and get email content
+					$this->sending_account_email($new_user, $message);
+					//var_dump($email, $from, $subject, $message);
+					// Send email with account details
+				//	$this->_email($email, $from, $subject, $message);														
+				}
+			}
+		}
+		
+		return $result;
+	}
+
+
 	function register($username, $password, $email)
 	{		
 		// Load Models
@@ -1038,6 +1147,8 @@ class DX_Auth
 
 				// Send email with activation link
 				$this->_email($email, $from, $subject, $message);
+			
+				/*
 				echo 'email <br>';
 				var_dump($email);
 				echo ' from<br>';
@@ -1045,7 +1156,7 @@ class DX_Auth
 				echo 'subject <br>';
 				var_dump($subject);				
 				echo 'message <br>';
-				var_dump($message);								
+				var_dump($message);		*/						
 			}
 			else
 			{

@@ -30,7 +30,8 @@
 		$attr = array('id' => 'formUsuarios' );
 		echo form_open($this->uri->uri_string(),$attr);
 			$attr = array('name' => 'newadm', 'value' => 'Nuevo Administrativo', 'class' =>  'btn ','id' => 'newadm' );
-			echo form_submit($attr);
+			echo anchor('admin/newuser', 'Nuevo Alumno', $attr);
+			//echo form_submit($attr);
 			$attr = array('name' => 'newprof', 'value' => 'Nuevo Profesor', 'class' =>  'btn ' );
 			echo form_submit($attr);
 			$attr = array('name' => 'newalumno', 'value' => 'Nuevo Alumno', 'class' =>  'btn ' );

@@ -1,6 +1,6 @@
 <?php
 
-$campos['username'] = array('label' => 'Usuario',  'atr' => 
+$campos['username'] = array('label' => 'Cedula',  'atr' => 
 array('name' => 'username',	'id'	=> 'username',	'placeholder' => 'Usuario',
 		'value' =>  set_value('username'))
 ); 
@@ -56,7 +56,7 @@ $attr = array('class' => 'form-horizontal', 'id' => 'formusers' );
 echo form_open($this->uri->uri_string(),$attr)?>
 
 
-	<h2>Editar Usuario</h2>
+	<h2>Nuevo Usuario</h2>
 	<?php inputB($campos['username']); 
 	inputB($campos['name']); 
 	inputB($campos['last_name']); 
@@ -71,8 +71,9 @@ echo form_open($this->uri->uri_string(),$attr)?>
 	passwordB($campos['confirmpassword']); 
 	$options = array( "O-" =>"O-" ,"O+" =>"O+" ,"A-" =>"A-" ,"A+" =>"A+","B-" =>"B-" ,"B+" =>"B+" ,"AB-" =>"AB-" ,"AB+" =>"AB+");	
 	selectB('Tipo de Sangre','blood_type',$options);
-
-	 textareaB('Observaciones',$campos['observations']);
+	$options = $carreras;
+	selectB('Carrera','Carrera',$options);
+	textareaB('Observaciones',$campos['observations']);
 
 	?>
 

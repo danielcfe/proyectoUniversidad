@@ -140,7 +140,8 @@ if(isset($css)){
               $url = $this->uri->segment(1).'/'.$this->uri->segment(2);
               $this->config->load('plantilla');$id = ""; 
               //var_dump('subMenu'.$this->dx_auth->get_role_id().$this->uri->segment(1));
-              $menuName = 'subMenu'.$this->dx_auth->get_role_id().$this->uri->segment(1);
+              $menuName = 'subMenu'.$this->dx_auth->get_role_id();
+           //   echo acordionMenu($id,$this->config->item($menuName),$url,base_url());
               echo acordionMenu($id,$this->config->item($menuName),$url,base_url());?>
             </ul>
           </div><!--/.well -->

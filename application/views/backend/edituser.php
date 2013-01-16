@@ -98,7 +98,7 @@ echo form_open($this->uri->uri_string(),$attr)?>
   </div>
 
 
-
+<div class="clearfix"></div>
 <?php echo form_close()?>
 </div>
 </body>

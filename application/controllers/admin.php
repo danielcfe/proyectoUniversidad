@@ -34,17 +34,43 @@ class admin extends CI_Controller
 	}
 
 	function ajax(){
+
 		$val = $this->form_validation;
 			$val->set_rules('username', 'Username', 'trim|required|xss_clean|min_length['.$this->min_username.']|max_length['.$this->max_username.']|callback_username_check|alpha_dash');
-			$val->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email|callback_email_check');
-			$val->set_rules('password', 'Password', 'trim|required|xss_clean|min_length['.$this->min_password.']|max_length['.$this->max_password.']|matches[confirm_password]');
-			$val->set_rules('confirm_password', 'Confirm Password', 'trim|required|xss_clean');
- 			$val->run();
-		if($this->input->post('ajax')){
+			$val->set_rules('email', 'Email', 'trim|required|xss_clean|callback_email_check|valid_email');
+			$val->set_rules('password', 'Password', 'trim|required|xss_clean|min_length['.$this->min_password.']|max_length['.$this->max_password.']|matches[confirmpassword]');
+			$val->set_rules('confirmpassword', 'Confirm Password', 'trim|required|xss_clean');
+			$this->load->model('dx_auth/users');
+
+/*
+			if ($this->dx_auth->captcha_registration)
+			{
+				// Set recaptcha rules.
+				// IMPORTANT: Do not change 'recaptcha_response_field' because it's used by reCAPTCHA API,
+				// This is because the limitation of reCAPTCHA, not DX Auth library
+				$val->set_rules('recaptcha_response_field', 'Confirmation Code', 'trim|xss_clean|required|callback_recaptcha_check');
+			}
+
+			*/
+
+
+
+		if($this->input->post('ajax')&&(!$val->run())){
 				$datos = array('algo' => 2 );
-				echo json_encode($this->form_validation->error_array());
+				$error = $this->form_validation->error_array();
+				$error['success']= 0;
+				echo json_encode($error);
 		}else{
+		//	$this->dx_auth->register($val->set_value('username'), $val->set_value('password'), $val->set_value('email'))
+				$usuario_E = $this->input->post();
+				$result = $this->dx_auth->register_Estudiante($usuario_E);		
+		/*	$this->load->model('estudiante');
+			$data = array('id' => 2 , 'carrera_id' => 1);
+			$this->estudiante->agregar($data); 
+		*/
+				//var_dump($result);
 				$datos = array('success' => 1 );
+				//var_dump($datos);
 				echo json_encode($datos);
 		}
 	}
@@ -94,10 +120,15 @@ class admin extends CI_Controller
 				//var_dump('MOSTRAR');
 				// Load registration page
 					//$datos_plantilla['data'] = $data;
-				
+
+					$this->load->model('Carreras');
+					$data = $this->Carreras->all();
+					//var_dump($data[0]);
+					$datos_plantilla['carreras'] = $data[0];
 					$datos_plantilla['css']= 'jquery-ui-1.9.2.custom.min';
 					$datos_plantilla['js']= 'admin/users.js';
 					$datos_plantilla['contenido'] = 'backend/user_form';
+
 					$this->load->view('plantilla',$datos_plantilla);
 				//$this->load->view('backend/user_form');
 			}
@@ -175,7 +206,7 @@ class admin extends CI_Controller
 	 	}
 	}
 
-
+/*
 	function email_check($email)
 	{
 		$result = true;
@@ -183,11 +214,127 @@ class admin extends CI_Controller
 			$result = $this->dx_auth->is_email_available($email);
 		if ( ! $result)
 		{
-			$this->form_validation->set_message('email_check', 'Este correo ya est� siendo usado por otra persona. Por favor introduzca otro correo valido.');
+			$this->form_validation->set_message('email_check', 'Este correo ya está siendo usado por otra persona. Por favor introduzca otro correo valido.');
+		}
+				var_dump($result);
+		return $result;
+	}
+*/
+	function email_check($email)
+	{
+		//var_dump($email,$this->session->all_userdata());
+		if(!($email == $this->dx_auth->userData('email'))){
+			$result = $this->dx_auth->is_email_available($email);
+			if ( ! $result)
+			{
+				$this->form_validation->set_message('email_check', 'Este correo ya está siendo usado por otra persona.');
+			}
+		}else{
+			$result = true;
+		}
+
+
+				
+		return $result;
+	}	
+
+	function username_check($username)
+	{
+		$result = $this->dx_auth->is_username_available($username);
+		if ( ! $result)
+		{
+			$this->form_validation->set_message('username_check', 'Username already exist. Please choose another username.');
 		}
 				
 		return $result;
 	}
+
+
+	function pre_inscritos()
+	{
+
+		$this->load->model('dx_auth/users', 'users');			
+		
+		// Search checkbox in post array
+		foreach ($_POST as $key => $value)
+		{
+			// If checkbox found
+			if (substr($key, 0, 9) == 'checkbox_')
+			{
+				// If ban button pressed
+				if (isset($_POST['ban']))
+				{
+					// Ban user based on checkbox value (id)
+					$this->users->ban_user($value);
+				}
+				// If unban button pressed
+				else if (isset($_POST['unban']))
+				{
+					// Unban user
+					$this->users->unban_user($value);
+				}
+				else if (isset($_POST['reset_pass']))
+				{
+					// Set default message
+					$data['reset_message'] = 'Reset password failed';
+				
+					// Get user and check if User ID exist
+					if ($query = $this->users->get_user_by_id($value) AND $query->num_rows() == 1)
+					{		
+						// Get user record				
+						$user = $query->row();
+						
+						// Create new key, password and send email to user
+						if ($this->dx_auth->forgot_password($user->username))
+						{
+							// Query once again, because the database is updated after calling forgot_password.
+							$query = $this->users->get_user_by_id($value);
+							// Get user record
+							$user = $query->row();
+														
+							// Reset the password
+							if ($this->dx_auth->reset_password($user->username, $user->newpass_key))
+							{							
+								$data['reset_message'] = 'Reset password success';
+							}
+						}
+					}
+				}
+			}				
+		}
+		
+		/* Showing page to user */
+		
+		// Get offset and limit for page viewing
+		$offset = (int) $this->uri->segment(3);
+		// Number of record showing per page
+		$row_count = 10;
+		
+		// Get all users
+		$data['users'] = $this->users->get_all($offset, $row_count)->result();
+		
+		// Pagination config
+		$p_config['base_url'] = base_url().'/admin/users/';
+		$p_config['uri_segment'] = 3;
+		$p_config['num_links'] = 2;
+		$p_config['total_rows'] = $this->users->get_all()->num_rows();
+		$p_config['per_page'] = $row_count;
+				
+		// Init pagination
+		$this->pagination->initialize($p_config);		
+		// Create pagination links
+		$data['pagination'] = $this->pagination->create_links();
+		
+		// Load view
+		//$this->load->view('backend/users', $data);
+			//$data['auth_message'] = 'You are already logged in.';
+			$datos_plantilla['js'] = 'admin.js';
+			$datos_plantilla['data'] = $data;
+			$datos_plantilla['contenido'] = 'backend/users';
+		//	$this->load->view($this->dx_auth->logged_in_view, $datos_plantilla);
+			$this->load->view('plantilla',$datos_plantilla);
+	}
+
 
 	function users()
 	{
@@ -247,7 +394,7 @@ class admin extends CI_Controller
 		// Get offset and limit for page viewing
 		$offset = (int) $this->uri->segment(3);
 		// Number of record showing per page
-		$row_count = 2;
+		$row_count = 10;
 		
 		// Get all users
 		$data['users'] = $this->users->get_all($offset, $row_count)->result();

@@ -171,11 +171,13 @@ class Auth extends CI_Controller
 				$val->set_rules('recaptcha_response_field', 'Confirmation Code', 'trim|xss_clean|required|callback_recaptcha_check');
 			}
 
+//var_dump($val->set_value());
+
 			// Run form validation and register user if it's pass the validation
 			if ($val->run() AND $this->dx_auth->register($val->set_value('username'), $val->set_value('password'), $val->set_value('email')))
 			{	
 				// Set success message accordingly
-				var_dump($this->dx_auth->email_activation);
+				//var_dump($this->dx_auth->email_activation);
 				if ($this->dx_auth->email_activation)
 				{
 					$data['auth_message'] = 'You have successfully registered. Check your email address to activate your account.';
@@ -191,7 +193,9 @@ class Auth extends CI_Controller
 			else
 			{
 				// Load registration page
-				$this->load->view('auth/register_form');
+				//$this->load->view('auth/register_form');
+				$datos_plantilla['contenido'] = 'auth/register_form';
+				$this->load->view('plantilla',$datos_plantilla);
 			}
 		}
 		elseif ( ! $this->dx_auth->allow_registration)
@@ -203,6 +207,7 @@ class Auth extends CI_Controller
 		{
 			$data['auth_message'] = 'You have to logout first, before registering.';
 			$this->load->view($this->dx_auth->logged_in_view, $data);
+
 		}
 	}
 	
