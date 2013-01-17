@@ -20,7 +20,8 @@ class ControllerRequisitos extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('requisitos/requisitos');	
+		$this->load->model('requisitos/requisitos');
+		$this->dx_auth->check_uri_permissions();	
 	}
 
 	function index()

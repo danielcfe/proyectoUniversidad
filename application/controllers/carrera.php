@@ -5,7 +5,8 @@
 		function __construct()
 			{
 				parent::__construct();
-				$this->load->model('carreras');			
+				$this->load->model('carreras');		
+				$this->dx_auth->check_uri_permissions();	
 			} 
 
 		function index()
@@ -27,6 +28,7 @@
 				$this->carreras->setNombre($this->input->post('nombre'));
 				$this->carreras->setDepartamento_id($this->input->post('departamento_id'));				
 				$this->carreras->agregar();
+				$this->auditor->registrar_accion("Se inserta una nueva carrera: ".$this->input->post('nombre'));
 				$this->consulta();
 			}
 		}
@@ -62,7 +64,7 @@
 			$this->consulta();
 		}
 
-		function consulta($id_vuelo = null){			
+		function consulta($id = null){			
 			$datos_plantilla['carreras'] = $this->carreras->consulta_general();
 			$datos_plantilla["contenido"] = "carrera/_consulta_carrera";
 			$this->load->view('plantilla', $datos_plantilla);			 
