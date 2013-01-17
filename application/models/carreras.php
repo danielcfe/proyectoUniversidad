@@ -61,6 +61,24 @@
 			return $carrera;
 		}
 	
+		public function all(){
+
+			$this->db->select('nombre, id');
+			$this->db->from('carrera');
+			$this->db->order_by("nombre","desc");
+			$query = $this->db->get();
+			$result = array();
+			if($query->num_rows() > 0)
+			{
+				foreach ($query->result() as $row)
+				{
+					$result[]= array($row->id => $row->nombre);
+				}
+			}
+			return $result;
+
+		}
+
 		public function consultar_ca_a($id){
 
 			$this->db->select('id as id,nombre as label, nombre as value');

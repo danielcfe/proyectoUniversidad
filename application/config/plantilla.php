@@ -72,6 +72,9 @@ $config['subMenu2'] =array(
        'Plan de evaluaciones' => array('href'=>'#plan_evaluaciones','items'=>array(
        		'subItem' => array('name'=>'Agregar Plan de Evaluacion','href' =>'plan_evaluacion/insertar','class' => 'icon-plus'),
        		'subItem2' => array('name'=>'Consultar Plan de Evaluacion','href' =>'plan_evaluacion/consultar','class' => 'icon-plus'),
+       	)),
+       'Auditoria' => array('href'=>'#auditoria','items'=>array(
+       		'subItem' => array('name'=>'Consultar Auditoria','href' =>'auditoria/consultar','class' => 'icon-plus')
        	))
 
 	//	'subItem6' => array('name'=>'Listar Materias','href'=>'materia_c/consultar','class' => 'icon-book'),
