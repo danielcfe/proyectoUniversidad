@@ -44,6 +44,9 @@ $config['subMenu2'] =array(
 	'Sistema'=> array('href'=>'#sistema','items'=>array(
 		'subItem1' => array('name'=>'Usuarios','href'=>'admin/users','class' => 'icon-plus'),
 		'subItem6' => array('name'=>'Alumnos Pre-Inscritos','href'=>'admin/pre_inscritos','class' => 'icon-plus'),
+		'subItem7' => array('name'=>'Alumnos','href'=>'admin/alumnos','class' => 'icon-plus'),
+		'subItem8' => array('name'=>'Profesores','href'=>'admin/profesores','class' => 'icon-plus'),
+		'subItem9' => array('name'=>'administradores','href'=>'admin/administradores','class' => 'icon-plus'),
 		'subItem2' => array('name'=>'Usuarios Inactivos','href'=>'admin/unactivated_users','class' => 'icon-book'),
 		'subItem3' => array('name'=>'Permisos de direcciones','href'=>'admin/uri_permissions','class' => 'icon-plus'),
 		'subItem4' => array('name'=>'Roles','href'=>'admin/roles','class' => 'icon-book')),
@@ -74,22 +77,36 @@ $config['subMenu2'] =array(
        		'subItem2' => array('name'=>'Consultar Plan de Evaluacion','href' =>'plan_evaluacion/consultar','class' => 'icon-plus'),
        	))
 
-	//	'subItem6' => array('name'=>'Listar Materias','href'=>'materia_c/consultar','class' => 'icon-book'),
-	//	'subItem7' => array('name'=>'Agregar Materia','href'=>'materia_c/insertar','class' => 'icon-plus'),
-	//	'subItem8' => array('name'=>'Listar Materias','href'=>'materia_c/consultar','class' => 'icon-book'),
-		/*)),
-	'Pemsum'=> array('href'=>'#menu2href','items'=>array(
-		'subItem' => array('name'=>'item1','href'=>'menu4.php','class' => 'icon-user'),
-		'subItem2' => array('name'=>'item2','href'=>'menu5.php','class' => 'icon-user')
-		))
-	,
-	'Usuario'=> array('href'=>'#menu3href','items'=>array(
-		'subItem' => array('name'=>'item1','href'=>'menu6.php','class' => 'icon-user'),
-		'subItem2' => array('name'=>'item2','href'=>'menu7.php','class' => 'icon-user')
-		))*/
 );
 
 $config['subMenu1'] =array(
+	'Sistema'=> array('href'=>'#sistema','items'=>array(
+		'subItem1' => array('name'=>'Usuarios','href'=>'admin/users','class' => 'icon-plus'),
+		'subItem6' => array('name'=>'Alumnos Pre-Inscritos','href'=>'admin/pre_inscritos','class' => 'icon-plus'),
+		'subItem7' => array('name'=>'Alumnos','href'=>'admin/alumnos','class' => 'icon-plus'),
+		'subItem8' => array('name'=>'Profesores','href'=>'admin/profesores','class' => 'icon-plus'))
+			),
+       'Materia'=> array('href'=>'#materia','items'=>array(
+               'subItem' => array('name'=>'Agregar Materia','href'=>'materia_c/insertar','class' => 'icon-plus'),
+               )),
+       'Requisito'=> array('href'=>'#requesito','items'=>array(
+               'subItem2' => array('name'=>'Consultar','href'=>'ControllerRequisitos/listar','class' => 'icon-tags'),
+               )),
+       'BaseDato'=> array('href'=>'#Basedato','items'=>array(
+               'subItem' => array('name'=>'Backup','href'=>'ControllerBD/backup','class' => 'icon-plus'),
+               'subItem2' => array('name'=>'Restore','href'=>'ControllerBD/restore_view','class' => 'icon-tags'),
+               )),
+       'Pensum'=> array('href'=>'#pensum','items'=>array(
+               'subItem2' => array('name'=>'Consultar Pensum','href'=>'pensum','class' => 'icon-tags'),
+               )),
+       'Plan de evaluaciones' => array('href'=>'#plan_evaluaciones','items'=>array(
+       		'subItem2' => array('name'=>'Consultar Plan de Evaluacion','href' =>'plan_evaluacion/consultar','class' => 'icon-plus'),
+       	))
+
+);
+
+
+$config['subMenu3'] =array(
 	'Sistema'=> array('href'=>'#sistema','items'=>array(
 		'subItem1' => array('name'=>'Usuarios','href'=>'admin/users','class' => 'icon-plus'),
 		'subItem2' => array('name'=>'Usuarios Inactivos','href'=>'admin/unactivated_users','class' => 'icon-book'),

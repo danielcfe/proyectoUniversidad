@@ -162,7 +162,7 @@ $config['DX_recaptcha_private_key'] = '6LcNO9ISAAAAAIMeF9o2YIlAovWwvi2T-qArp0DE'
 |
 */
 
-$config['DX_deny_uri'] = '/auth/deny/';
+$config['DX_deny_uri'] = '/';
 $config['DX_login_uri'] = '/auth/login/';
 $config['DX_banned_uri'] = '/auth/banned/';
 $config['DX_activate_uri'] = '/auth/activate/';

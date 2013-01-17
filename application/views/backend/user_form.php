@@ -71,8 +71,11 @@ echo form_open($this->uri->uri_string(),$attr)?>
 	passwordB($campos['confirmpassword']); 
 	$options = array( "O-" =>"O-" ,"O+" =>"O+" ,"A-" =>"A-" ,"A+" =>"A+","B-" =>"B-" ,"B+" =>"B+" ,"AB-" =>"AB-" ,"AB+" =>"AB+");	
 	selectB('Tipo de Sangre','blood_type',$options);
+	//$options =  (!count($carreras))? array(0 => 'Cargue Carreras' ):$carreras;
 	$options = $carreras;
 	selectB('Carrera','Carrera',$options);
+
+	//var_dump($options);
 	textareaB('Observaciones',$campos['observations']);
 
 	?>

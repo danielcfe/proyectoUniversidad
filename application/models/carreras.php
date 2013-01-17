@@ -51,7 +51,7 @@
 			return $query->result_array();
 		}
 
-<<<<<<< HEAD
+
 		public function all(){
 			$this->db->select('nombre,id');
 			$this->db->from('carrera c');
@@ -69,7 +69,7 @@
 			//return $query->result_array();
 		}
 		
-=======
+
 		public function consulta_car(){	
 			$query = $this->db->get('carrera');
 			$carrera[0]= '';
@@ -79,7 +79,7 @@
 			//die(var_dump($departamento));
 			return $carrera;
 		}
->>>>>>> d41e419dbd87f1e614f7da9e5f3b75024a50da34
+
 
 		public function consultar_ca_a($id){
 
@@ -98,7 +98,7 @@
 			return $result;
 
 		}
-
+/*
 		public function all($id){
 
 			$this->db->select('id as id,nombre as nombre');
@@ -116,5 +116,7 @@
 			return $result;
 
 		}
+		*/
 	}
+
 ?>	

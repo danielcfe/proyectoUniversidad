@@ -14,9 +14,9 @@ class admin extends CI_Controller
 		$this->load->library('Pagination');
 		$this->load->library('DX_Auth');
 		
-	//	$this->load->helper('form');
-	//	$this->load->helper('url');
-		
+		//	$this->load->helper('form');
+		//	$this->load->helper('url');
+				
 		// Protect entire controller so only admin, 
 		// and users that have granted role in permissions table can access it.
 		$this->dx_auth->check_uri_permissions();
@@ -124,7 +124,7 @@ class admin extends CI_Controller
 					$this->load->model('Carreras');
 					$data = $this->Carreras->all();
 					//var_dump($data[0]);
-					$datos_plantilla['carreras'] = $data[0];
+					$datos_plantilla['carreras'] =  (isset($data[0]))? $data[0]:array(0 => 'Cargue Carreras' );
 					$datos_plantilla['css']= 'jquery-ui-1.9.2.custom.min';
 					$datos_plantilla['js']= 'admin/users.js';
 					$datos_plantilla['contenido'] = 'backend/user_form';
@@ -256,7 +256,7 @@ class admin extends CI_Controller
 		$this->load->model('dx_auth/users', 'users');			
 		
 		// Search checkbox in post array
-		foreach ($_POST as $key => $value)
+/*		foreach ($_POST as $key => $value)
 		{
 			// If checkbox found
 			if (substr($key, 0, 9) == 'checkbox_')
@@ -301,7 +301,7 @@ class admin extends CI_Controller
 					}
 				}
 			}				
-		}
+		}*/
 		
 		/* Showing page to user */
 		
@@ -311,7 +311,7 @@ class admin extends CI_Controller
 		$row_count = 10;
 		
 		// Get all users
-		$data['users'] = $this->users->get_all($offset, $row_count)->result();
+		$data['users'] = $this->users->get_all_rol(1,$offset, $row_count)->result();
 		
 		// Pagination config
 		$p_config['base_url'] = base_url().'/admin/users/';
@@ -334,6 +334,42 @@ class admin extends CI_Controller
 		//	$this->load->view($this->dx_auth->logged_in_view, $datos_plantilla);
 			$this->load->view('plantilla',$datos_plantilla);
 	}
+
+	function alumnos(){
+
+		$this->load->model('dx_auth/users', 'users');		
+		// Get offset and limit for page viewing
+		$offset = (int) $this->uri->segment(3);
+		// Number of record showing per page
+		$row_count = 10;
+		
+		// Get all users
+		$data['users'] = $this->users->get_all_rol(1,$offset, $row_count)->result();
+		
+		// Pagination config
+		$p_config['base_url'] = base_url().'/admin/users/';
+		$p_config['uri_segment'] = 3;
+		$p_config['num_links'] = 2;
+		$p_config['total_rows'] = $this->users->get_all()->num_rows();
+		$p_config['per_page'] = $row_count;
+				
+		// Init pagination
+		$this->pagination->initialize($p_config);		
+		// Create pagination links
+		$data['pagination'] = $this->pagination->create_links();
+		
+		// Load view
+		//$this->load->view('backend/users', $data);
+			//$data['auth_message'] = 'You are already logged in.';
+			$datos_plantilla['js'] = 'admin.js';
+			$datos_plantilla['data'] = $data;
+			$datos_plantilla['contenido'] = 'backend/users';
+		//	$this->load->view($this->dx_auth->logged_in_view, $datos_plantilla);
+			$this->load->view('plantilla',$datos_plantilla);	
+
+	}
+
+
 
 
 	function users()

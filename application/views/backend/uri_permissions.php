@@ -42,11 +42,11 @@
 					<div class="hero-unit">
 				<?php 
 											
-					echo 'Allowed URI (One URI per line) :<br/>';					
-					echo "Input '/' to allow role access all URI.<br/>";
-					echo "Input '/controller/' to allow role access controller and it's function.<br/>";
-					echo "Input '/controller/function/' to allow role access controller/function only.<br/>";
-					echo 'These rules only have effect if you use check_uri_permissions() in your controller<br/>.';
+					echo 'Direcciones Permitidas (1 por línea) :<br/>';					
+					echo "Input '/' Acceso a todas las direcciones.<br/>";
+					echo "Input '/controller/' Acceso a todas las funciones de una zona<br/>";
+					echo "Input '/controller/function/' Permite acceso a una dirección en especifico<br/>";
+					//echo 'These rules only have effect if you use check_uri_permissions() in your controller<br/>.';
 				 ?>	
 				 	</div>
 				</td>

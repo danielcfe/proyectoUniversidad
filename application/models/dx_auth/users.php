@@ -36,6 +36,29 @@ class Users extends CI_Model
 		return $query;
 	}
 
+	function get_all_rol($rol = 0, $offset = 0, $row_count = 0)
+	{
+		$users_table = $this->_table;
+		$roles_table = $this->_roles_table;
+		
+		if ($offset >= 0 AND $row_count > 0)
+		{
+			$this->db->select("$users_table.*", FALSE);
+			$this->db->select("$roles_table.name AS role_name", FALSE);
+			$this->db->join($roles_table, "$roles_table.id = $users_table.role_id");
+			$this->db->where("$roles_table.id", $rol);
+			$this->db->order_by("$users_table.id", "ASC");
+			
+			$query = $this->db->get($this->_table, $row_count, $offset); 
+		}
+		else
+		{
+			$query = $this->db->get($this->_table);
+		}
+		
+		return $query;
+	}	
+
 	function get_user_by_id($user_id)
 	{
 		$this->db->where('id', $user_id);
