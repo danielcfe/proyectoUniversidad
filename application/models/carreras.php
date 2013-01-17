@@ -51,7 +51,17 @@
 			return $query->result_array();
 		}
 
-<<<<<<< HEAD
+		public function consulta_car(){	
+			$query = $this->db->get('carrera');
+			$carrera[0]= '';
+			foreach ($query->result() as $row) {
+				$carrera[$row->id] = $row->nombre;
+			}
+			//die(var_dump($departamento));
+			return $carrera;
+		}
+
+/*<<<<<<< HEAD
 		public function all(){
 			$this->db->select('nombre,id');
 			$this->db->from('carrera c');
@@ -70,15 +80,7 @@
 		}
 		
 =======
-		public function consulta_car(){	
-			$query = $this->db->get('carrera');
-			$carrera[0]= '';
-			foreach ($query->result() as $row) {
-				$carrera[$row->id] = $row->nombre;
-			}
-			//die(var_dump($departamento));
-			return $carrera;
-		}
+		
 >>>>>>> d41e419dbd87f1e614f7da9e5f3b75024a50da34
 
 		public function consultar_ca_a($id){
@@ -116,5 +118,6 @@
 			return $result;
 
 		}
-	}
+	}*/
+}
 ?>	
