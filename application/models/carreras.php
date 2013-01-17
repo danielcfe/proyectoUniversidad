@@ -43,10 +43,10 @@
 			return $query->result_array();
 		}
 
-		public function consulta_general($id){
+		public function consulta_general(){
 			$this->db->select('c.id, c.nombre, d.nombre as nombre_d');
 			$this->db->from('carrera c, departamento d');
-			$this->db->where('c.departamento_id = d.id and c.departamento_id = '. $id);
+			$this->db->where('c.departamento_id = d.id ');
 			$query = $this->db->get();
 			return $query->result_array();
 		}
@@ -60,29 +60,7 @@
 			//die(var_dump($departamento));
 			return $carrera;
 		}
-
-/*<<<<<<< HEAD
-		public function all(){
-			$this->db->select('nombre,id');
-			$this->db->from('carrera c');
-			$this->db->order_by("nombre", "desc");
-			$query = $this->db->get();
-			$result = array();
-			if($query->num_rows() > 0)
-			{
-				foreach ($query->result() as $row)
-				{
-					$result[]=  array( $row->id => $row->nombre );
-				}
-			}
-			return $result;			
-			//return $query->result_array();
-		}
-		
-=======
-		
->>>>>>> d41e419dbd87f1e614f7da9e5f3b75024a50da34
-
+	
 		public function consultar_ca_a($id){
 
 			$this->db->select('id as id,nombre as label, nombre as value');
@@ -101,23 +79,6 @@
 
 		}
 
-		public function all($id){
-
-			$this->db->select('id as id,nombre as nombre');
-			$this->db->from('carrera');
-			$this->db->where('departamento_id',$id);
-			$query = $this->db->get();
-			$result = array();
-			if($query->num_rows() > 0)
-			{
-				foreach ($query->result() as $row)
-				{
-					$result[]= $row;
-				}
-			}
-			return $result;
-
-		}
-	}*/
+	
 }
 ?>	

@@ -11,7 +11,8 @@ class Materia_c extends CI_Controller {
 		function __construct()
 			{
 				parent::__construct();
-				$this->load->model('materia');			
+				$this->load->model('materia');	
+				$this->dx_auth->check_uri_permissions();		
 			} 
 
 		function index()

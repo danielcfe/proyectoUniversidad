@@ -8,6 +8,7 @@ class controllerBD extends CI_Controller
 	{ 
 		parent::__construct();
 		$this->load->dbutil(); 
+		$this->dx_auth->check_uri_permissions();
 	}
 
 

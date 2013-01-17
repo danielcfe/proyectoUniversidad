@@ -5,7 +5,8 @@
 		function __construct()
 			{
 				parent::__construct();
-				$this->load->model('departamentos');			
+				$this->load->model('departamentos');	
+				$this->dx_auth->check_uri_permissions();		
 			} 
 
 		function index()

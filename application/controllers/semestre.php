@@ -11,7 +11,8 @@
 		function __construct()
 			{
 				parent::__construct();
-				$this->load->model('semestres');				
+				$this->load->model('semestres');		
+				$this->dx_auth->check_uri_permissions();		
 			} 
 
 		function index()
