@@ -18,7 +18,7 @@ foreach ($datos_evaluacion as $datos_evaluacion) {
 ?>
 	<tr>
 		<td><?php echo $datos_evaluacion['id']; ?></td>
-		<td><?php echo anchor("estudiante_has_evaluacion/insertar/".$datos_evaluacion['id'],$datos_evaluacion['descripcion']); ?></td>
+		<td><?php echo $datos_evaluacion['descripcion']; ?></td>
 		<td><?php echo $datos_evaluacion['valor']; ?></td>
 		<td><?php echo $datos_evaluacion['plan_evaluacion_id']; ?></td>
 

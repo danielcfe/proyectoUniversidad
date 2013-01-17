@@ -73,6 +73,10 @@ $config['subMenu2'] =array(
        		'subItem' => array('name'=>'Agregar Plan de Evaluacion','href' =>'plan_evaluacion/insertar','class' => 'icon-plus'),
        		'subItem2' => array('name'=>'Consultar Plan de Evaluacion','href' =>'plan_evaluacion/consultar','class' => 'icon-plus'),
        	)),
+       'Calificaciones' => array('href'=>'#calificaciones','items'=>array(
+       		'subItem' => array('name'=>'Agregar calificacion','href' =>'estudiante_has_evaluacion/insertar','class' => 'icon-plus'),
+       		'subItem2' => array('name'=>'Consultar calificacion','href' =>'estudiante_has_evaluacion/consultar','class' => 'icon-tags'),
+       	)),       
        'Auditoria' => array('href'=>'#auditoria','items'=>array(
        		'subItem' => array('name'=>'Consultar Auditoria','href' =>'auditoria/consultar','class' => 'icon-plus')
        	))
@@ -118,6 +122,8 @@ $config['subMenu2ControllerRequisitos'] = $config['subMenu2'];
 $config['subMenu2BaseDato'] = $config['subMenu2'];
 $config['subMenu2pensum'] = $config['subMenu2'];
 $config['subMenu2plan_evaluacion'] = $config['subMenu2'];
+$config['subMenu2calificacion'] = $config['subMenu2'];
+$config['subMenu2auditoria'] = $config['subMenu2'];
 
 
 $config['menu_nav2']=array(
