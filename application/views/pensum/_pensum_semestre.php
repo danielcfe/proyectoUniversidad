@@ -37,69 +37,48 @@
 
 
 	<!-- SEMESTRE -->
-	<?php
-	if(!empty($semest))
-	{
-		$i = 0;
-		foreach ($semest as $value) 
+	<div class="row-fluid">
+
+		<?php
+		if(!empty($semest))
 		{
-			switch ($i) 
+		?>
+			<div class="accordion">
+		<?php
+			foreach ($semest as $value) 
 			{
-				case 0:
-	?>
-				<div class="row-fluid">
-					<div class="span4">
-						<div class="span5"><h4>Semestre <?php echo $value['semestre']?></h4></div>
-						<div class="span6">
-							<a href="#" class="btn btn-small btn-warning"><i class="icon-circle-arrow-up"></i> Ver</a>
-							<a href="#" class="delete btn btn-small btn-danger"><i class="icon-remove-sign"></i> Eliminar</a>
-						</div>
-					</div>	
-	<?php		
-				break;
+		?>
 				
-				case 2:
-	?>
-					<div class="span4">
-						<div class="span5"><h4>Semestre <?php echo $value['semestre']?></h4></div>
-						<div class="span6">
-							<a href="#" class="btn btn-small btn-warning"><i class="icon-circle-arrow-up"></i> Ver</a>
-							<a href="#" class="delete btn btn-small btn-danger"><i class="icon-remove-sign"></i> Eliminar</a>
+					<div class="accordion-group">
+
+						<div class="accordion-heading">
+							<a href="#collapseOne" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">
+                     	 		Semestre <?php echo $value['semestre']; ?>
+                    		</a>
 						</div>
-					</div>
-				</div>
-	<?php
-				$i = 0;
-				break;
 
-				default:
-	?>
-				<div class="span4">
-					<div class="span5"><h4>Semestre <?php echo $value['semestre']?></h4></div>
-					<div class="span6">
-						<a href="#" class="btn btn-small btn-warning"><i class="icon-circle-arrow-up"></i> Ver</a>
-						<a href="#" class="delete btn btn-small btn-danger"><i class="icon-remove-sign"></i> Eliminar</a>
-					</div>
-				</div>
+						<div class="accordion-body in collapse">
+							<div class="accordion-inner">
+								Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. 
+							</div>
+						</div>
 
-	<?php			
-				break;
+					</div>
+		<?php		
 			}
-
-			$i++;
+		?>
+			</div>
+		<?php
 		}
-	}
-	else
-	{
-	?>
-
-		<div class="row-fluid">
+		else
+		{
+		?>
 			<h3>El Pensum no tiene ningun semestre agregado</h3>
-		</div>
+		<?php	
+		}
+		?>
 
-	<?php	
-	}
-	?>
+	</div>
 
 
 </body>

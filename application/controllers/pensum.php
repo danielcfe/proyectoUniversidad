@@ -80,8 +80,9 @@ class Pensum extends CI_Controller
 		{ $arraySems = $classModelPen->get_pensum_semestre_all($idPensum); }
 
 		$datos_plantilla['contenido'] = 'pensum/_pensum_semestre';
-		$datos_plantilla['pensum'] = $arrayPen;
-		$datos_plantilla['semest'] = $arraySems;
+		$datos_plantilla['js'] 		  = 'semestre.js';
+		$datos_plantilla['pensum'] 	  = $arrayPen;
+		$datos_plantilla['semest'] 	  = $arraySems;
 		$this->load->view('plantilla', $datos_plantilla);
 	}
 
