@@ -33,7 +33,7 @@
 			if($this->dx_auth->is_admin()){
 
 				$attr = array('name' => 'newadm', 'value' => 'Nuevo Administrativo', 'class' =>  'btn ','id' => 'newadm' );
-				echo anchor('admin/newuser', 'Nuevo Alumno', $attr);
+				echo anchor('admin/newuser', 'Nuevo Pre-Alumno', $attr);
 				//echo form_submit($attr);
 				$attr = array('name' => 'newprof', 'value' => 'Nuevo Profesor', 'class' =>  'btn ' );
 				echo form_submit($attr);
