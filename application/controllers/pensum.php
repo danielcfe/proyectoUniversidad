@@ -1,80 +1,91 @@
 <?php
-	class pensum extends CI_Controller
+class Pensum extends CI_Controller
+{
+	private $arrayCamposRules = array( 
+									array( 'field' => 'departamento', 'label' => 'Departamento', 'rules' => 'trim|required|xss_clean' ),
+									array( 'field' => 'carrera', 'label' => 'Carrera', 'rules' => 'trim|required|xss_clean' )
+								);
+
+	function __construct()
 	{
-
-		function __construct()
-			{
-				parent::__construct();
-				$this->load->model('pensums');	
-				$this->dx_auth->check_uri_permissions();		
-			} 
-
-		function index()
-		{
-			$this->consulta();
-		}
-
-		function agregar(){
-			$this->form_validation->set_rules('carrera_id', 'Carrera_id', 'required');
-
-			if ($this->form_validation->run() == FALSE){
-					$datos_plantilla["contenido"] = "pensum/_registro_pensum";
-					$datos_plantilla['css']= 'jquery-ui-1.9.2.custom.min';
-					$datos_plantilla['js']= 'semestre.js';
-					$datos_plantilla['js']= 'departamento.js';
-					$this->load->view('plantilla', $datos_plantilla);
-				}else{			
-				$this->pensums->setFecha(date('Y-m-d'));
-				$this->pensums->setCarrera_id($this->input->post('carrera_id'));				
-				$this->pensums->agregar();
-
-				$datos_plantilla["contenido"] = "mensaje";
-				$this->load->view('plantilla', $datos_plantilla);
-			}
-		}
-
-		function editar($id=null){
-			if(is_null($id)){								
-				$this->form_validation->set_rules('carrera_id', 'Carrera_id', 'required');
-
-				if ($this->form_validation->run() == FALSE){
-					$datos_plantilla["contenido"] = "pensum/_editar_pensum";
-					$this->load->view('plantilla', $datos_plantilla);
-				}else{
-					$this->pensums->setId($this->input->post('id'));
-					$this->pensums->setCarrera_id($this->input->post('carrera_id'));		
-					$this->pensums->editar();
-					$datos_plantilla["contenido"] = "mensaje";			
-				}							
-			}else{
-				$datos_plantilla["pensum"] = $this->pensums->cargar($id);
-				$datos_plantilla["contenido"] = "pensum/_editar_pensum";						
-			}
-			$this->load->view('plantilla', $datos_plantilla);
-		}
-
-		function eliminar($id){
-			$this->pensums->setId($id);			
-			$this->pensums->eliminar();
-
-			$datos_plantilla["contenido"] = "mensaje.php";
-			$this->load->view('plantilla', $datos_plantilla);
-
-		}
-
-		function consulta($id = null){		
-			$datos_plantilla["pensum"] = $this->pensums->consulta_general();
-			$datos_plantilla["contenido"] = "pensum/_consulta_pensum";
-			$this->load->view('plantilla', $datos_plantilla);			 
-
-		}
-
-		function get($id){
-			$datos_plantilla["pensum"] = $this->pensums->cargar($id);
-			$datos_plantilla["contenido"] = "pensum/_editar_pensum";
-			$this->load->view('plantilla', $datos_plantilla);
-		}
-
-
+		parent::__construct();
+		$this->load->model('departamentos');
+		$this->load->model('carreras');
+		$this->load->model('pensums');
 	}
+
+	private function set_datos($obj)
+	{
+		$array_valor  = array( 'fecha' => date('Y-m-d'), 'carrera_id' => $this->input->post('carrera') );
+		foreach ($array_valor as $key => $value) 
+		{ $obj->set($key, $value); }
+	}
+
+	function index()
+	{
+		$this->agregar();
+	}
+
+
+	function agregar()
+	{
+		$classModelDep = new Departamentos;
+		$classModelPen = new Pensums;
+		$arrayDep      = array('' => 'Selecc. Departamento...');
+		$array 		   = $classModelDep->consulta_general();
+
+
+		# Preparando el arreglo que se pasara a la vista para llenar departamento
+		foreach ($array as $val) 
+		{ $arrayDep[$val['id']] = $val['nombre']; }
+
+		$datos_plantilla['contenido'] = 'pensum/_registro_pensum';
+		$datos_plantilla['js'] 		  = 'pensum.js';
+		$datos_plantilla['arrayDep']  = $arrayDep;
+		$datos_plantilla['arrayCar']  = array('' => '');
+
+		$this->form_validation->set_rules($this->arrayCamposRules);
+		if ( !$this->form_validation->run() )
+		{ $this->load->view('plantilla', $datos_plantilla);	}
+		else
+		{
+			$this->set_datos($classModelPen);
+			$classModelPen->insertar_pensum();
+			$this->pensum_semestre($this->db->insert_id());
+		}
+	}
+
+
+	function json_carrera_dep($id)
+	{
+		$classModelCar = new Carreras;
+		$array 	       = $classModelCar->consultar_ca_a($id);
+		
+		# Preparando el arreglo que se pasara a la vista para llenar carrera
+		foreach ($array as $val) 
+		{ $arrayCar[$val->id] = $val->label; }
+		echo json_encode($arrayCar);
+	}
+
+
+	function pensum_semestre($idPensum)
+	{
+		$classModelPen = new Pensums;
+		$arrayPen      = $classModelPen->get_pensum_one($idPensum);
+		$count 		   = $classModelPen->get_pensum_count_semestre($idPensum);
+
+		if($count[0]['count_semestre'] = 0)
+		{ $arraySems = 0; }
+		else
+		{ $arraySems = $classModelPen->get_pensum_semestre_all($idPensum); }
+
+		$datos_plantilla['contenido'] = 'pensum/_pensum_semestre';
+		$datos_plantilla['pensum'] = $arrayPen;
+		$datos_plantilla['semest'] = $arraySems;
+		$this->load->view('plantilla', $datos_plantilla);
+	}
+
+
+} 
+
 ?>
