@@ -2,7 +2,7 @@
 <head><title>.:Semestre_Pensum:.></title></head>
 
 <body>
-
+	<input type="hidden" name="idSemestre" id="idSemestre" value="<?php echo $pensum[0]['id']; ?>">
 	<div class="row-fluid">
 		
 		<div class="span6">
@@ -58,6 +58,20 @@
 							<input type="hidden" value="" name="materia_id" id="materia_id">
 							<div class="span1"> <h4>Materia</h4> </div>
 							<div class="span3"> <input type="text" value="" name="materia" id="materia"> </div>
+							<div class="span12">
+								<table class="table" id="tableMateria">
+									<tr>
+										<td><h5>Codigo</h5></td>
+										<td><h5>Unidad Curricular</h5></td>
+										<td><h5>H. Teoricas</h5></td>
+										<td><h5>H. Practicas</h5></td>
+										<td><h5>Total Horas</h5></td>
+										<td><h5>Uni. Credito</h5></td>
+										<td><h5>Cod. Prelacion</h5></td>
+										<td></td>
+									</tr>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -32,6 +32,20 @@ $(document).ready(function()
             tagAcorSeme += '<input type="hidden" value="" name="materia_id" id="materia_id">';
             tagAcorSeme += '<div class="span1"> <h4>Materia</h4> </div>'
             tagAcorSeme += '<div class="span3"> <input type="text" value="" name="materia" id="materia"> </div>';
+            tagAcorSeme += '<div class="span12">';
+            tagAcorSeme += '<table class="table" id="tableMateria">';
+            tagAcorSeme += '<tr>';
+            tagAcorSeme += '<td><h5>Codigo</h5></td>';
+            tagAcorSeme += '<td><h5>Uni. Curricular</h5></td>';
+            tagAcorSeme += '<td><h5>H. Teoricas</h5></td>';
+            tagAcorSeme += '<td><h5>H. Practicas</h5></td>';
+            tagAcorSeme += '<td><h5>Total Horas</h5></td>';
+            tagAcorSeme += '<td><h5>Uni. Credito</h5></td>';
+            tagAcorSeme += '<td><h5>Cod. Prelacion</h5></td>';
+            tagAcorSeme += '<td></td>';
+            tagAcorSeme += '</tr>';
+            tagAcorSeme += '</table>';
+            tagAcorSeme += '</div>';
             tagAcorSeme += '</div>';
             tagAcorSeme += '</div>';
             tagAcorSeme += '</div>';
@@ -54,8 +68,9 @@ $(document).ready(function()
   //+--------------------------------------------------------+
   $accordion.live('click', function()
   {
-      var $materia   = $(this).parent().children('div.accordion-body').children().children('div.span3').children();
-      var $materiaId = $(this).parent().children('div.accordion-body').children().children('input#materia_id');
+      var $materia      = $(this).parent().children('div.accordion-body').children().children('div.span3').children();
+      var $materiaId    = $(this).parent().children('div.accordion-body').children().children('input#materia_id');
+      var $tableMateria = $(this).parent().children('div.accordion-body').children().children('div.span12').children();
 
       $materia.val('');
       $materiaId.val('');
@@ -67,12 +82,39 @@ $(document).ready(function()
           source: dataMateria,
           minLength: 0,
           focus: function( event, ui ) {},
-          select: function( event, ui ) {
-          $materiaId.val(ui.item.codigo);
-          return true;}
+          select: function( event, ui ) 
+          {
+              $materiaId.val(ui.item.codigo);
+              agregarMateriaSemest($tableMateria, ui.item);
+              return true;
+          }
         });
       });
   });
+
+
+
+  //+---------------------------------------------------------------+
+  //|   AGREGAR MATERIA                                             |
+  //+---------------------------------------------------------------+
+  //|   Agrega la materia a un pensum especifico junto el semestre  |
+  //+---------------------------------------------------------------+
+  function agregarMateriaSemest($objectTag, data)
+  {
+
+    var tagTableMat  = '<tr>';
+        tagTableMat += '<td>'+data.codigo+'</td>';
+        tagTableMat += '<td>'+data.unidad_curricular+'</td>';
+        tagTableMat += '<td>'+data.horas_teoricas+'</td>';
+        tagTableMat += '<td>'+data.horas_practicas+'</td>';
+        tagTableMat += '<td>'+data.total_horas+'</td>';
+        tagTableMat += '<td>'+data.uni_credito+'</td>';
+        tagTableMat += '<td>'+data.cod_prelacion+'</td>';
+        tagTableMat += '<td><button class="btn btn-mini btn-danger" type="button"><i class="icon-remove-sign"></i></td>';
+        tagTableMat += '</tr>'; 
+
+     $objectTag.append(tagTableMat);
+  }
 
 
 });
