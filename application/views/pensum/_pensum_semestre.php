@@ -10,7 +10,7 @@
 		</div>
 
 		<div class="span2 offset4">
-			<a class="btn btn-primary" href="<?=base_url()?>semestre/agregar_semestre/<?php echo $pensum[0]['id']; ?>"><i class="icon-plus icon-white"></i> Agregar Semestre</a>
+			<a class="btn btn-primary" href="#" name="agregarSemes" id="agregarSemes"><i class="icon-plus icon-white"></i> Agregar Semestre</a>
 		</div>
 	</div>
 
@@ -38,46 +38,44 @@
 
 	<!-- SEMESTRE -->
 	<div class="row-fluid">
-
+		<div class="accordion" id="accordionSemestre">
 		<?php
 		if(!empty($semest))
 		{
-		?>
-			<div class="accordion">
-		<?php
 			foreach ($semest as $value) 
 			{
+				$i = $value['semestre'];
 		?>
-				
-					<div class="accordion-group">
-
-						<div class="accordion-heading">
-							<a href="#collapseOne" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">
-                     	 		Semestre <?php echo $value['semestre']; ?>
-                    		</a>
-						</div>
-
-						<div class="accordion-body in collapse">
-							<div class="accordion-inner">
-								Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. 
-							</div>
-						</div>
-
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionSemestre" href="#semestre<?php echo $i;?>">
+							<h3>Semestre #<?php echo $i;?></h3>
+						</a>
 					</div>
+					<div id="semestre<?php echo $i;?>" class="accordion-body collapse">
+						<div class="accordion-inner">
+							<input type="hidden" value="<?php echo $i;?>", name="semestre" id="semestre">
+							<input type="hidden" value="" name="materia_id" id="materia_id">
+							<div class="span1"> <h4>Materia</h4> </div>
+							<div class="span3"> <input type="text" value="" name="materia" id="materia"> </div>
+						</div>
+					</div>
+				</div>
 		<?php		
 			}
 		?>
-			</div>
+			<input type="hidden" value="<?php echo $i;?>" name="numSemes" id="numSemes">
 		<?php
 		}
 		else
 		{
 		?>
-			<h3>El Pensum no tiene ningun semestre agregado</h3>
+			<input type="hidden" value="0" name="numSemes" id="numSemes">
+			<h3 class="penNoSeme">El Pensum no tiene ningun semestre agregado</h3>
 		<?php	
 		}
 		?>
-
+		</div>
 	</div>
 
 

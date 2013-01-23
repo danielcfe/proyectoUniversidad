@@ -5,21 +5,17 @@ class Semestre extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('semestres');		
+		$this->load->model('semestres');
+		$this->load->model('materia');		
 		$this->dx_auth->check_uri_permissions();		
 	} 
 
-	function agregar_semestre($idPensum)
+	function json_get_materia()
 	{
-
-		$datos_plantilla['contenido'] = 'semestre/_agregar_semestre';
-		$datos_plantilla['js'] 		  = 'semestre.js';
-
-		if ( !$this->form_validation->run() )
-		{ $this->load->view('plantilla', $datos_plantilla);	}
-		else
-		{ $this->load->view('plantilla', $datos_plantilla); }
+		echo json_encode($this->materia->consultar_mat_a());
 	}
+
+
 
 }
 ?>

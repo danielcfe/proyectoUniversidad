@@ -80,6 +80,7 @@ class Pensum extends CI_Controller
 		{ $arraySems = $classModelPen->get_pensum_semestre_all($idPensum); }
 
 		$datos_plantilla['contenido'] = 'pensum/_pensum_semestre';
+		$datos_plantilla['css']		  = 'jquery-ui-1.9.2.custom.min';
 		$datos_plantilla['js'] 		  = 'semestre.js';
 		$datos_plantilla['pensum'] 	  = $arrayPen;
 		$datos_plantilla['semest'] 	  = $arraySems;
