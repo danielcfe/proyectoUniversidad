@@ -9,14 +9,38 @@
 		function __construct(){parent::__construct();}
 
 
-	    public function insertar_semestre(){
-	    	
+		public function set_pensum_id($id)
+		{ $this->pensum_id = $id; }
+		public function set_materia_codigo($codigo)
+		{ $this->materia_codigo = $codigo; }
+		public function set_semestre($num)
+		{ $this->semestre = $num; }
+
+	    public function insertar_semestre()
+	    {	
 	    	$data = array('pensum_id' => $this->pensum_id, 'materia_codigo' => $this->materia_codigo, 'semestre' => $this->semestre);
 	    	return $this->db->insert('pensum_has_materia',$data);
+	    }
+
+	    public function eliminar_semestre()
+	    {
+	    	$array = array('pensum_id' => $this->pensum_id, 'materia_codigo' => $this->materia_codigo);
+	    	$this->db->where($array);
+			return $this->db->delete('pensum_has_materia');
 
 	    }
 	    
-	    public function editar_semestre(){
+	    public function get_semestre_materia($pensumID, $semetre)
+	    {
+	    	$this->db->select('B.*');
+	    	$this->db->join('materia AS B', 'B.codigo = A.materia_codigo');
+	    	$this->db->where('A.pensum_id', $pensumID);
+	    	$this->db->where('A.semestre', $semetre);
+	    	$query = $this->db->get('pensum_has_materia AS A');
+    		return $query->result_array();
+	    }
+
+	    /*public function editar_semestre(){
 	    	
 	    }
 
@@ -46,7 +70,7 @@
 
 	    public function verificar($codigo){
 
-	    }
+	    }*/
 
 	}
 ?>	

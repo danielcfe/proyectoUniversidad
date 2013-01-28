@@ -9,6 +9,7 @@ class Pensums extends CI_Model
 	function __construct()
 	{
 		parent::__construct();
+        $this->load->model('semestres');
 	}
 
 	//+---------------------------------------------------------------------+
@@ -39,6 +40,16 @@ class Pensums extends CI_Model
     	return $query->result_array();
     }
 
+    public function get_pensum_all()
+    {
+        $this->db->select($this->select);
+        $this->db->from('pensum AS A');
+        $this->db->join('carrera AS B', 'B.id = A.carrera_id');
+        $this->db->join('departamento AS C', 'C.id = B.departamento_id');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function get_pensum_count_semestre($id)
     {
     	$this->db->select('COUNT(semestre) AS count_semestre');
@@ -49,10 +60,20 @@ class Pensums extends CI_Model
 
     public function get_pensum_semestre_all($id)
     {
+        $this->db->select('pensum_id, semestre');
     	$this->db->where('pensum_id', $id);
     	$this->db->group_by('semestre');
     	$query = $this->db->get('pensum_has_materia');
-    	return $query->result_array();
+    	$array = $query->result_array();
+        $array2 = null;
+        $i = 0;
+        foreach ($array as $key) 
+        {
+            $key['materia'] = $this->semestres->get_semestre_materia($key['pensum_id'], $key['semestre']);
+            $array2[$i++] = $key;
+        }
+
+        return $array2;
     }
 
     public function get_pensum_semestre_one($idPensum, $numSemes)
@@ -68,6 +89,12 @@ class Pensums extends CI_Model
 		$array_campos = array( 'fecha' => $this->get('fecha'), 'carrera_id' => $this->get('carrera_id') );
 		return $this->db->insert( 'pensum', $array_campos );
 	}
+
+    public function actualizar_pensum($id)
+    {
+        $array_campos = array( 'fecha' => $this->get('fecha'), 'carrera_id' => $this->get('carrera_id') );
+        return $this->db->update( 'pensum', $array_campos, 'id = '.$id );
+    }
 
 }
 

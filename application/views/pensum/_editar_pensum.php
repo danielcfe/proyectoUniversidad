@@ -1,24 +1,38 @@
 <html>
-<head>
-<title>Mi Formulario</title>
-</head>
-	 <body>
-		<?php $this->load->helper('form');?>
-		<?php  echo form_open('pensum/editar', 'class = "well"');
-		 $pensum = $pensum[0];?>		
+<head><title>.:Agregar_Pensum:.></title></head>
 
-		 <h1>Edicion de Pensum</h1>     
-		
-		<h4>Id del pensum </h4>
-		<input type="text" name="id" readonly="readonly" value="<?php echo $pensum['id'] ?>" size="50" />
-		<?php echo form_error('id'); ?>
+<body>
 
-		<h4>Carrera </h4>
-		<input type="text" name="carrera_id" value="<?php echo $pensum['carrera_id'] ?>" size="50" />
-		<?php echo form_error('carrera_id','<div class="alert alert-error">', '</div>'); ?>
+	<h2>Nuevo Pensum</h2>
 
-		<div><button class= "btn btn-primary" type="submit" value="Enviar"><i class="icon-plane icon-white"></i>  Enviar Informacion</button>
+	<?php echo form_open(); ?>
+		<input type="hidden" name="idPensum" value="<?php echo $id?>">
+		<div class="row-fluid">
+			<div class="span6">
+				<h4>Departamento</h4>
+
+				<?php echo form_dropdown('departamento', $arrayDep, '', 'id="departamento"'); ?>
+
+				<?php echo form_error('departamento', '<div class="alert alert-error">', '</div>'); ?>
 			</div>
-		</form>
-	</body>
-</html>
+
+			<div class="span6">
+				<h4>Carrera</h4>
+
+				<?php echo form_dropdown('carrera', $arrayCar, '', 'id="carrera" disabled'); ?>
+
+				<?php echo form_error('carrera', '<div class="alert alert-error">', '</div>'); ?>
+			</div>
+		</div>
+
+		<div class="row-fluid">
+			<div class="span12">	
+				<button class="btn btn-primary" type="submit" value="Enviar"><i class="icon-user icon-white"></i> Enviar Informacion</button>
+			</div>
+		</div>
+
+	</form>
+
+</body>
+
+</html>	

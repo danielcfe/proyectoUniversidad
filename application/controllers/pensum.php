@@ -23,16 +23,15 @@ class Pensum extends CI_Controller
 
 	function index()
 	{
-		$this->agregar();
+		$this->listar();
 	}
 
 
 	function agregar()
 	{
-		$classModelDep = new Departamentos;
 		$classModelPen = new Pensums;
 		$arrayDep      = array('' => 'Selecc. Departamento...');
-		$array 		   = $classModelDep->consulta_general();
+		$array 		   = $this->departamentos->consulta_general();
 
 
 		# Preparando el arreglo que se pasara a la vista para llenar departamento
@@ -55,6 +54,41 @@ class Pensum extends CI_Controller
 		}
 	}
 
+	function actualizar($id)
+	{
+		$classModelPen = new Pensums;
+		$arrayDep      = array('' => 'Selecc. Departamento...');
+		$array 		   = $this->departamentos->consulta_general();
+
+
+		# Preparando el arreglo que se pasara a la vista para llenar departamento
+		foreach ($array as $val) 
+		{ $arrayDep[$val['id']] = $val['nombre']; }
+
+		$datos_plantilla['contenido'] = 'pensum/_editar_pensum';
+		$datos_plantilla['js'] 		  = 'pensum.js';
+		$datos_plantilla['arrayDep']  = $arrayDep;
+		$datos_plantilla['arrayCar']  = array('' => '');
+		$datos_plantilla['id']		  = $id;
+
+		$this->form_validation->set_rules($this->arrayCamposRules);
+		if ( !$this->form_validation->run() )
+		{ $this->load->view('plantilla', $datos_plantilla);	}
+		else
+		{
+			$this->set_datos($classModelPen);
+			$classModelPen->actualizar_pensum($this->input->post('idPensum'));
+			$this->pensum_semestre($this->input->post('idPensum'));
+		}
+	}
+
+	function listar()
+	{
+		$datos_plantilla['contenido'] = 'pensum/_consulta_pensum';
+		$datos_plantilla['data'] = $this->pensums->get_pensum_all();
+		$this->load->view('plantilla', $datos_plantilla);
+	}
+
 
 	function json_carrera_dep($id)
 	{
@@ -70,14 +104,13 @@ class Pensum extends CI_Controller
 
 	function pensum_semestre($idPensum)
 	{
-		$classModelPen = new Pensums;
-		$arrayPen      = $classModelPen->get_pensum_one($idPensum);
-		$count 		   = $classModelPen->get_pensum_count_semestre($idPensum);
+		$arrayPen      = $this->pensums->get_pensum_one($idPensum);
+		$count 		   = $this->pensums->get_pensum_count_semestre($idPensum);
 
 		if($count[0]['count_semestre'] = 0)
 		{ $arraySems = 0; }
 		else
-		{ $arraySems = $classModelPen->get_pensum_semestre_all($idPensum); }
+		{ $arraySems = $this->pensums->get_pensum_semestre_all($idPensum); }
 
 		$datos_plantilla['contenido'] = 'pensum/_pensum_semestre';
 		$datos_plantilla['css']		  = 'jquery-ui-1.9.2.custom.min';
@@ -86,7 +119,6 @@ class Pensum extends CI_Controller
 		$datos_plantilla['semest'] 	  = $arraySems;
 		$this->load->view('plantilla', $datos_plantilla);
 	}
-
 
 } 
 

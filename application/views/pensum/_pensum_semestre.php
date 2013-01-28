@@ -2,7 +2,7 @@
 <head><title>.:Semestre_Pensum:.></title></head>
 
 <body>
-	<input type="hidden" name="idSemestre" id="idSemestre" value="<?php echo $pensum[0]['id']; ?>">
+	<input type="hidden" name="idPensum" id="idPensum" value="<?php echo $pensum[0]['id']; ?>">
 	<div class="row-fluid">
 		
 		<div class="span6">
@@ -46,10 +46,10 @@
 			{
 				$i = $value['semestre'];
 		?>
-				<div class="accordion-group">
+				<div class="accordion-group btn">
 					<div class="accordion-heading">
 						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionSemestre" href="#semestre<?php echo $i;?>">
-							<h3>Semestre #<?php echo $i;?></h3>
+							<h4>Semestre <?php echo $i;?></h4>
 						</a>
 					</div>
 					<div id="semestre<?php echo $i;?>" class="accordion-body collapse">
@@ -70,6 +70,25 @@
 										<td><h5>Cod. Prelacion</h5></td>
 										<td></td>
 									</tr>
+
+									<?php
+										foreach ($value['materia'] as $value)
+										{
+									?>
+										<tr>
+											<td><?php echo $value['codigo'];?></td>
+											<td><?php echo $value['unidad_curricular'];?></td>
+											<td><?php echo $value['horas_teoricas'];?></td>
+											<td><?php echo $value['horas_practicas'];?></td>
+											<td><?php echo $value['total_horas'];?></td>
+											<td><?php echo $value['uni_credito'];?></td>
+											<td><?php echo $value['cod_prelacion'];?></td>
+											<td><button class="btn btn-mini btn-danger" type="button" id="eliminarMat" value="<?php echo $value['codigo'];?>"><i class="icon-remove-sign"></i></td>
+										</tr>
+									<?php
+										}
+									?>
+									
 								</table>
 							</div>
 						</div>

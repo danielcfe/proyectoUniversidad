@@ -1,14 +1,15 @@
 $(document).ready(function() 
 {
 
-  var $accordionSemestre = $("#accordionSemestre");
-  var $agregarSemes      = $("#agregarSemes");
 
   //+--------------------------------------------------------+
   //|   AGREGAR SEMESTRE                                     |
   //+--------------------------------------------------------+
   //|   agrega el acordion para el nuevo semestre del pensum |
   //+--------------------------------------------------------+
+  var $accordionSemestre = $("#accordionSemestre");
+  var $agregarSemes      = $("#agregarSemes");
+
   $agregarSemes.on('click', function()
   {
       var numSemesMax = parseInt($("#numSemes").val());
@@ -20,10 +21,10 @@ $(document).ready(function()
           $(".penNoSeme").remove();
 
         numSemesMax++;
-        var tagAcorSeme  = '<div class="accordion-group">';
+        var tagAcorSeme  = '<div class="accordion-group btn">';
             tagAcorSeme += '<div class="accordion-heading">';
             tagAcorSeme += '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionSemestre" href="#semestre'+numSemesMax+'">';
-            tagAcorSeme += '<h3>Semestre #'+numSemesMax+'</h3>';
+            tagAcorSeme += '<h4>Semestre '+numSemesMax+'</h4>';
             tagAcorSeme += '</a>';
             tagAcorSeme += '</div>';
             tagAcorSeme += '<div id="semestre'+numSemesMax+'" class="accordion-body collapse">';
@@ -55,10 +56,6 @@ $(document).ready(function()
 
       $("#numSemes").val(numSemesMax);
   });
-
-
-
-  var $accordion = $("div.accordion-heading");
   
 
   //+--------------------------------------------------------+
@@ -66,11 +63,15 @@ $(document).ready(function()
   //+--------------------------------------------------------+
   //|   busca en BD las conincidencias que este en el texto  |
   //+--------------------------------------------------------+
+  var $accordion  = $("div.accordion-heading");
+  var $idPensum   = $("#idPensum");
+
   $accordion.live('click', function()
   {
-      var $materia      = $(this).parent().children('div.accordion-body').children().children('div.span3').children();
-      var $materiaId    = $(this).parent().children('div.accordion-body').children().children('input#materia_id');
-      var $tableMateria = $(this).parent().children('div.accordion-body').children().children('div.span12').children();
+      var $parent       = $(this).parent(); 
+      var $materia      = $(this).parent().find('input#materia');
+      var $materiaId    = $(this).parent().find('input#materia_id');
+      var $tableMateria = $(this).parent().find('table#tableMateria');
 
       $materia.val('');
       $materiaId.val('');
@@ -85,7 +86,7 @@ $(document).ready(function()
           select: function( event, ui ) 
           {
               $materiaId.val(ui.item.codigo);
-              agregarMateriaSemest($tableMateria, ui.item);
+              agregarMateriaSemest($parent, ui.item);
               return true;
           }
         });
@@ -102,18 +103,94 @@ $(document).ready(function()
   function agregarMateriaSemest($objectTag, data)
   {
 
-    var tagTableMat  = '<tr>';
-        tagTableMat += '<td>'+data.codigo+'</td>';
-        tagTableMat += '<td>'+data.unidad_curricular+'</td>';
-        tagTableMat += '<td>'+data.horas_teoricas+'</td>';
-        tagTableMat += '<td>'+data.horas_practicas+'</td>';
-        tagTableMat += '<td>'+data.total_horas+'</td>';
-        tagTableMat += '<td>'+data.uni_credito+'</td>';
-        tagTableMat += '<td>'+data.cod_prelacion+'</td>';
-        tagTableMat += '<td><button class="btn btn-mini btn-danger" type="button"><i class="icon-remove-sign"></i></td>';
-        tagTableMat += '</tr>'; 
+    var $materiaId    = $objectTag.find('input#materia_id');
+    var $semestre     = $objectTag.find('input#semestre');
+    var $tableMateria = $objectTag.find('table#tableMateria');
+    var numSemesAnt   = parseInt($semestre.val());
 
-     $objectTag.append(tagTableMat);
+    if (--numSemesAnt != 0)
+    {
+        var $accorSemes       = $("div#semestre"+numSemesAnt);
+        var $tagTableSemesAnt = $accorSemes.find('table#tableMateria tbody tr');
+
+
+        if ($tagTableSemesAnt.length == 1) 
+        {
+            alert("Debe Registrar Materias en el Semestre Anterior");
+        }else
+        { ajax_agreMatSem($tableMateria, $idPensum.val(), $materiaId.val(), $semestre.val(), data); }  
+    }
+    else
+    { ajax_agreMatSem($tableMateria, $idPensum.val(), $materiaId.val(), $semestre.val(), data); }
+
+  }
+
+  //+---------------------------------------------------------------+
+  //|   ELIMINARMATERIA                                             |
+  //+---------------------------------------------------------------+
+  //|   Elimina la materia a un pensum especifico junto el semestre |
+  //+---------------------------------------------------------------+
+  var $eliminarMat = $('button#eliminarMat');
+
+  $eliminarMat.live('click', function()
+  {
+      var $tablaTr  = $(this).parent().parent();
+      var materiaId = $(this).val();
+
+      $.ajax(
+      {
+        url: base_url+'semestre/borrar_semestre',
+        type: "POST",
+        data: { pensum: $idPensum.val(), materia: materiaId },
+        success: function()
+        { 
+          $tablaTr.fadeOut(500, function()
+          {
+              $(this).remove();
+          }); 
+        },
+        error: function(error)
+        { alert("Problema al intentar eliminar"); }
+      });
+  });
+
+
+
+  function ajax_agreMatSem($objectTag, penid, matCod, semNum, data)
+  {
+      $.ajax(
+      {
+        url: base_url+'semestre/agregar_semestre',
+        type: "POST",
+        data: { pensum: penid, materia: matCod, semes: semNum },
+        success: function()
+        { 
+          var tagTableMat  = '<tr>';
+              tagTableMat += '<td>'+data.codigo+'</td>';
+              tagTableMat += '<td>'+data.unidad_curricular+'</td>';
+              tagTableMat += '<td>'+data.horas_teoricas+'</td>';
+              tagTableMat += '<td>'+data.horas_practicas+'</td>';
+              tagTableMat += '<td>'+data.total_horas+'</td>';
+              tagTableMat += '<td>'+data.uni_credito+'</td>';
+              tagTableMat += '<td>'+data.cod_prelacion+'</td>';
+              tagTableMat += '<td><button class="btn btn-mini btn-danger" id="eliminarMat" type="button" value="'+data.codigo+'"><i class="icon-remove-sign"></i></td>';
+              tagTableMat += '</tr>'; 
+
+              $objectTag.append(tagTableMat); 
+        },
+        error: function(error)
+        { 
+          var tagTableMat  = '<tr class="error">';
+              tagTableMat += '<td style="text-align:center;" colspan="8"><h5>Problemas al registrar la materia en el semestre</h5></td>';
+              tagTableMat += '</tr>';
+          $objectTag.append(tagTableMat);
+          $objectTag.find("tbody tr.error").fadeOut(2500, function()
+          {
+              $(this).remove();
+          });
+
+        }
+      });
   }
 
 
