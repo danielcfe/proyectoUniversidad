@@ -4,7 +4,7 @@ class Pensums extends CI_Model
 {
 
 	private $data;
-	private $select = 'A.*, B.nombre AS nombre_carrera, C.id AS id_dep, C.nombre AS nombre_dep';
+	private $select = "A.*, B.nombre AS nombre_carrera, C.id AS id_dep, C.nombre AS nombre_dep";
 
 	function __construct()
 	{

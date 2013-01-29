@@ -30,7 +30,7 @@
 		<div class="span4">
 			<h3>Fecha Creacion</h3>
 
-			<input type="text" name="carrera" value="<?php echo $pensum[0]['fecha']; ?>" disabled>
+			<input type="text" name="carrera" value="<?php echo date("d-m-Y",strtotime($pensum[0]['fecha'])); ?>" disabled>
 		</div>
 	</div>
 

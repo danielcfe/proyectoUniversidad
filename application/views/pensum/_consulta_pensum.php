@@ -32,7 +32,7 @@
 			?>
 					<tr>
 						<td><?php echo $val['id'];?></td>
-						<td><?php echo $val['fecha'];?></td>
+						<td><?php echo date("d-m-Y",strtotime($val['fecha']));?></td>
 						<td><?php echo $val['nombre_dep'];?></td>
 						<td><?php echo $val['nombre_carrera'];?></td>
 						<td><a href="<?=base_url()?>pensum/actualizar/<?php echo$val['id'];?>" class="btn btn-small btn-warning"><i class="icon-circle-arrow-up"></i>Actualizar</a></td>
