@@ -8,6 +8,7 @@ class Plan_evaluacion extends CI_Controller {
 			function __construct(){
 				parent::__construct();
 				$this->load->model('plan_evaluacions');
+				$this->load->model('dx_auth/users');
 				$this->dx_auth->check_uri_permissions();
 			}
 
@@ -24,6 +25,7 @@ class Plan_evaluacion extends CI_Controller {
 				$this->load->model('carreras');
 				$datos_plantilla['js']= 'departamento.js';
 				$datos_plantilla["id_departamento"] = $this->departamentos->consulta_dep();
+				$datos_plantilla["id_profesor"] = $this->users->cargar_profesor();
 				$datos_plantilla["id_carrera"] = $this->carreras->consulta_car();
 				$datos_plantilla['contenido'] = "plan_evaluacion/insertar_plan_evaluacion";
 				$this->load->view('plantilla',$datos_plantilla);
@@ -68,6 +70,13 @@ class Plan_evaluacion extends CI_Controller {
 		{
 			$datos_plantilla['datos_plan_evaluacion'] = $this->plan_evaluacions->consultar_mat($id);
 			$this->load->view('editar_plan_evaluacion',$datos_plantilla);
+		}
+
+		function cargar_docente()
+		{
+			$datos_plantilla["id_profesor"] = $this->users->cargar_profesor();
+			$datos_plantilla["contenido"] = "plan_evaluacion/insertar_plan_evaluacion";	
+			$this->load->view('plantilla', $datos_plantilla);
 		}
 
 		function id_exist($id){

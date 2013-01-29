@@ -202,6 +202,22 @@ class Users extends CI_Model
 		$this->db->where('id', $user_id);
 		return $this->db->update($this->_table);
 	}
+
+		public function cargar_profesor(){	
+			$this->db->select('id,name, last_name');
+			$this->db->from('users');
+			$this->db->where('role_id = 3');
+			$query = $this->db->get();
+			$profesor[0]= '';
+			foreach ($query->result() as $row) {
+				$profesor[$row->id] = $row->name;
+			}
+			//die(var_dump($profesor));
+			return $profesor;
+		}
+
+
+	
 }
 
 ?>
