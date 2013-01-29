@@ -22,10 +22,10 @@ foreach ($departamento as $departamento) {
 		<td><?php echo $departamento['id']; ?></td>
 		<td><?php echo anchor("departamento/consulta_dep_carrera/".$departamento['id'], $departamento['nombre']); ?></td>
 		<td>		
-			<i class="icon-circle-arrow-up"></i><?php echo anchor("departamento/editar/".$departamento['id'], 'Actualizar'); ?>
+			<?php echo anchor("departamento/editar/".$departamento['id'], '<i class="icon-circle-arrow-up"></i> Actualizar', 'class = "btn btn-small btn-warning"'); ?>
 		</td>
 		<td>
-			<i class="icon-remove-sign"></i><?php echo anchor("departamento#".$departamento['id'], 'Eliminar'," class='delete' data-uc='".$departamento['nombre']."' data-id='".$departamento["id"]."' data-url ='".base_url()."departamento/eliminar/'"); ?>
+			<?php echo anchor('departamento#', '<i class="icon-remove-sign"></i> Eliminar'," class='delete btn btn-small btn-danger' data-uc='".$departamento['nombre']."' data-id='".$departamento["id"]."' data-url ='".base_url()."departamento/eliminar/'"); ?>
 		</td>
 	</tr>
 

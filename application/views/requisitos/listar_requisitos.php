@@ -49,8 +49,8 @@
 										<td> <?php echo $row['descripcion']; ?> </td>
 										<td> <?php echo $row['requerido_text']; ?> </td>
 										<td> <?php echo $row['oculto_text']; ?> </td>
-										<td> <i class="icon-circle-arrow-up"></i> <?php echo anchor('ControllerRequisitos/modificar/' . $row['id'], 'Actualizar'); ?> </td>
-										<td> <i class="icon-remove-sign"></i> <?php echo anchor('ControllerRequisitos#' . $row['id'], 'Eliminar'," class='delete' data-uc='".$row['descripcion']."' data-id='".$row["id"]."' data-url ='".base_url()."ControllerRequisitos/eliminar/'"); ?> </td>
+										<td> <?php echo anchor("ControllerRequisitos/modificar/".$row['id'], '<i class="icon-circle-arrow-up"></i> Actualizar', 'class = "btn btn-small btn-warning"'); ?></td>
+										<td> <?php echo anchor('ControllerRequisitos#', '<i class="icon-remove-sign"></i> Eliminar'," class='delete btn btn-small btn-danger' data-uc='".$row['descripcion']."' data-id='".$row["id"]."' data-url ='".base_url()."ControllerRequisitos/eliminar/'"); ?> </td>
 									</tr>
 							
 					<?php 		}
