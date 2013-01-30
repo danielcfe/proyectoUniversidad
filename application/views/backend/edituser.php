@@ -87,15 +87,20 @@ echo form_open($this->uri->uri_string(),$attr)?>
 
 	?>		
 	</fieldset>
+	<div class="textarea">
+	<?php
+	// echo '<br>'.anchor('auth/change_password', 'change_password', array('class' => 'btn btn-primary' ));
+	  echo ''.anchor($this->router->fetch_class().'/users', 'Volver', 
+	  	array('class' => 'btn btn-primary', 'style' => 'float:left; margin:25px;'));
 
-  <div class="control-group">
-    <div class="controls">
-      <label class="checkbox">
+	?>
+	<div>
+		<button name="submit" class="btn btn-primary" style=" float:right; margin:25px; " type="submit" value="Actualizar Registro">
+			<i class="icon-user icon-white"></i>Actualizar Registro
+		</button>
+	</div>
+	</div>
 
-      </label>
-      <?php echo form_submit('submit','Actualizar Registro');?>
-    </div>
-  </div>
 
 
 <div class="clearfix"></div>

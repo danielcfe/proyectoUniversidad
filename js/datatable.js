@@ -54,7 +54,7 @@ var tables = $('#tablarequisitos, #users, #tablacarrera, #tabladepartamento, #ta
                 //  "sScrollY": "300px",
                     "sScrollXInner": "100%",
                     "bScrollCollapse": true,
-                    "sDom": "<'row-fluid'<'span6'T><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>", // bootstrap
+                    "sDom": "<'row-fluid'<'span6'Tl><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>", // bootstrap
                     "oTableTools": {
                                 "sSwfPath": base_url+"media/swf/copy_csv_xls_pdf.swf",
                                 "aButtons": [

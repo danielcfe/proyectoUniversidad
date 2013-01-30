@@ -97,7 +97,7 @@ echo form_open($this->uri->uri_string(),$attr)?>
 	<div class="textarea">
 	<?php
 	// echo '<br>'.anchor('auth/change_password', 'change_password', array('class' => 'btn btn-primary' ));
-	  echo ''.anchor($this->router->fetch_class(), 'Volver', 
+	  echo ''.anchor($this->router->fetch_class().'/users', 'Volver', 
 	  	array('class' => 'btn btn-primary', 'style' => 'float:left; margin:25px;'));
 
 	?>

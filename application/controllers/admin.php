@@ -167,7 +167,7 @@ class admin extends CI_Controller
 			$dataNotInsert = array('password','confirmpassword','submit');
 			$val->set_rules('name', 'name', 'trim|required');
 			$val->set_rules('last_name', 'Apellido', 'trim|required');
-			$val->set_rules('email', 'email', 'trim|required|xss_clean|valid_email|callback_email_check');
+			$val->set_rules('email', 'email', 'trim|required|xss_clean|valid_email');
 			$val->set_rules('birth_date', 'Fecha Nacimiento', 'date');
 			$val->set_rules('addres', 'Direccion', 'trim');
 			$val->set_rules('gender', 'Sexo', 'trim|exact_length[1]');
