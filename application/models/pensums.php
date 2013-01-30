@@ -84,6 +84,15 @@ class Pensums extends CI_Model
     	return $query->result_array();
     }
 
+    public function validar_registro()
+    {
+        $this->db->where('fecha', $this->get('fecha'));
+        $this->db->where('carrera_id', $this->get('carrera_id'));
+        $query = $this->db->get('pensum');
+        return $query->num_rows();
+    }
+
+
     public function insertar_pensum()
 	{
 		$array_campos = array( 'fecha' => $this->get('fecha'), 'carrera_id' => $this->get('carrera_id') );

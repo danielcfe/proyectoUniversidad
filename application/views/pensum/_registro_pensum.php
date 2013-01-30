@@ -26,6 +26,19 @@
 		</div>
 
 		<div class="row-fluid">
+			<div class="span12">
+
+				<?php if(isset($error))
+				{
+				?>
+					<div class="alert alert-error"><?php echo $error;?></div>
+				<?php
+				}
+				?>
+			</div>
+		</div>
+
+		<div class="row-fluid">
 			<div class="span12">	
 				<button class="btn btn-primary" type="submit" value="Enviar"><i class="icon-user icon-white"></i> Enviar Informacion</button>
 			</div>

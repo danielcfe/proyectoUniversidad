@@ -29,7 +29,6 @@ class Pensum extends CI_Controller
 
 	function agregar()
 	{
-		$classModelPen = new Pensums;
 		$arrayDep      = array('' => 'Selecc. Departamento...');
 		$array 		   = $this->departamentos->consulta_general();
 
@@ -48,9 +47,17 @@ class Pensum extends CI_Controller
 		{ $this->load->view('plantilla', $datos_plantilla);	}
 		else
 		{
-			$this->set_datos($classModelPen);
-			$classModelPen->insertar_pensum();
-			$this->pensum_semestre($this->db->insert_id());
+			$this->set_datos($this->pensums);
+			if($this->pensums->validar_registro() == 0)
+			{
+				$this->pensums->insertar_pensum();
+				$this->pensum_semestre($this->db->insert_id());
+			}
+			else
+			{
+				$datos_plantilla['error']  = "Error, ya existe el registro";
+				$this->load->view('plantilla', $datos_plantilla);
+			}
 		}
 	}
 
