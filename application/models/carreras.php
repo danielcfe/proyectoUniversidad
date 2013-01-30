@@ -43,10 +43,10 @@
 			return $query->result_array();
 		}
 
-		public function consulta_general(){
+		public function consulta_general($id){
 			$this->db->select('c.id, c.nombre, d.nombre as nombre_d');
 			$this->db->from('carrera c, departamento d');
-			$this->db->where('c.departamento_id = d.id ');
+			$this->db->where('c.departamento_id = d.id and c.departamento_id ='.$id);
 			$query = $this->db->get();
 			return $query->result_array();
 		}

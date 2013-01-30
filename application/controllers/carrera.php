@@ -49,6 +49,7 @@
 					$this->carreras->setNombre($this->input->post('nombre'));
 					$this->carreras->setDepartamento_id($this->input->post('departamento_id'));		
 					$this->carreras->editar();
+					$this->auditor->registrar_accion("Se edito la carrera: ".$this->input->post('nombre'));
 					$this->consulta();			
 				}							
 			}else{
@@ -61,6 +62,7 @@
 		function eliminar($id){
 			$this->carreras->setId($id);			
 			$this->carreras->eliminar();
+			$this->auditor->registrar_accion("Se elimino la Carrera: ".$this->input->post('nombre'));
 			$this->consulta();
 		}
 

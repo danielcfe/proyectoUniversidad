@@ -21,7 +21,7 @@ foreach ($auditoria as $auditoria) {
 
 	<tr>
 		<td><?php echo $auditoria['hora']; ?></td>
-		<td><?php echo $auditoria['fecha']; ?></td>
+		<td><?php echo date("d-m-Y",strtotime($auditoria['fecha']));?></td>
 		<td><?php echo $auditoria['name']; ?></td>
 		<td><?php echo $auditoria['username']; ?></td>
 		<td><?php echo $auditoria['accion']; ?></td>

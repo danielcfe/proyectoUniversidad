@@ -32,6 +32,7 @@ class Plan_evaluacion extends CI_Controller {
 			}else{	
 				$this->plan_evaluacions->cargar($this->input->post());	
 				$this->plan_evaluacions->agregar();
+				$this->auditor->registrar_accion("Se inserta un nuevo plan de evaluacions: ".$this->input->post('descripcion')); 
 				$this->consultar();
 			}		
 		}
@@ -48,6 +49,7 @@ class Plan_evaluacion extends CI_Controller {
 			}else{
 			$this->plan_evaluacions->cargar($this->input->post());	
 			$this->plan_evaluacions->editar();
+			$this->auditor->registrar_accion("Se edito el plan de evaluacion: ".$this->input->post('descripcion')); 
 			$this->consultar();
 			}
 		}
@@ -56,6 +58,7 @@ class Plan_evaluacion extends CI_Controller {
 		{
 			$this->plan_evaluacions->setId($id);
 			$this->plan_evaluacions->eliminar();
+			$this->auditor->registrar_accion("Se elimino el plan de evaluacion de codigo: ".$id); 
 			$this->consultar();
 		}
 

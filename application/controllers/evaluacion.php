@@ -25,6 +25,7 @@ class Evaluacion extends CI_Controller {
 			}else{		
 				$this->evaluacions->cargar($this->input->post());	
 				$this->evaluacions->agregar();
+				$this->auditor->registrar_accion("Se inserta evaluacion de: ".$this->input->post('descripcion')); 
 				$this->consultar();
 			}		
 		}
@@ -44,6 +45,7 @@ class Evaluacion extends CI_Controller {
 			}else{
 				$this->evaluacions->cargar($this->input->post());	
 				$this->evaluacions->editar();
+				$this->auditor->registrar_accion("Se edito la evaluacion: ".$this->input->post('descripcion')); 
 				$this->consultar();
 			}
 		}
@@ -52,6 +54,7 @@ class Evaluacion extends CI_Controller {
 		{
 			$this->evaluacions->setId($id);
 			$this->evaluacions->eliminar();
+			$this->auditor->registrar_accion("Se ha eliminado la evaluacion de codigo: ".$id); 
 			$this->consultar();
 		}
 
@@ -62,6 +65,12 @@ class Evaluacion extends CI_Controller {
 			$this->load->view('plantilla',$datos_plantilla);
 		}
 
+		function consulta_especifica($id)
+		{
+			$datos_plantilla['datos_evaluacion'] = $this->evaluacions->consulta($id);
+			$datos_plantilla['contenido'] = 'evaluacion\lista_evaluacion';
+			$this->load->view('plantilla',$datos_plantilla);
+		}
 		function cargar_datos($id)
 		{
 			$datos_plantilla['datos_evaluacion'] = $this->evaluacions->consultar_mat($id);

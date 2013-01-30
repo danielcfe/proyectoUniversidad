@@ -24,6 +24,7 @@
 				}else{		
 				$this->departamentos->setNombre($this->input->post('nombre'));				
 				$this->departamentos->agregar();
+				$this->auditor->registrar_accion("Se inserta un nuevo Departamento: ".$this->input->post('nombre')); 
 				$this->consulta();	
 				}		
 		}
@@ -40,6 +41,7 @@
 					$this->departamentos->setId($this->input->post('id'));
 					$this->departamentos->setNombre($this->input->post('nombre'));		
 					$this->departamentos->editar();
+					$this->auditor->registrar_accion("Se edito el departamento: ".$this->input->post('nombre')); 
 					$this->consulta();		
 				}							
 			}else{
@@ -59,6 +61,7 @@
 		function eliminar($id){
 			$this->departamentos->setId($id);			
 			$this->departamentos->eliminar();
+			$this->auditor->registrar_accion("Se elimina el departamento de codigo: ".$id); 
 			$this->consulta();
 		}
 

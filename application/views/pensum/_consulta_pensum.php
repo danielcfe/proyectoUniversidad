@@ -5,7 +5,7 @@
 
 	<h2>Lista de Pensum</h2>
 
-	<table class="table">
+	<table class="table" id ="tablapensum">
 		<thead>
 			<tr>
 				<td>id</td>

@@ -31,6 +31,7 @@ class Materia_c extends CI_Controller {
 			}else{
 				$this->materia->cargar($this->input->post());	
 				$this->materia->insertar_materia();
+				$this->auditor->registrar_accion("Se inserta una nueva materia: ".$this->input->post('unidad_curricular')); 
 				$this->consultar();
 			}		
 		}
@@ -47,6 +48,7 @@ class Materia_c extends CI_Controller {
 			}else{
 			$this->materia->cargar($this->input->post());	
 			$this->materia->editar_materia();
+			$this->auditor->registrar_accion("Se edito la materia: ".$this->input->post('unidad_curricular')); 
 			$this->consultar();
 			}
 		}
@@ -55,6 +57,7 @@ class Materia_c extends CI_Controller {
 		{
 			$this->materia->setCodigo($codigo);
 			$this->materia->eliminar_materia();
+			$this->auditor->registrar_accion("Se elimina la materia de codigo: ".$codigo); 
 			$this->consultar();
 		}
 

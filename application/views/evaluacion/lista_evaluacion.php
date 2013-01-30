@@ -1,5 +1,13 @@
 
-<table class="table table-striped table-condensed" >
+<div class="row-fluid">
+		<div class="span9">
+			<h2>Listado de Evaluaciones - IUSPO</h2>
+		</div>
+	</div>
+
+<?php echo anchor("evaluacion/insertar", "Agregar Evaluacion", "class= 'btn btn-primary'; style= 'float:right; margin-bottom:15px'") ?>
+
+<table class="table table-striped table-condensed" id= "tablaevaluaciones">
 <thead>
 	<tr>
 		<th>ID</th>

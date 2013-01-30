@@ -58,7 +58,8 @@ class ControllerRequisitos extends CI_Controller
 			$this->load->view('plantilla', $datos_plantilla);
 		else
 		{
-			$class->insertar_requisitos(); 
+			$class->insertar_requisitos();
+			$this->auditor->registrar_accion("Se inserta un nuevo requisito: ".$this->input->post('descripcion')); 
 			$this->listar();
 		}
 	}
@@ -78,6 +79,7 @@ class ControllerRequisitos extends CI_Controller
 		else
 		{
 			$class->modificar_requisitos(); 
+			$this->auditor->registrar_accion("Se modifica el requisito: ".$this->input->post('descripcion'));
 			$this->listar();
 		}
 	}
@@ -87,6 +89,7 @@ class ControllerRequisitos extends CI_Controller
 		$class = new Requisitos;
 		$class->set('id', $id);
 		$result = $class->eliminar_requisitos();
+		$this->auditor->registrar_accion("Se elimina el requisito con codigo: ".$id); 
 		$this->listar();
 	}
 

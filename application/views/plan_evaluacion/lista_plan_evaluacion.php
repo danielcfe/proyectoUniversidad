@@ -6,7 +6,7 @@
 	</div>
 
 
-<table class="table table-striped table-condensed" id ="tablaplan_evaluacion" >
+<table class="table table-striped table-condensed" id ="tablaplanevaluacion" >
 <thead>
 	<tr>
 		<th>ID</th>
@@ -26,7 +26,7 @@ foreach ($datos_plan_evaluacion as $datos_plan_evaluacion) {
 
 	<tr>
 		<td><?php echo $datos_plan_evaluacion['id']; ?></td>
-		<td><?php echo anchor("evaluacion/insertar/".$datos_plan_evaluacion['id'],$datos_plan_evaluacion['descripcion']); ?></td>
+		<td><?php echo anchor("evaluacion/consulta_especifica/".$datos_plan_evaluacion['id'],$datos_plan_evaluacion['descripcion']); ?></td>
 		<td><?php echo $datos_plan_evaluacion['profesor_datos_usuarios_id']; ?></td>
 		<td><?php echo $datos_plan_evaluacion['materia_codigo']; ?></td>
 		<td>		

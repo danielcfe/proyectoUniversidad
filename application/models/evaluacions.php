@@ -51,6 +51,14 @@
 			return $query->result_array();
 		}
 
+		public function consulta($id){
+			$this->db->select('*');
+			$this->db->from('evaluacion');
+			$this->db->where('plan_evaluacion_id',$id);
+			$query = $this->db->get();
+			return $query->result_array();
+		}
+
 		public function cargar($data){
 	    	foreach ($data as $key => $value) {
 	    		if (isset($this->$key)){

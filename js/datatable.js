@@ -44,7 +44,7 @@ $.extend( true, $.fn.DataTable.TableTools.DEFAULTS.oTags, {
 
 
 
-var tables = $('#tablarequisitos, #users, #tablacarrera, #tabladepartamento, #tablapensum, #tablaauditoria, #tablamateria');
+var tables = $('#tablaplanevaluacion, #tablaevaluaciones,#tablapensum,#tablarequisitos, #users, #tablacarrera, #tabladepartamento, #tablapensum, #tablaauditoria, #tablamateria');
 
     
     
