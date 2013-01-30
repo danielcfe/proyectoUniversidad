@@ -46,7 +46,7 @@ $.extend( true, $.fn.DataTable.TableTools.DEFAULTS.oTags, {
 
 var tables = $('#tablarequisitos, #users, #tablacarrera, #tabladepartamento, #tablapensum, #tablaauditoria, #tablamateria');
 
-
+    
     
                 var Table = tables.dataTable( {
                 //  "bJQueryUI": true,
@@ -54,18 +54,34 @@ var tables = $('#tablarequisitos, #users, #tablacarrera, #tabladepartamento, #ta
                 //  "sScrollY": "300px",
                     "sScrollXInner": "100%",
                     "bScrollCollapse": true,
-                    //"bProcessing": true,
-               //    "sAjaxSource": 'http://localhost/intercambios/consultasv2.php',
-                    //"sDom": 'T<"clear">lfrtip',
                     "sDom": "<'row-fluid'<'span6'T><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>", // bootstrap
                     "oTableTools": {
+                                "sSwfPath": base_url+"media/swf/copy_csv_xls_pdf.swf",
                                 "aButtons": [
-                                    "copy",
-                                    "print",
+                                    {   
+                                    "sExtends": "copy",
+                                    "sButtonText": "Copiar"
+                                    },
+                                    {
+                                        "sExtends": "print",
+                                        "sButtonText": "Imprimir",
+                                        "sInfo": "Por Favor apretar la tecla (Esc) para salir"
+                                    },
                                     {
                                         "sExtends":    "collection",
-                                        "sButtonText": 'Save <span class="caret" />',
-                                        "aButtons":    [ "csv", "xls", "pdf" ]
+                                        "sButtonText": 'Guardar <span class="caret" />',
+                                        "aButtons":    [ 
+                                            {
+                                            "sExtends": "xls",
+                                            "sButtonText": "Excel"
+                                            },  
+                                            {
+                                                "sExtends": "pdf",
+                                                "sButtonText": "PDF",
+                                                "sPdfOrientation": "landscape",
+                                                "sPdfMessage": "Reporte Alexis."
+                                            },
+                                         ]
                                     }
                                 ]
                     },  // bootstrap
