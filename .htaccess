@@ -1,4 +1,4 @@
 RewriteEngine on
-RewriteCond $1 !^(index\.php|images|img|css|js|robots\.txt)
+RewriteCond $1 !^(index\.php|images|img|media|css|js|robots\.txt)
 RewriteRule ^(.*)$ /proyectoUniversidad/index.php/$1 [L]
 

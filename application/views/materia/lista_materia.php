@@ -1,5 +1,5 @@
 <h3>Listado de Materias - IUSPO</h3>
-<table class="table table-striped table-condensed" id="tablamateria">
+<table class="display table table-striped table-bordered dataTable" id="tablamateria">
 <thead>
 	<tr>
 		<th>Codigo</th>
@@ -44,4 +44,17 @@ foreach ($datos_materia as $datos_materia) {
 
  ?>
 </tbody>
+	<tfoot>
+	<tr>
+		<th>Codigo</th>
+		<th>Unidad Curricular</th>
+		<th>HT</th>
+		<th>HP</th>
+		<th>TH</th>
+		<th>UC</th>
+		<th>Prelacion</th>
+		<th></th>
+		<th></th>		
+	</tr>
+	</tfoot>
  </table>

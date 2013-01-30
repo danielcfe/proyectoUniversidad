@@ -7,13 +7,24 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le styles -->
+    <!-- Le styles 
     <link href="<?=base_url()?>js/datatable/css/demo_table.css" rel="stylesheet">
     <link href="<?=base_url()?>js/datatable/css/demo_page.css" rel="stylesheet">
     <link href="<?=base_url()?>js/datatable/css/demo_table_jui.css" rel="stylesheet">
     <link href="<?=base_url()?>js/datatable/css/jquery.dataTables.css" rel="stylesheet">
     <link href="<?=base_url()?>js/datatable/css/jquery.dataTables_themeroller.css" rel="stylesheet">
+-->
 
+  <style type="text/css" title="currentStyle">
+      @import "<?=base_url()?>media/css/demo_page.css";/*
+      @import "<?=base_url()?>media/css/demo_table.css";
+      @import "<?=base_url()?>media/css/TableTools.css";*/
+      @import "http://twitter.github.com/bootstrap/assets/css/bootstrap.css";
+      @import "http://datatables.github.com/Plugins/integration/bootstrap/dataTables.bootstrap.css";
+
+
+  
+</style>
     <link href="<?=base_url()?>/css/docs/assets/css/bootstrap.css" rel="stylesheet">
     <link  href="<?=base_url()?>/css/iuspo_style.css" rel="stylesheet" >
     <link rel="stylesheet" href="<?=base_url()?>/js/jquery-ui.css" rel="stylesheet">
@@ -187,14 +198,26 @@ if(isset($css)){
     <script src="<?=base_url()?>/css/docs/assets/js/bootstrap-carousel.js"></script>
     <script src="<?=base_url()?>/css/docs/assets/js/bootstrap-typeahead.js"></script>
 
-    <script src="<?=base_url()?>js/datatable/js/jquery.js"></script>
+<script src="<?=base_url()?>/js/jquery-ui.js"></script>
+
+    <!--<script src="<?=base_url()?>js/datatable/js/jquery.js"></script>
     <script src="<?=base_url()?>js/datatable/js/jquery.dataTables.js"></script>
     <script src="<?=base_url()?>js/datatable/js/jquery.dataTables.min.js"></script>
-    <script src="<?=base_url()?>/js/datatable.js"></script>
+-->
+    
+
+
+<script type="text/javascript" charset="utf-8" src="<?=base_url()?>media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="<?=base_url()?>media/js/ZeroClipboard.js"></script>
+    <script type="text/javascript" charset="utf-8" src="<?=base_url()?>media/js/TableTools.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="http://datatables.github.com/Plugins/integration/bootstrap/dataTables.bootstrap.js"></script>
+    <script src="<?=base_url()?>media/js/jquery.dataTables.columnFilter.js" type="text/javascript"></script>
+    <script type="text/javascript" charset="utf-8" src="<?=base_url()?>media/js/FixedColumns.min.js"></script>
+
+    <script src="<?=base_url()?>/js/datatable.js"></script>  
     <script src="<?=base_url()?>/js/tooltip.js"></script>
     <script src="<?=base_url()?>/js/funciones.js"></script>
 
-    <script src="<?=base_url()?>/js/jquery-ui.js"></script>
     <!-- <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script> -->
   
 <?php 
