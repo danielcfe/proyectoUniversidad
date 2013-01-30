@@ -42,10 +42,10 @@
 					<div class="hero-unit">
 				<?php 
 											
-					echo 'Direcciones Permitidas (1 por lÌnea) :<br/>';					
+					echo 'Direcciones Permitidas (1 por l√≠nea) :<br/>';					
 					echo "Input '/' Acceso a todas las direcciones.<br/>";
 					echo "Input '/controller/' Acceso a todas las funciones de una zona<br/>";
-					echo "Input '/controller/function/' Permite acceso a una direcciÛn en especifico<br/>";
+					echo "Input '/controller/function/' Permite acceso a una direcci√≥n en especifico<br/>";
 					//echo 'These rules only have effect if you use check_uri_permissions() in your controller<br/>.';
 				 ?>	
 				 	</div>

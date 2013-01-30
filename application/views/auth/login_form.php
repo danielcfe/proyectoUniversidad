@@ -70,13 +70,14 @@ $attributes = array('class' => 'form-signin', 'id' => 'form-signin');
     <link rel="apple-touch-icon-precomposed" href="<?=base_url()?>/css/docs/assets/ico/apple-touch-icon-57-precomposed.png">
   </head>
 
-  <body>
+ <body style=" background-color: #efefef;">
 
 
     <div class="container-fluid">
       <div class="row-fluid">
          <div class="span12">
-<div id="login">
+
+<div id="login" style="border: 1px solid #bbb;">
 	<?php echo form_open($this->uri->uri_string(),$attributes)?>
 	<h2 class="form-signin-heading">Iniciar Session</h2>
 	<?php echo $this->dx_auth->get_auth_error(); ?>
@@ -124,7 +125,7 @@ $attributes = array('class' => 'form-signin', 'id' => 'form-signin');
       <hr>
 
       <footer>
-        <p>&copy; Company 2012</p>
+        <p style="text-align: center;">&copy; XirosSystem e InnovaSystem</p>
       </footer>
 
     </div><!--/.fluid-container-->

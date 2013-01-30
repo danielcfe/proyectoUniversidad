@@ -78,6 +78,12 @@ if(isset($css)){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
+          <img class="brand" src="<?=base_url()?>/img/logo.png" href="#" style="
+    width: 40px;
+    height: 40px;
+    margin: 3px 20px;
+    padding: 0;
+">
           <a class="brand" href="#" id="iuspo" rel="tooltip" title="Instituto Universitario Saleciano Padre Ojeda">IUSPO</a>
           <div class="nav-collapse collapse ">
             <ul class="navbar nav pull-right visible-desktop"> 
