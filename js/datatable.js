@@ -76,12 +76,13 @@ var tables = $('#tablarequisitos, #users, #tablacarrera, #tabladepartamento, #ta
                 // defaults to the column being worked with, in this case is the first
                 // Using `row[0]` is equivalent.
                 "mRender": function ( data, type, row ) {
-                    return data +' '+ row[3];
+                    return data;
                 },
                 "aTargets": [ 0 ]
             },
-            { "bVisible": false,  "aTargets": [ 3 ] },
-            { "sClass": "center", "aTargets": [ 4 ] }
+           // { "bVisible": false,  "aTargets": [ 3 ] }
+
+           // ,{ "sClass": "center", "aTargets": [ 4 ] }
         ],
                     "oLanguage": languaje_esp
 
@@ -162,7 +163,7 @@ var tables = $('#tablarequisitos, #users, #tablacarrera, #tabladepartamento, #ta
     });
 
 */
-
+/*
 
     $('#tablarequisitos, #users, #tablacarrera, #tabladepartamento, #tablapensum, #tablaauditoria, #tssssssssssssablamateria').dataTable({
          "bJQueryUI": true,
@@ -197,7 +198,7 @@ var tables = $('#tablarequisitos, #users, #tablacarrera, #tabladepartamento, #ta
             
     });
     
-
+*/
 
 /*    $('#tablacarrera').dataTable({
          "bJQueryUI": true,
